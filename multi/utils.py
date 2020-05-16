@@ -17,11 +17,11 @@ def out_string(input_list: list) -> str:
 def status(text: Union[str, list], level: str = "info") -> None:
     """Print specified status to stdout"""
     if level == "info":
-        opts = {"symbol": "[+]", "color": Fore.LIGHTCYAN_EX}
+        opts = {"symbol": "[*]", "color": Fore.LIGHTCYAN_EX}
     elif level == "warn":
         opts = {"symbol": "[!]", "color": Fore.YELLOW}
     elif level == "output":
-        opts = {"symbol": "[=]", "color": Fore.LIGHTGREEN_EX}
+        opts = {"symbol": "[+]", "color": Fore.LIGHTGREEN_EX}
     else:
         raise ValueError("<level> must equal 'info' or 'warn'")
 
@@ -36,12 +36,13 @@ def status(text: Union[str, list], level: str = "info") -> None:
         print(string)
 
 
-def throw(text: Union[str, list], terminate: bool = True) -> None:
+def throw(text: Union[str, list] = None, terminate: bool = True) -> None:
     """Print the error status to stdout and terminate the program"""
-    if type(text) is list:
-        tlist = [str(x) for x in text]
-    else:
-        tlist = [str(text)]
+    if text is not None:
+        if type(text) is list:
+            tlist = [str(x) for x in text]
+        else:
+            tlist = [str(text)]
 
     for string in tlist:
         print(Fore.LIGHTRED_EX + "[x]", end=" ")
