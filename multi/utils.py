@@ -1,9 +1,10 @@
-from scapy.all import *
-from colorama import Style, Fore
-from django.core.validators\
-    import validate_ipv4_address, URLValidator
-from django.core.exceptions import ValidationError
+from typing import Union
 from ipaddress import IPv4Address
+from colorama import (Style, Fore)
+from django.core.exceptions import ValidationError
+from django.core.validators import (
+    validate_ipv4_address, URLValidator
+)
 
 
 def out_string(input_list: list) -> str:
@@ -14,16 +15,36 @@ def out_string(input_list: list) -> str:
     return string
 
 
-def status(text: Union[str, list], level: str = "info") -> None:
+def status(text: str, level: str = "info", stdout=False) -> None:
     """Print specified status to stdout"""
     if level == "info":
         opts = {"symbol": "[*]", "color": Fore.LIGHTCYAN_EX}
-    elif level == "warn":
+    elif level == "alert":
         opts = {"symbol": "[!]", "color": Fore.YELLOW}
     elif level == "output":
         opts = {"symbol": "[+]", "color": Fore.LIGHTGREEN_EX}
     else:
-        raise ValueError("<level> must equal 'info' or 'warn'")
+        raise ValueError("<level> must equal 'info' or 'alert'")
+
+    if stdout:
+        pass
+    else:
+        print(opts["color"] + opts["symbol"], end=" ")
+        print(Style.RESET_ALL, end="")
+        print(text)
+
+
+#def status(text: Union[str, list], level: str = "info", stdout=False) -> None:
+def old_status(text: str, level: str = "info", stdout=False) -> None:
+    """Print specified status to stdout"""
+    if level == "info":
+        opts = {"symbol": "[*]", "color": Fore.LIGHTCYAN_EX}
+    elif level == "alert":
+        opts = {"symbol": "[!]", "color": Fore.YELLOW}
+    elif level == "output":
+        opts = {"symbol": "[+]", "color": Fore.LIGHTGREEN_EX}
+    else:
+        raise ValueError("<level> must equal 'info' or 'alert'")
 
     if type(text) is list:
         tlist = [str(x) for x in text]
@@ -36,21 +57,21 @@ def status(text: Union[str, list], level: str = "info") -> None:
         print(string)
 
 
-def throw(text: Union[str, list] = None, terminate: bool = True) -> None:
-    """Print the error status to stdout and terminate the program"""
+def throw(text: Union[str, list] = None, kill: bool = True) -> None:
+    """Print the error status to stdout and kill the program"""
     if text is not None:
         if type(text) is list:
             tlist = [str(x) for x in text]
         else:
             tlist = [str(text)]
 
-    for string in tlist:
-        print(Fore.LIGHTRED_EX + "[x]", end=" ")
-        print(Style.RESET_ALL, end="")
-        print(string)
+        for string in tlist:
+            print(Fore.LIGHTRED_EX + "[x]", end=" ")
+            print(Style.RESET_ALL, end="")
+            print(string)
 
-    if terminate:
-        status("The script will now be terminated.", "warn")
+    if kill:
+        status("The application will now be terminated.", "alert")
         exit(1)
 
 
@@ -87,19 +108,3 @@ def echo_probe(target: str) -> str:
         return "down"
     else:
         return "up"
-
-
-def get_banner(target, dport: int) -> Union[str, None]:
-    sock = socket.socket()
-
-    try:
-        sock.connect((target, dport))
-        data = sock.recv(1024).split()[0]
-    except socket.timeout:
-        banner = None
-    else:
-        banner = data.decode()
-    finally:
-        sock.close()
-
-    return banner
