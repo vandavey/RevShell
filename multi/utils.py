@@ -3,7 +3,8 @@ from ipaddress import IPv4Address
 from colorama import (Style, Fore)
 from django.core.exceptions import ValidationError
 from django.core.validators import (
-    validate_ipv4_address, URLValidator
+    URLValidator,
+    validate_ipv4_address
 )
 
 
@@ -15,46 +16,26 @@ def out_string(input_list: list) -> str:
     return string
 
 
-def status(text: str, level: str = "info", stdout=False) -> None:
-    """Print specified status to stdout"""
+def status(stdout: str, stdin: str = None, level: str = "info") -> None:
+    """Print specified status to stdout at different verbosity levels"""
     if level == "info":
         opts = {"symbol": "[*]", "color": Fore.LIGHTCYAN_EX}
     elif level == "alert":
-        opts = {"symbol": "[!]", "color": Fore.YELLOW}
+        opts = {"symbol": "[!]", "color": Fore.LIGHTYELLOW_EX}
     elif level == "output":
         opts = {"symbol": "[+]", "color": Fore.LIGHTGREEN_EX}
     else:
-        raise ValueError("<level> must equal 'info' or 'alert'")
+        raise ValueError("Expected <level> to be [info|alert|output]")
 
-    if stdout:
-        pass
+    print(opts["color"] + opts["symbol"], end=" ")
+    print(Style.RESET_ALL, end="")
+
+    if stdin is not None:
+        print(f"[{stdin}]", end=" ")
+        print(opts["color"] + "=>")
+        print(Style.RESET_ALL + stdout)
     else:
-        print(opts["color"] + opts["symbol"], end=" ")
-        print(Style.RESET_ALL, end="")
-        print(text)
-
-
-#def status(text: Union[str, list], level: str = "info", stdout=False) -> None:
-def old_status(text: str, level: str = "info", stdout=False) -> None:
-    """Print specified status to stdout"""
-    if level == "info":
-        opts = {"symbol": "[*]", "color": Fore.LIGHTCYAN_EX}
-    elif level == "alert":
-        opts = {"symbol": "[!]", "color": Fore.YELLOW}
-    elif level == "output":
-        opts = {"symbol": "[+]", "color": Fore.LIGHTGREEN_EX}
-    else:
-        raise ValueError("<level> must equal 'info' or 'alert'")
-
-    if type(text) is list:
-        tlist = [str(x) for x in text]
-    else:
-        tlist = [str(text)]
-
-    for string in tlist:
-        print(opts["color"] + opts["symbol"], end=" ")
-        print(Style.RESET_ALL, end="")
-        print(string)
+        print(stdout)
 
 
 def throw(text: Union[str, list] = None, kill: bool = True) -> None:
@@ -67,11 +48,11 @@ def throw(text: Union[str, list] = None, kill: bool = True) -> None:
 
         for string in tlist:
             print(Fore.LIGHTRED_EX + "[x]", end=" ")
-            print(Style.RESET_ALL, end="")
-            print(string)
+            print(Style.RESET_ALL + string)
 
     if kill:
-        status("The application will now be terminated.", "alert")
+        #status("The application will now be terminated.", "alert")
+        status("The application will now be terminated.", level="info")
         exit(1)
 
 

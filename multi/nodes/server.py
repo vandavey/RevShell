@@ -2,10 +2,11 @@ import getpass
 from multi import utils
 from .nodeutils import (
     os,
-    subprocess,
+    socket,
     sys,
     SocketStream,
-    socket
+    signal,
+    subprocess
 )
 # todo: call utils.status with stdout keyword argument for commands
 
@@ -31,7 +32,13 @@ class Server(SocketStream):
         client_sock.setblocking(True)
         # client_sock.settimeout(60)
 
-        server_sock.bind((self.Address, self.Port))
+        try:
+            server_sock.bind((self.Address, self.Port))
+        except OSError as exc:
+            #utils.throw(f"This socket is already in use buy another process.")
+            utils.throw(str(exc))
+        except Exception as exc:
+            utils.throw(str(exc))
 
         try:
             server_sock.listen(1)  # stay open for one connection
@@ -41,9 +48,11 @@ class Server(SocketStream):
             utils.status(f"Received connection from {addr[0]} on port {addr[1]}.")
         except KeyboardInterrupt:
             utils.throw(f"User keyboard interrupt has been thrown.")
+        except Exception:
+            raise
 
         user, host = getpass.getuser(), socket.gethostname()
-        client_sock.sendall(f"Connection established with {host}".encode())
+        client_sock.sendall(f"Connection established with {host}.".encode())
 
         # todo: create handling for data exfiltration
         client_info = client_sock.recv(self.Buffer).decode()
@@ -70,13 +79,14 @@ class Server(SocketStream):
         except Exception as exc:
             self.except_handler(exc)
         finally:
-            #client_sock.shutdown(socket.socket.SHUT_WR)
-            client_sock.shutdown(socket.socket.SHUT_WR)
-            #server_sock.shutdown(socket.socket.SHUT_WR)
-            server_sock.shutdown(socket.socket.SHUT_WR)
+            try:
+                #client_sock.shutdown(socket.socket.SHUT_WR)
+                client_sock.shutdown(socket.socket.SHUT_WR)
+                #server_sock.shutdown(socket.socket.SHUT_WR)
+                server_sock.shutdown(socket.socket.SHUT_WR)
+            finally:
+                client_sock.close()
+                server_sock.close()
 
-            client_sock.close()
-            server_sock.close()
-
-            if caught_except:
-                utils.throw()
+                if caught_except:
+                    utils.throw()

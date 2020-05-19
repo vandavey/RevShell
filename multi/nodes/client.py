@@ -1,19 +1,22 @@
-#from multi import utils
 from multi import utils
 from .nodeutils import (
     os,
-    SocketStream,
     shutil,
-    sys,
     subprocess,
+    signal,
+    sys,
+    SocketStream,
     socket
 )
 
 
 class Client(SocketStream):
     """TCP socket client class for the command shell"""
-    def __init__(self, rhost: str, port: int = 4444, buff: int = 1024, verb=False):
-        super().__init__(rhost, port, buff, verb)
+    def __init__(self, rhost: str, port=4444, buff=1024, verb=False):
+        if not (str(port).isdigit() & (1 <= int(port) <= 65535)):
+            utils.throw("Expected <port> to be an int less or equal to 65535")
+        else:
+            super().__init__(rhost, port, buff, verb)
         self.Shell = None
 
     def spawn_shell(self, op_sys: str = os.name) -> subprocess.Popen:
@@ -96,5 +99,7 @@ class Client(SocketStream):
 
                 self.Shell.kill()
 
-            sock.shutdown(socket.socket.SHUT_WR)
-            sock.close()
+            try:
+                sock.shutdown(socket.socket.SHUT_WR)
+            finally:
+                sock.close()
