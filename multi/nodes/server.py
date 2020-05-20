@@ -1,12 +1,12 @@
 import getpass
-from multi import utils
+
 from .nodeutils import (
     os,
     socket,
+    subprocess,
     sys,
     SocketStream,
-    signal,
-    subprocess
+    utils
 )
 # todo: call utils.status with stdout keyword argument for commands
 
@@ -40,53 +40,48 @@ class Server(SocketStream):
         except Exception as exc:
             utils.throw(str(exc))
 
-        try:
-            server_sock.listen(1)  # stay open for one connection
-            utils.status(f"Listening for incoming TCP connection on port {self.Port}...")
+        server_sock.listen(1)  # stay open for one connection
+        utils.status(f"Listening for incoming TCP connection on port {self.Port}...")
 
-            client_sock, addr = server_sock.accept()
+        client_sock, addr = server_sock.accept()
+
+        with client_sock:
             utils.status(f"Received connection from {addr[0]} on port {addr[1]}.")
-        except KeyboardInterrupt:
-            utils.throw(f"User keyboard interrupt has been thrown.")
-        except Exception:
-            raise
 
-        user, host = getpass.getuser(), socket.gethostname()
-        client_sock.sendall(f"Connection established with {host}.".encode())
+            user, host = getpass.getuser(), socket.gethostname()
+            client_sock.sendall(f"Connection established with {host}.".encode())
 
-        # todo: create handling for data exfiltration
-        client_info = client_sock.recv(self.Buffer).decode()
-        utils.status(client_info)
+            # todo: create handling for data exfiltration
+            client_info = client_sock.recv(self.Buffer).decode()
+            utils.status(client_info)
 
-        caught_except = False
+            caught_except = False
 
-        try:
-            while True:
-                if os.name == "nt":
-                    prompt = f"Shell {os.getcwd()}> "
-                else:
-                    prompt = f"{user}@{host}:{os.getcwd()}> "
-
-                command = input(f"{prompt}")
-                client_sock.sendall(command.encode())
-
-                if command.lower() in ["exit", "quit"]:
-                    client_sock.sendall("Connection will now terminate".encode())
-                    break
-
-                cmd_results = client_sock.recv(self.Buffer).decode()
-                utils.status(cmd_results)
-        except Exception as exc:
-            self.except_handler(exc)
-        finally:
             try:
-                #client_sock.shutdown(socket.socket.SHUT_WR)
-                client_sock.shutdown(socket.socket.SHUT_WR)
-                #server_sock.shutdown(socket.socket.SHUT_WR)
-                server_sock.shutdown(socket.socket.SHUT_WR)
-            finally:
-                client_sock.close()
-                server_sock.close()
+                while True:
+                    if os.name == "nt":
+                        prompt = f"Shell {os.getcwd()}> "
+                    else:
+                        prompt = f"{user}@{host}:{os.getcwd()}> "
 
-                if caught_except:
-                    utils.throw()
+                    command = input(f"{prompt}")
+                    client_sock.sendall(command.encode())
+
+                    if command.lower() in ["exit", "quit"]:
+                        client_sock.sendall("Connection will now terminate".encode())
+                        break
+
+                    cmd_results = client_sock.recv(self.Buffer).decode()
+                    utils.status(cmd_results)
+            except Exception as exc:
+                self.except_handler(exc)
+            finally:
+                try:
+                    client_sock.shutdown(socket.SHUT_WR)
+                    server_sock.shutdown(socket.SHUT_WR)
+                finally:
+                    client_sock.close()
+                    server_sock.close()
+
+                    if caught_except:
+                        utils.throw()

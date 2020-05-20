@@ -5,6 +5,7 @@ import platform
 import sys
 import subprocess
 from typing import Union
+from multi import utils
 
 
 class SocketStream(object):
@@ -63,13 +64,13 @@ class SocketStream(object):
     def except_handler(self, exception: Exception) -> None:
         """Handle common socket connection exceptions"""
         if exception == ConnectionRefusedError:
-            throw(f"Connection was refused by {self.Address}", kill=False)
+            utils.throw(f"Connection was refused by {self.Address}", kill=False)
         elif exception == ConnectionResetError:
-            throw(f"Connection was reset by {self.Address}", kill=False)
+            utils.throw(f"Connection was reset by {self.Address}", kill=False)
         elif exception == ConnectionAbortedError:
-            throw(f"Connection was aborted by {self.Address}", kill=False)
+            utils.throw(f"Connection was aborted by {self.Address}", kill=False)
         else:
-            throw(str(exception))
+            utils.throw(str(exception))
 
 
 class Post(object):

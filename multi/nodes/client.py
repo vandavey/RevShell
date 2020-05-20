@@ -1,12 +1,11 @@
-from multi import utils
 from .nodeutils import (
     os,
     shutil,
     subprocess,
-    signal,
     sys,
+    socket,
     SocketStream,
-    socket
+    utils
 )
 
 
