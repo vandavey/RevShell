@@ -3,23 +3,63 @@ import socket
 import shutil
 import platform
 import sys
+import struct
 import subprocess
 from typing import Union
 from multi import utils
 
 
-class SocketStream(object):
+class StreamSocket(object):
     """Super class containing methods common to Client and Server classes"""
-    def __init__(self, ip_address, socket_port, buffer_size, verbose):
-        self.Address = ip_address
-        self.Port = socket_port
-        self.Buffer = buffer_size
+    def __init__(self, ipaddr, port, verbose):
+        self.Address = ipaddr
+        self.Port = port
         self.Verbose = verbose
+        self.Timeout = 60
 
     @staticmethod
-    def get_executable(op_sys) -> str:
+    def recv_all(sock: socket.socket, length: int) -> Union[bytearray, None]:
+        """Receive data on TCP socket and check for EOF"""
+        data = bytearray()
+
+        while len(data) < length:
+            fragment = sock.recv(length - len(data))
+
+            if not (fragment is None):
+                data.extend(fragment)
+                return data
+            else:
+                return None
+
+    @staticmethod
+    def send(sock: socket.socket, msg: Union[str, bytes]) -> None:
+        """Prefix/send messages with 32-bit unsigned int size prefix.
+        Unsigned ints are packed in network byte (big-endian) order"""
+        # TODO: pack bool indicating stderr or stdout into bytes before sending
+        if type(msg) == str:
+            msg = struct.pack(">I", len(msg)) + msg.encode()
+        elif type(msg) == bytes:
+            msg = struct.pack(">I", len(msg)) + msg
+        else:
+            raise ValueError("Expected <msg> to be of type Union[str, bytes]")
+
+        sock.sendall(msg)
+
+    def receive(self, sock: socket.socket) -> Union[bytearray, None]:
+        """Receive data without experiencing packet fragmentation"""
+        # TODO: unpack bool indicating stderr or stdout into bytes after receiving
+        raw_length = self.recv_all(sock, 4)
+
+        if not (raw_length is None):
+            msg_length = struct.unpack(">I", raw_length)[0]
+            return self.recv_all(sock, msg_length)
+        else:
+            return None
+
+    @staticmethod
+    def get_executable() -> str:
         """Get the shell executable file path for the local system"""
-        if op_sys == "nt":
+        if os.name == "nt":
             executable = shutil.which("powershell.exe")
             if executable is None:
                 executable = shutil.which("cmd.exe")
@@ -31,11 +71,12 @@ class SocketStream(object):
         return executable
 
     @staticmethod
-    def execute(command: Union[str, list], shell_exec: str) -> bytes:
-        """Execute the command using system shell subprocess"""
+    def execute(command: Union[str, list], binary: str) -> [bytes, str]:
+        """Execute the command using system shell subprocess.
+        Returns the stdout in bytes and the output level [info|error]"""
         stats = subprocess.run(
             command,
-            executable=shell_exec,
+            executable=binary,
             shell=True,
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
@@ -43,9 +84,9 @@ class SocketStream(object):
         )
 
         if stats.returncode == 0:
-            return stats.stdout
+            return [stats.stdout, "info"]
         else:
-            return stats.stderr
+            return [stats.stderr, "error"]
 
     @staticmethod
     def sys_info(encode: bool = False) -> Union[str, bytes]:
@@ -61,17 +102,21 @@ class SocketStream(object):
         else:
             return " ".join(out)
 
-    def except_handler(self, exception: Exception) -> None:
+    @staticmethod
+    def except_handler(exc: Exception) -> None:
         """Handle common socket connection exceptions"""
-        if exception == ConnectionRefusedError:
-            utils.throw(f"Connection was refused by {self.Address}", kill=False)
-        elif exception == ConnectionResetError:
-            utils.throw(f"Connection was reset by {self.Address}", kill=False)
-        elif exception == ConnectionAbortedError:
-            utils.throw(f"Connection was aborted by {self.Address}", kill=False)
+        sock_excepts = [
+            socket.timeout,
+            socket.gaierror,
+            socket.herror,
+            OSError
+        ]
+
+        if exc.__class__.__name__ in sock_excepts:
+            utils.throw([exc.args[1]])
         else:
-            utils.throw(str(exception))
+            raise exc
 
 
 class Post(object):
-    """Post connection utilities such as IO handling"""
+    """Post connection utilities such as file system IO handling"""

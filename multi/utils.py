@@ -1,5 +1,6 @@
 from typing import Union
 from ipaddress import IPv4Address
+
 from colorama import (Style, Fore)
 from django.core.exceptions import ValidationError
 from django.core.validators import (
@@ -16,26 +17,26 @@ def out_string(input_list: list) -> str:
     return string
 
 
-def status(stdout: str, stdin: str = None, level: str = "info") -> None:
-    """Print specified status to stdout at different verbosity levels"""
+def status(stdout: str, level = "info", stdin = None) -> None:
+    """Print specified status to stdout at different status levels"""
     if level == "info":
         opts = {"symbol": "[*]", "color": Fore.LIGHTCYAN_EX}
     elif level == "alert":
         opts = {"symbol": "[!]", "color": Fore.LIGHTYELLOW_EX}
     elif level == "output":
         opts = {"symbol": "[+]", "color": Fore.LIGHTGREEN_EX}
+    elif level == "error":
+        opts = {"symbol": "[x]", "color": Fore.RED}
     else:
-        raise ValueError("Expected <level> to be [info|alert|output]")
+        raise ValueError("Expected <level> to be [info|alert|output|error]")
 
-    print(opts["color"] + opts["symbol"], end=" ")
-    print(Style.RESET_ALL, end="")
+    print(opts["color"] + opts["symbol"] + Style.RESET_ALL, end=" ")
 
-    if stdin is not None:
+    if stdin:
         print(f"[{stdin}]", end=" ")
         print(opts["color"] + "=>")
-        print(Style.RESET_ALL + stdout)
-    else:
-        print(stdout)
+
+    print(Style.RESET_ALL + stdout)
 
 
 def throw(text: Union[str, list] = None, kill: bool = True) -> None:
@@ -51,8 +52,7 @@ def throw(text: Union[str, list] = None, kill: bool = True) -> None:
             print(Style.RESET_ALL + string)
 
     if kill:
-        #status("The application will now be terminated.", "alert")
-        status("The application will now be terminated.", level="info")
+        status("Exiting RevShell.", level="info")
         exit(1)
 
 
@@ -78,14 +78,3 @@ def append(outpath: str, payload) -> None:
     else:
         with open(outpath, "a+") as file:
             file.write(f"{payload}\n")
-
-
-def echo_probe(target: str) -> str:
-    """Send an ICMP echo-request to designated target"""
-    echo_request = IP(dst=target) / ICMP()
-    echo_reply = sr1(echo_request, timeout=5, verbose=0)
-
-    if echo_reply is None:
-        return "down"
-    else:
-        return "up"

