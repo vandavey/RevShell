@@ -38,7 +38,7 @@ class Server(StreamSocket):
             user, host = getpass.getuser(), socket.gethostname()
             self.send(client_sock, f"Connection established with {host}.")
 
-            client_info = self.receive(client_sock).decode()
+            client_info = self.receive(client_sock)
             utils.status(client_info)
 
             try:
@@ -56,7 +56,7 @@ class Server(StreamSocket):
                         break
 
                     # TODO: change stdout color when its an error
-                    output = self.receive(client_sock).decode()
+                    output = self.receive(client_sock)
 
                     utils.status(output, stdin=command)
                     #utils.status(output, level=, stdin=command)

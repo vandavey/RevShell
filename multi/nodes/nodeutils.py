@@ -38,6 +38,7 @@ class StreamSocket(object):
         """Prefix/send messages with 32-bit unsigned int size prefix.
         Unsigned ints are packed in network byte (big-endian) order"""
         # TODO: pack bool indicating stderr or stdout into bytes before sending
+
         if type(msg) == str:
             msg = struct.pack(">I", len(msg)) + msg.encode()
         elif type(msg) == bytes:
@@ -47,14 +48,14 @@ class StreamSocket(object):
 
         sock.sendall(msg)
 
-    def receive(self, sock: socket.socket) -> Union[bytearray, None]:
+    def receive(self, sock: socket.socket) -> Union[str, None]:
         """Receive data without experiencing packet fragmentation"""
         # TODO: unpack bool indicating stderr or stdout into bytes after receiving
         raw_length = self.recv_all(sock, 4)
 
         if not (raw_length is None):
             msg_length = struct.unpack(">I", raw_length)[0]
-            return self.recv_all(sock, msg_length)
+            return self.recv_all(sock, msg_length).decode()
         else:
             return None
 
