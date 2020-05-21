@@ -14,6 +14,9 @@ from .nodeutils import (
 class Server(StreamSocket):
     """TCP socket server class for the command shell"""
     def __init__(self, lhost="0.0.0.0", port=4444, verb: bool = False):
+        if verb:
+            utils.status(f"port => {port}")
+
         super().__init__(str(lhost), int(port), verb)
 
     def listen(self) -> None:

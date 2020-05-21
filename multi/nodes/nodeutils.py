@@ -6,6 +6,8 @@ import sys
 import struct
 import subprocess
 from typing import Union
+from pathlib import Path
+
 from multi import utils
 
 
