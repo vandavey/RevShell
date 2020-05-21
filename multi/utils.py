@@ -9,15 +9,7 @@ from django.core.validators import (
 )
 
 
-def out_string(input_list: list) -> str:
-    string = ""
-    for item in input_list:
-        string = string + item
-
-    return string
-
-
-def status(stdout: str, level = "info", stdin = None) -> None:
+def status(stdout: str, level="info", stdin=None) -> None:
     """Print specified status to stdout at different status levels"""
     if level == "info":
         opts = {"symbol": "[*]", "color": Fore.LIGHTCYAN_EX}
