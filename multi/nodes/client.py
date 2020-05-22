@@ -14,8 +14,8 @@ from .nodeutils import (
 
 class Client(StreamSocket):
     """TCP socket client class for the command shell"""
-    def __init__(self, rhost: str, port: int, verbose: bool):
-        super().__init__(rhost, port, verbose)
+    def __init__(self, rhost: str, port: int, verb: bool, debug: bool):
+        super().__init__(rhost, port, verb, debug)
         self.Shell = None
 
     def spawn_shell(self, op_sys: str = os.name) -> subprocess.Popen:
@@ -84,8 +84,11 @@ class Client(StreamSocket):
                     else:
                         output = stderr
                         level = "error"
-                    if self.Verbose:
+
+                    if self.Debug:
                         utils.status(bytes(output).decode(), level, command)
+                    elif self.Verbose:
+                        utils.status(f"stdin => [{command}]", level)
 
                     self.send(sock, output)
                 else:

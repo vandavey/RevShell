@@ -13,8 +13,8 @@ from .nodeutils import (
 
 class Server(StreamSocket):
     """TCP socket server class for the command shell"""
-    def __init__(self, lhost: str, port: int, verbose: bool):
-        super().__init__(lhost, port, verbose)
+    def __init__(self, lhost: str, port: int, verb: bool, debug: bool):
+        super().__init__(lhost, port, verb, debug)
 
     def listen(self) -> None:
         """Begin listening for incoming TCP connection from the client shell"""

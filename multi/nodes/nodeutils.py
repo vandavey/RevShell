@@ -13,10 +13,11 @@ from multi import utils
 
 class StreamSocket(object):
     """Super class containing methods common to Client and Server classes"""
-    def __init__(self, ipaddr, port, verbose):
+    def __init__(self, ipaddr: str, port: int, verb: bool, debug: bool):
         self.Address = ipaddr
         self.Port = port
-        self.Verbose = verbose
+        self.Verbose = verb
+        self.Debug = debug
         self.Timeout = 60
 
     @staticmethod

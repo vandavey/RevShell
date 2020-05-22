@@ -6,15 +6,15 @@ from multi.nodes.server import Server
 from multi.nodes.client import Client
 
 
-def run_server(lhost: str, lport: int, verb: bool) -> None:
-    """Instantiate new server and begin listening"""
-    handler = Server(lhost, lport, verb)
+def run_server(lhost: str, lport: int, verb: bool, debug: bool) -> None:
+    """Instantiate new server and begin listening for connection"""
+    handler = Server(lhost, lport, verb, debug)
     handler.listen()
 
 
-def run_client(rhost: str, rport: int, verb: bool) -> None:
-    """Instantiate new client and establish connection"""
-    handler = Client(rhost, rport, verb)
+def run_client(rhost: str, rport: int, verb: bool, debug: bool) -> None:
+    """Instantiate new client and attempt to establish connection"""
+    handler = Client(rhost, rport, verb, debug)
     handler.connect()
 
 
@@ -32,7 +32,8 @@ parser.add_argument("-p", "--port", type=int, help="port to use as TCP socket")
 args = parser.parse_args()
 
 target: str = args.target
-verbose = args.verbose
+verbose: bool = args.verbose
+debug: bool = args.debug
 mode: str = args.mode
 port: int = args.port
 
@@ -76,6 +77,6 @@ if __name__ == "__main__":
         utils.status(f"port => {port}")
 
     if mode == "server":
-        run_server(target, port, verbose)
+        run_server(target, port, verbose, debug)
     else:
-        run_client(target, port, verbose)
+        run_client(target, port, verbose, debug)
