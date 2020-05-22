@@ -33,16 +33,16 @@ class StreamSocket(object):
             else:
                 return None
 
-    def receive(self, sock: socket.socket) -> Union[str, None]:
+    def receive(self, sock: socket.socket) -> Union[bytes, None]:
         """Receive data without experiencing packet fragmentation"""
         # TODO: unpack bool indicating stderr or stdout into bytes after receiving
         raw_length = self.recv_all(sock, 4)
 
-        if raw_length is not None:
-            msg_length = struct.unpack(">I", raw_length)[0]
-            return self.recv_all(sock, msg_length).decode()
-        else:
+        if not raw_length:
             return None
+
+        msg_length = struct.unpack(">I", raw_length)[0]
+        return self.recv_all(sock, msg_length)
 
     @staticmethod
     def send(sock: socket.socket, msg: Union[str, bytes]) -> None:

