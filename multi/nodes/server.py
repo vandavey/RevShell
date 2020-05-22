@@ -53,7 +53,7 @@ class Server(StreamSocket):
                     if command.lower() not in ["exit", "quit"]:
                         # TODO: change stdout color when its an error
                         output = self.receive(client_sock).decode()
-                        utils.status(output, stdin=command)
+                        utils.status(output, "output", command)
                     else:
                         if self.Verbose:
                             utils.status("Exiting RevShell.")
