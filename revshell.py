@@ -19,15 +19,16 @@ def run_client(rhost: str, rport: int, verb: bool, debug: bool) -> None:
 
 
 parser = argparse.ArgumentParser(
-    prog="revshell.py",
-    description="RevShell: Python3 TCP reverse shell utility"
+    prog="revshell",
+    description="RevShell: Python3 TCP reverse shell utility",
+    usage="revshell [-h] [-v] [-d] [-m MODE] [-p PORT] [target]"
 )
 
-parser.add_argument("target", type=str, nargs="?", help="target ip address")
-parser.add_argument("-v", "--verbose", action="store_true", help="verbose output")
-parser.add_argument("-d", "--debug", action="store_true", help="very verbose output")
+parser.add_argument("target", type=str, nargs="?", help="target IPv4 address")
 parser.add_argument("-m", "--mode", type=str, help="operation mode [client|server]")
 parser.add_argument("-p", "--port", type=int, help="port to use as TCP socket")
+parser.add_argument("-v", "--verbose", action="store_true", help="verbose output")
+parser.add_argument("-d", "--debug", action="store_true", help="very verbose output")
 
 args = parser.parse_args()
 

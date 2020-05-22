@@ -18,7 +18,7 @@ def status(stdout: str, level="info", stdin=None) -> None:
     elif level == "output":
         opts = {"symbol": "[+]", "color": Fore.LIGHTGREEN_EX}
     elif level == "error":
-        opts = {"symbol": "[x]", "color": Fore.RED}
+        opts = {"symbol": "[x]", "color": Fore.LIGHTRED_EX}
     else:
         raise ValueError("Expected <level> to be [info|alert|output|error]")
 

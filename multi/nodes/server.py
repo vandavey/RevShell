@@ -30,6 +30,7 @@ class Server(StreamSocket):
         client_sock, addr = server_sock.accept()
 
         with client_sock:
+            # TODO: print additional info in opening banner
             utils.status(f"Received connection from {addr[0]} on port {addr[1]}.")
 
             user, host = getpass.getuser(), socket.gethostname()
@@ -38,9 +39,8 @@ class Server(StreamSocket):
             client_info = self.receive(client_sock).decode()
             utils.status(client_info)
 
-            # TODO: fix issue => exception is thrown when running outside of pycharm
-
             try:
+                # TODO: change prompt to use remote os.getcwd instead of local
                 while True:
                     if os.name == "nt":
                         prompt = f"Shell {os.getcwd()}> "

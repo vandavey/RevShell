@@ -21,32 +21,34 @@ class StreamSocket(object):
         self.Timeout = 60
 
     @staticmethod
-    def recv_all(sock: socket.socket, length: int) -> Union[bytearray, None]:
+    def recv_all(sock: socket.socket, length: int) -> bytearray:
         """Receive data on TCP socket and check for EOF"""
+        # TODO: fix issue with sending bad data
         data = bytearray()
 
         while len(data) < length:
             fragment = sock.recv(length - len(data))
 
-            if fragment is not None:
+            if fragment:
                 data.extend(fragment)
-                return data
-            else:
-                return None
 
-    def receive(self, sock: socket.socket) -> Union[bytes, None]:
+        return data
+
+    def receive(self, sock: socket.socket) -> bytes:
         """Receive data without experiencing packet fragmentation"""
         # TODO: unpack bool indicating stderr or stdout into bytes after receiving
-        raw_length = self.recv_all(sock, 4)
 
-        if not raw_length:
-            return None
+        # get the first 4 bytes (data size indicator)
+        data = self.recv_all(sock, 4)
 
-        msg_length = struct.unpack(">I", raw_length)[0]
-        return self.recv_all(sock, msg_length)
+        if data:
+            length = struct.unpack(">I", data)[0]
+            return self.recv_all(sock, length)
+        else:
+            return "".encode()
 
     @staticmethod
-    def send(sock: socket.socket, msg: Union[str, bytes]) -> None:
+    def send(sock: socket.socket, msg: Union[bytes, str]) -> None:
         """Prefix/send messages with 32-bit unsigned int size prefix.
         Unsigned ints are packed in network byte (big-endian) order"""
         # TODO: pack bool indicating stderr or stdout into bytes before sending
@@ -55,8 +57,6 @@ class StreamSocket(object):
             msg = struct.pack(">I", len(msg)) + msg.encode()
         elif type(msg) == bytes:
             msg = struct.pack(">I", len(msg)) + msg
-        else:
-            raise ValueError("Expected <msg> to be of type Union[str, bytes]")
 
         sock.sendall(msg)
 
@@ -76,9 +76,8 @@ class StreamSocket(object):
 
     @staticmethod
     def execute(command: Union[str, list], binary: str) -> [bytes, bytes]:
-        """Execute the command using system shell subprocess.
-        Returns the  a bytes list of stdout and stderr."""
-
+        """Execute the command using system shell subprocess,
+        returns the a list of stdout and stderr as [bytes, bytes]."""
         stats = subprocess.run(
             command,
             executable=binary,
@@ -93,25 +92,27 @@ class StreamSocket(object):
     @staticmethod
     def sys_info(encode: bool = False) -> Union[str, bytes]:
         """Retrieve system information of the local machine.
-        Transforms uname_result(NamedTuple) to a string."""
-        uname, out = str(platform.uname()), []
+        Transforms uname_result [NamedTuple] to a string."""
+        # uname: [NamedTuple] -> scrape/clean: [str] => split: [list]
+        info = str(platform.uname())[13:][:-1].split(", ", 5)
+        output = []
 
-        for stat in uname[13:][:-1].split(", ", 5):
-            out.append(stat.split("=")[1].replace("\'", ""))
+        for stat in info:
+            output.append(stat.split("=")[1].replace("\'", ""))
 
         if encode:
-            return " ".join(out).encode()
+            return " ".join(output).encode()
         else:
-            return " ".join(out)
+            return " ".join(output)
 
     @staticmethod
     def except_handler(exc: Exception) -> None:
         """Handle common socket connection exceptions"""
         sock_excepts = [
+            OSError,
             socket.timeout,
             socket.gaierror,
-            socket.herror,
-            OSError
+            socket.herror
         ]
 
         if exc.__class__.__name__ in sock_excepts:
