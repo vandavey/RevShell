@@ -38,6 +38,8 @@ class Server(StreamSocket):
             client_info = self.receive(client_sock).decode()
             utils.status(client_info)
 
+            # TODO: fix issue => exception is thrown when running outside of pycharm
+
             try:
                 while True:
                     if os.name == "nt":
@@ -48,15 +50,14 @@ class Server(StreamSocket):
                     command = input(f"{prompt}")
                     self.send(client_sock, command)
 
-                    if command.lower() in ["exit", "quit"]:
-                        self.send(client_sock, "Connection will now terminate.")
+                    if command.lower() not in ["exit", "quit"]:
+                        # TODO: change stdout color when its an error
+                        output = self.receive(client_sock).decode()
+                        utils.status(output, stdin=command)
+                    else:
+                        if self.Verbose:
+                            utils.status("Exiting RevShell.")
                         break
-
-                    # TODO: change stdout color when its an error
-                    output = self.receive(client_sock).decode()
-
-                    utils.status(output, stdin=command)
-                    #utils.status(output, level=, stdin=command)
             except Exception as exc:
                 try:
                     client_sock.shutdown(socket.SHUT_WR)

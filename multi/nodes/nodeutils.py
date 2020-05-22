@@ -74,9 +74,10 @@ class StreamSocket(object):
         return executable
 
     @staticmethod
-    def execute(command: Union[str, list], binary: str) -> [bytes, str]:
+    def execute(command: Union[str, list], binary: str) -> [bytes, bytes]:
         """Execute the command using system shell subprocess.
-        Returns the stdout in bytes and the output level [info|error]"""
+        Returns the  a bytes list of stdout and stderr."""
+
         stats = subprocess.run(
             command,
             executable=binary,
@@ -86,10 +87,7 @@ class StreamSocket(object):
             stderr=subprocess.PIPE
         )
 
-        if stats.returncode == 0:
-            return [stats.stdout, "info"]
-        else:
-            return [stats.stderr, "error"]
+        return [stats.stdout, stats.stderr]
 
     @staticmethod
     def sys_info(encode: bool = False) -> Union[str, bytes]:

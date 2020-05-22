@@ -25,6 +25,7 @@ parser = argparse.ArgumentParser(
 
 parser.add_argument("target", type=str, nargs="?", help="target ip address")
 parser.add_argument("-v", "--verbose", action="store_true", help="verbose output")
+parser.add_argument("-d", "--debug", action="store_true", help="very verbose output")
 parser.add_argument("-m", "--mode", type=str, help="operation mode [client|server]")
 parser.add_argument("-p", "--port", type=int, help="port to use as TCP socket")
 
