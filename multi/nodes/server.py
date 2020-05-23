@@ -50,10 +50,15 @@ class Server(StreamSocket):
                     command = input(f"{prompt}")
                     self.send(client_sock, command)
 
+                    # TODO: change stdout color when its an error
                     if command.lower() not in ["exit", "quit"]:
-                        # TODO: change stdout color when its an error
                         output = self.receive(client_sock).decode()
-                        utils.status(output, "output", command)
+
+                        # TODO: print with end="" to avoid left over line buffer
+                        if command.lower() in ["cls", "clear", "clear-screen"]:
+                            pass
+                        else:
+                            utils.status(output, "output", command)
                     else:
                         if self.Verbose:
                             utils.status("Exiting RevShell.")

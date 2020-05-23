@@ -88,14 +88,14 @@ class StreamSocket(object):
         """Execute the command using system shell subprocess,
         returns the a list of stdout and stderr as [bytes, bytes]."""
         if command.lower() in ["cls", "clear", "clear-screen"]:
-            return [b"\x1b[H\x1b[2J\x1b[3J", b""]
+            return [utils.Ansi.clear(), b""]
 
         if command.lower() in ["ls", "dir", "get-childitem"]:
             if os.name != "nt":
-                command = "-A --color"
+                command = f"{command} -A --color"
         elif command.lower() in ["grep", "findstr", "select-string"]:
             if os.name != "nt":
-                command += "-i --color"
+                command = f"{command} -i --color"
 
         stats = subprocess.run(
             command,

@@ -32,16 +32,9 @@ class Ansi(object):
         return b"\x1b[0m"
 
     @staticmethod
-    def clear(shell: str) -> bytes:
-        """Ansi sequence to clear current terminal buffer"""
-        # TODO: change ansi sequence for posix systems
-        if shell in ["bash", "sh"]:
-            sequence = b'\x1b[H\x1b[2J\x1b[3J'
-        else:
-            sequence = b"\033[2J"
-
-        return sequence
-
+    def clear() -> bytes:
+        """Ansi sequence to clear terminal buffer/scrollback"""
+        return b'\x1b[H\x1b[2J\x1b[3J'
 
 
 def init_colorama() -> None:
