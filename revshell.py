@@ -5,19 +5,6 @@ from multi import utils
 from multi.nodes.server import Server
 from multi.nodes.client import Client
 
-
-def run_server(lhost: str, lport: int, verb: bool, debug: bool) -> None:
-    """Instantiate new server and begin listening for connection"""
-    handler = Server(lhost, lport, verb, debug)
-    handler.listen()
-
-
-def run_client(rhost: str, rport: int, verb: bool, debug: bool) -> None:
-    """Instantiate new client and attempt to establish connection"""
-    handler = Client(rhost, rport, verb, debug)
-    handler.connect()
-
-
 parser = argparse.ArgumentParser(
     prog="revshell",
     description="RevShell: Python3 TCP reverse shell utility",
@@ -43,6 +30,8 @@ if __name__ == "__main__":
         msg = "one or both of the following arguments are required: "
         parser.error(msg + "target, -m/--mode")
         exit(1)
+
+    utils.init_colorama()
 
     if mode is not None:
         if mode.lower() not in ["client", "server"]:
@@ -78,6 +67,8 @@ if __name__ == "__main__":
         utils.status(f"port => {port}")
 
     if mode == "server":
-        run_server(target, port, verbose, debug)
+        handler = Server(target, port, verbose, debug)
+        handler.listen()
     else:
-        run_client(target, port, verbose, debug)
+        handler = Client(target, port, verbose, debug)
+        handler.connect()

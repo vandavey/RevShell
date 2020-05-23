@@ -1,12 +1,17 @@
 from typing import Union
 from ipaddress import IPv4Address
 
+import colorama
 from colorama import (Style, Fore)
 from django.core.exceptions import ValidationError
 from django.core.validators import (
     URLValidator,
     validate_ipv4_address
 )
+
+
+def init_colorama() -> None:
+    colorama.init(autoreset=True)
 
 
 def status(stdout: str, level="info", stdin=None) -> None:
@@ -28,7 +33,8 @@ def status(stdout: str, level="info", stdin=None) -> None:
         print(f"[{stdin}]", end=" ")
         print(opts["color"] + "=>")
 
-    print(Style.RESET_ALL + stdout)
+    #print(Style.RESET_ALL + stdout)
+    print(stdout)
 
 
 def throw(text: Union[str, list] = None, kill: bool = True) -> None:
