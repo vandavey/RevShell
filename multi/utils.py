@@ -3,12 +3,6 @@ from ipaddress import IPv4Address
 
 import colorama
 from colorama import (Style, Fore)
-from django.core.exceptions import ValidationError
-from django.core.validators import (
-    URLValidator,
-    validate_ipv4_address
-)
-
 
 class Ansi(object):
     """Formatting class containing Ansi escape sequences"""
