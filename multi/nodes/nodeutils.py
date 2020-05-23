@@ -90,10 +90,10 @@ class StreamSocket(object):
         if command.lower() in ["cls", "clear", "clear-screen"]:
             return [utils.Ansi.clear(), b""]
 
-        if command.lower() in ["ls", "dir", "get-childitem"]:
+        if command.lower().split()[0] in ["ls", "dir"]:
             if os.name != "nt":
                 command = f"{command} -A --color"
-        elif command.lower() in ["grep", "findstr", "select-string"]:
+        elif command.lower().split()[0] in ["grep", "findstr"]:
             if os.name != "nt":
                 command = f"{command} -i --color"
 

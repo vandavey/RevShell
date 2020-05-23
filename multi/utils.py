@@ -33,7 +33,7 @@ class Ansi(object):
 
     @staticmethod
     def clear() -> bytes:
-        """Ansi sequence to clear terminal buffer/scrollback"""
+        """Ansi sequence to clear terminal buffer and scrollback"""
         return b'\x1b[H\x1b[2J\x1b[3J'
 
 
