@@ -23,7 +23,6 @@ class StreamSocket(object):
     @staticmethod
     def recv_all(sock: socket.socket, length: int) -> bytearray:
         """Receive data on TCP socket and check for EOF"""
-        # TODO: fix issue with sending bad data
         data = bytearray()
 
         while len(data) < length:
@@ -38,7 +37,7 @@ class StreamSocket(object):
         """Receive data without experiencing packet fragmentation"""
         # TODO: unpack bool indicating stderr or stdout into bytes after receiving
 
-        # get the first 4 bytes (data size indicator)
+        # get the first 4 bytes (payload size indicator)
         data = self.recv_all(sock, 4)
 
         if data:
@@ -75,9 +74,29 @@ class StreamSocket(object):
         return executable
 
     @staticmethod
+    def get_prompt() -> bytes:
+        """Return thee working directory (with ansi styling for POSIX)"""
+        if os.name == "nt":
+            prompt = f"Shell {os.getcwd()}> "
+        else:
+            prompt = f"{user}@{host}:{os.getcwd()}> "
+
+        return utils.style_prompt(prompt)
+
+    @staticmethod
     def execute(command: Union[str, list], binary: str) -> [bytes, bytes]:
         """Execute the command using system shell subprocess,
         returns the a list of stdout and stderr as [bytes, bytes]."""
+        if command.lower() in ["cls", "clear", "clear-screen"]:
+            return [b"\x1b[H\x1b[2J\x1b[3J", b""]
+
+        if command.lower() in ["ls", "dir", "get-childitem"]:
+            if os.name != "nt":
+                command = "-A --color"
+        elif command.lower() in ["grep", "findstr", "select-string"]:
+            if os.name != "nt":
+                command += "-i --color"
+
         stats = subprocess.run(
             command,
             executable=binary,

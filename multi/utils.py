@@ -10,20 +10,59 @@ from django.core.validators import (
 )
 
 
+class Ansi(object):
+    """Formatting class containing Ansi escape sequences"""
+    @staticmethod
+    def color(color: str) -> str:
+        """Get the ansii code the specified <color>"""
+        if color.lower() == "red":
+            return "\x1b[91m"
+        elif color.lower() == "green":
+            return "\x1b[92m"
+        elif color.lower() == "yellow":
+            return "\x1b[93m"
+        elif color.lower() == "cyan":
+            return "\x1b[96m"
+        else:
+            raise ValueError("Unrecognized value received for <color>")
+
+    @staticmethod
+    def reset() -> bytes:
+        """Ansi sequence to reset the console formatting style"""
+        return b"\x1b[0m"
+
+    @staticmethod
+    def clear(shell: str) -> bytes:
+        """Ansi sequence to clear current terminal buffer"""
+        # TODO: change ansi sequence for posix systems
+        if shell in ["bash", "sh"]:
+            sequence = b'\x1b[H\x1b[2J\x1b[3J'
+        else:
+            sequence = b"\033[2J"
+
+        return sequence
+
+
+
 def init_colorama() -> None:
+    """Initialize colorama formatting class"""
     colorama.init(autoreset=True)
+
+
+def style_prompt(prompt: str) -> bytes:
+    """"""
 
 
 def status(stdout: str, level="info", stdin=None) -> None:
     """Print specified status to stdout at different status levels"""
     if level == "info":
-        opts = {"symbol": "[*]", "color": Fore.LIGHTCYAN_EX}
+        opts = {"symbol": "[*]", "color": Ansi.color("cyan")}
     elif level == "alert":
-        opts = {"symbol": "[!]", "color": Fore.LIGHTYELLOW_EX}
+        opts = {"symbol": "[!]", "color": Ansi.color("yellow")}
     elif level == "output":
-        opts = {"symbol": "[+]", "color": Fore.LIGHTGREEN_EX}
+        opts = {"symbol": "[+]", "color": Ansi.color("green")}
     elif level == "error":
-        opts = {"symbol": "[x]", "color": Fore.LIGHTRED_EX}
+        opts = {"symbol": "[x]", "color": Ansi.color("red")}
     else:
         raise ValueError("Expected <level> to be [info|alert|output|error]")
 
@@ -33,7 +72,6 @@ def status(stdout: str, level="info", stdin=None) -> None:
         print(f"[{stdin}]", end=" ")
         print(opts["color"] + "=>")
 
-    #print(Style.RESET_ALL + stdout)
     print(stdout)
 
 
@@ -69,6 +107,7 @@ def ipv4_parse(ipaddr: str) -> bool:
 
 
 def append(outpath: str, payload) -> None:
+    """Append program output to the file path of <payload>"""
     if type(payload) is list:
         for line in payload:
             with open(outpath, "a+") as file:

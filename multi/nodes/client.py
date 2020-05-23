@@ -75,6 +75,7 @@ class Client(StreamSocket):
             # TODO: add code to send working directory to server each iteration
 
             while True:
+                # TODO: send colorama.ansi.clear_screen
                 command = self.receive(sock).decode()
 
                 if command.lower() not in ["exit", "quit"]:
@@ -93,6 +94,7 @@ class Client(StreamSocket):
                         utils.status(f"stdin => [{command}]", level)
                         #print(opts["color"] + opts["symbol"] + Style.RESET_ALL, end=" ")
 
+                    # send => command output
                     self.send(sock, output)
                 else:
                     if self.Verbose:
