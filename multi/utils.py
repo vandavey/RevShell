@@ -46,13 +46,13 @@ def style_prompt(prompt: str, opsys: str) -> bytes:
 def status(stdout: str, level="info", stdin=None) -> None:
     """Print specified status to stdout at different status levels"""
     if level == "info":
-        opts = {"symbol": "[*]", "color": Ansi.color("cyan")}
+        opts = {"symbol": "[*]", "color": Ansi.color("cyan").decode()}
     elif level == "alert":
-        opts = {"symbol": "[!]", "color": Ansi.color("yellow")}
+        opts = {"symbol": "[!]", "color": Ansi.color("yellow").decode()}
     elif level == "output":
-        opts = {"symbol": "[+]", "color": Ansi.color("green")}
+        opts = {"symbol": "[+]", "color": Ansi.color("green").decode()}
     elif level == "error":
-        opts = {"symbol": "[x]", "color": Ansi.color("red")}
+        opts = {"symbol": "[x]", "color": Ansi.color("red").decode()}
     else:
         raise ValueError("Expected <level> to be [info|alert|output|error]")
 

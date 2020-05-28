@@ -114,6 +114,7 @@ static PyObject *const_str_plain_ipaddress;
 static PyObject *const_str_digest_5fa083f11535a6bc447254afd8af8afb;
 static PyObject *const_dict_3fe87bc278ee899c791a3269ae89dca6;
 static PyObject *const_str_digest_497eccf309fdaebddb551a08a96664f2;
+extern PyObject *const_str_plain_decode;
 extern PyObject *const_str_plain_nt;
 static PyObject *const_str_digest_b84316ca288385ed9bcc8b4b2ebad555;
 extern PyObject *const_str_plain_LIGHTRED_EX;
@@ -1569,6 +1570,7 @@ static PyObject *impl_multi$utils$$$function_6_status(struct Nuitka_FunctionObje
         PyObject *tmp_dict_key_2;
         PyObject *tmp_dict_value_2;
         PyObject *tmp_called_instance_1;
+        PyObject *tmp_called_instance_2;
         PyObject *tmp_mvar_value_1;
         tmp_dict_key_1 = const_str_plain_symbol;
         tmp_dict_value_1 = const_str_digest_955e10bfea4ac16ef503c84d0ba7b1f3;
@@ -1596,10 +1598,23 @@ static PyObject *impl_multi$utils$$$function_6_status(struct Nuitka_FunctionObje
             goto frame_exception_exit_1;
         }
 
-        tmp_called_instance_1 = tmp_mvar_value_1;
+        tmp_called_instance_2 = tmp_mvar_value_1;
         frame_2c3a8bf83db01a675cabd0b363d70ec8->m_frame.f_lineno = 49;
-        tmp_dict_value_2 = CALL_METHOD_WITH_ARGS1(tmp_called_instance_1, const_str_plain_color, &PyTuple_GET_ITEM(const_tuple_str_plain_cyan_tuple, 0));
+        tmp_called_instance_1 = CALL_METHOD_WITH_ARGS1(tmp_called_instance_2, const_str_plain_color, &PyTuple_GET_ITEM(const_tuple_str_plain_cyan_tuple, 0));
 
+        if (tmp_called_instance_1 == NULL) {
+            assert(ERROR_OCCURRED());
+
+            FETCH_ERROR_OCCURRED(&exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_assign_source_1);
+
+            exception_lineno = 49;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        frame_2c3a8bf83db01a675cabd0b363d70ec8->m_frame.f_lineno = 49;
+        tmp_dict_value_2 = CALL_METHOD_NO_ARGS(tmp_called_instance_1, const_str_plain_decode);
+        Py_DECREF(tmp_called_instance_1);
         if (tmp_dict_value_2 == NULL) {
             assert(ERROR_OCCURRED());
 
@@ -1664,7 +1679,8 @@ static PyObject *impl_multi$utils$$$function_6_status(struct Nuitka_FunctionObje
         PyObject *tmp_dict_value_3;
         PyObject *tmp_dict_key_4;
         PyObject *tmp_dict_value_4;
-        PyObject *tmp_called_instance_2;
+        PyObject *tmp_called_instance_3;
+        PyObject *tmp_called_instance_4;
         PyObject *tmp_mvar_value_2;
         tmp_dict_key_3 = const_str_plain_symbol;
         tmp_dict_value_3 = const_str_digest_497eccf309fdaebddb551a08a96664f2;
@@ -1692,10 +1708,23 @@ static PyObject *impl_multi$utils$$$function_6_status(struct Nuitka_FunctionObje
             goto frame_exception_exit_1;
         }
 
-        tmp_called_instance_2 = tmp_mvar_value_2;
+        tmp_called_instance_4 = tmp_mvar_value_2;
         frame_2c3a8bf83db01a675cabd0b363d70ec8->m_frame.f_lineno = 51;
-        tmp_dict_value_4 = CALL_METHOD_WITH_ARGS1(tmp_called_instance_2, const_str_plain_color, &PyTuple_GET_ITEM(const_tuple_str_plain_yellow_tuple, 0));
+        tmp_called_instance_3 = CALL_METHOD_WITH_ARGS1(tmp_called_instance_4, const_str_plain_color, &PyTuple_GET_ITEM(const_tuple_str_plain_yellow_tuple, 0));
 
+        if (tmp_called_instance_3 == NULL) {
+            assert(ERROR_OCCURRED());
+
+            FETCH_ERROR_OCCURRED(&exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_assign_source_2);
+
+            exception_lineno = 51;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        frame_2c3a8bf83db01a675cabd0b363d70ec8->m_frame.f_lineno = 51;
+        tmp_dict_value_4 = CALL_METHOD_NO_ARGS(tmp_called_instance_3, const_str_plain_decode);
+        Py_DECREF(tmp_called_instance_3);
         if (tmp_dict_value_4 == NULL) {
             assert(ERROR_OCCURRED());
 
@@ -1760,7 +1789,8 @@ static PyObject *impl_multi$utils$$$function_6_status(struct Nuitka_FunctionObje
         PyObject *tmp_dict_value_5;
         PyObject *tmp_dict_key_6;
         PyObject *tmp_dict_value_6;
-        PyObject *tmp_called_instance_3;
+        PyObject *tmp_called_instance_5;
+        PyObject *tmp_called_instance_6;
         PyObject *tmp_mvar_value_3;
         tmp_dict_key_5 = const_str_plain_symbol;
         tmp_dict_value_5 = const_str_digest_811a196845bf10b0564a669c10b98d81;
@@ -1788,10 +1818,23 @@ static PyObject *impl_multi$utils$$$function_6_status(struct Nuitka_FunctionObje
             goto frame_exception_exit_1;
         }
 
-        tmp_called_instance_3 = tmp_mvar_value_3;
+        tmp_called_instance_6 = tmp_mvar_value_3;
         frame_2c3a8bf83db01a675cabd0b363d70ec8->m_frame.f_lineno = 53;
-        tmp_dict_value_6 = CALL_METHOD_WITH_ARGS1(tmp_called_instance_3, const_str_plain_color, &PyTuple_GET_ITEM(const_tuple_str_plain_green_tuple, 0));
+        tmp_called_instance_5 = CALL_METHOD_WITH_ARGS1(tmp_called_instance_6, const_str_plain_color, &PyTuple_GET_ITEM(const_tuple_str_plain_green_tuple, 0));
 
+        if (tmp_called_instance_5 == NULL) {
+            assert(ERROR_OCCURRED());
+
+            FETCH_ERROR_OCCURRED(&exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_assign_source_3);
+
+            exception_lineno = 53;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        frame_2c3a8bf83db01a675cabd0b363d70ec8->m_frame.f_lineno = 53;
+        tmp_dict_value_6 = CALL_METHOD_NO_ARGS(tmp_called_instance_5, const_str_plain_decode);
+        Py_DECREF(tmp_called_instance_5);
         if (tmp_dict_value_6 == NULL) {
             assert(ERROR_OCCURRED());
 
@@ -1856,7 +1899,8 @@ static PyObject *impl_multi$utils$$$function_6_status(struct Nuitka_FunctionObje
         PyObject *tmp_dict_value_7;
         PyObject *tmp_dict_key_8;
         PyObject *tmp_dict_value_8;
-        PyObject *tmp_called_instance_4;
+        PyObject *tmp_called_instance_7;
+        PyObject *tmp_called_instance_8;
         PyObject *tmp_mvar_value_4;
         tmp_dict_key_7 = const_str_plain_symbol;
         tmp_dict_value_7 = const_str_digest_dd726384c1dfab0b5843055a0dec6c74;
@@ -1884,10 +1928,23 @@ static PyObject *impl_multi$utils$$$function_6_status(struct Nuitka_FunctionObje
             goto frame_exception_exit_1;
         }
 
-        tmp_called_instance_4 = tmp_mvar_value_4;
+        tmp_called_instance_8 = tmp_mvar_value_4;
         frame_2c3a8bf83db01a675cabd0b363d70ec8->m_frame.f_lineno = 55;
-        tmp_dict_value_8 = CALL_METHOD_WITH_ARGS1(tmp_called_instance_4, const_str_plain_color, &PyTuple_GET_ITEM(const_tuple_str_plain_red_tuple, 0));
+        tmp_called_instance_7 = CALL_METHOD_WITH_ARGS1(tmp_called_instance_8, const_str_plain_color, &PyTuple_GET_ITEM(const_tuple_str_plain_red_tuple, 0));
 
+        if (tmp_called_instance_7 == NULL) {
+            assert(ERROR_OCCURRED());
+
+            FETCH_ERROR_OCCURRED(&exception_type, &exception_value, &exception_tb);
+            Py_DECREF(tmp_assign_source_4);
+
+            exception_lineno = 55;
+            type_description_1 = "oooo";
+            goto frame_exception_exit_1;
+        }
+        frame_2c3a8bf83db01a675cabd0b363d70ec8->m_frame.f_lineno = 55;
+        tmp_dict_value_8 = CALL_METHOD_NO_ARGS(tmp_called_instance_7, const_str_plain_decode);
+        Py_DECREF(tmp_called_instance_7);
         if (tmp_dict_value_8 == NULL) {
             assert(ERROR_OCCURRED());
 
