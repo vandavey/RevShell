@@ -1,1 +1,13 @@
 *.* linguist-language=python
+*.dll linguist-detectable=false
+*.exe linguist-detectable=false
+
+*.c linguist-detectable=false
+*.o linguist-detectable=false
+*.h linguist-detectable=false
+
+*.tmp linguist-detectable=false
+*.txt linguist-detectable=false
+*.dblite linguist-detectable=false
+
+compiled/* linguist-vendored
