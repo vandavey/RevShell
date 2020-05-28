@@ -54,14 +54,13 @@ class Server(StreamSocket):
                     if command.lower() not in ["exit", "quit"]:
                         output = self.receive(client_sock).decode()
 
-                        # TODO: print with end="" to avoid left over line buffer
                         if command.lower() in ["cls", "clear", "clear-screen"]:
-                            pass
+                            print(utils.Ansi.clear().decode(), end="")
                         else:
                             utils.status(output, "output", command)
                     else:
                         if self.Verbose:
-                            utils.status("Exiting RevShell.")
+                            utils.status("Exiting RevShell")
                         break
             except Exception as exc:
                 try:

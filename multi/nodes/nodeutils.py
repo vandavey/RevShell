@@ -11,6 +11,92 @@ from pathlib import Path
 from multi import utils
 
 
+class ShellHandler(object):
+    """System command shell process handler"""
+    def __init__(self, shell_exec: str):
+        if shell_exec is None:
+            shell_exec = self.get_exec()
+
+        self.Shell = subprocess.Popen(
+            args=[],
+            env=os.environ.copy(),
+            cwd=str(Path.home()),
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            executable=shell_exec,
+            shell=True
+        )
+
+    def get_exec(self) -> str:
+        """Get the shell executable file path for the local system"""
+        if os.name == "nt":
+            executable = shutil.which("powershell.exe")
+            if executable is None:
+                executable = shutil.which("cmd.exe")
+        else:
+            executable = shutil.which("bash")
+            if executable is None:
+                executable = shutil.which("sh")
+
+        return executable
+
+    @staticmethod
+    def get_prompt() -> bytes:
+        """Return thee working directory (with ansi styling for POSIX)"""
+        if os.name == "nt":
+            prompt = f"Shell {os.getcwd()}> "
+        else:
+            prompt = f"{user}@{host}:{os.getcwd()}> "
+
+        return utils.style_prompt(prompt, os.name)
+
+    def spawn(self, shell_exec: str = None) -> None:
+        """Spawn new command shell process to be used for code execution"""
+        if shell_exec is None:
+            shell_exec = self.get_exec()
+
+        # Popen expects [str] for non-shell calls
+        self.Shell = subprocess.Popen(
+            args=[],
+            env=os.environ.copy(),
+            cwd=str(Path.home()),
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            executable=shell_exec,
+            shell=True
+        )
+
+        if self.Verbose:
+            utils.status(f"{shell_exec}")
+
+    def _run_cmd(self, command: list) -> [bytes, bytes]:
+        """Protected helper method to execute command once input is validated.
+        self.execute should be called to properly access this method"""
+        return self.Shell.communicate(command, timeout=60)
+
+
+    def execute(self, command: str, binary: str) -> [bytes, bytes]:
+        """Execute the command using system shell subprocess,
+        returns the a list of stdout and stderr as [bytes, bytes]."""
+        if command.lower() in ["cls", "clear", "clear-screen"]:
+            return [utils.Ansi.clear(), b""]
+
+        if command.lower().split()[0] in ["ls", "dir"]:
+            if os.name != "nt":
+                command = f"{command} -A --color"
+
+        elif command.lower().split()[0] in ["grep", "findstr"]:
+            # TODO: fix issue with grep throwing false-positives
+            if os.name != "nt":
+                # command = f"{command} -i --color"
+                command = f"{command} --color"
+
+        return self._run_cmd(command.split())
+
+
+
 class StreamSocket(object):
     """Super class containing methods common to Client and Server classes"""
     def __init__(self, ipaddr: str, port: int, verb: bool, debug: bool):
@@ -19,6 +105,7 @@ class StreamSocket(object):
         self.Verbose = verb
         self.Debug = debug
         self.Timeout = 60
+        #self.Shell = ShellHandler.get_exec()
 
     @staticmethod
     def recv_all(sock: socket.socket, length: int) -> bytearray:
@@ -85,8 +172,8 @@ class StreamSocket(object):
 
     @staticmethod
     def _run_cmd(command: str, binary: str) -> [bytes, bytes]:
-        """Protected helper method to execute command once validated.
-        StreamSocket.execute should be called to access this method"""
+        """Protected helper method to execute command once input is validated.
+        StreamSocket.execute should be called to properly access this method"""
         stats = subprocess.run(
             command,
             executable=binary,
@@ -105,15 +192,21 @@ class StreamSocket(object):
         if command.lower() in ["cls", "clear", "clear-screen"]:
             return [utils.Ansi.clear(), b""]
 
-        if command.lower().split()[0] in ["ls", "dir"]:
-            if os.name != "nt":
-                command = f"{command} -A --color"
+        if (len(command) > 1) & (command in ["ls", "dir", "grep", "findstr"]):
+            check = True
+        else:
+            check = False
 
-        elif command.lower().split()[0] in ["grep", "findstr"]:
-            # TODO: fix issue with grep throwing false-positives
-            if os.name != "nt":
-                #command = f"{command} -i --color"
-                command = f"{command} --color"
+        if check:
+            if command.lower().split()[0] in ["ls", "dir"]:
+                if os.name != "nt":
+                    command = f"{command} -A --color"
+
+            elif command.lower().split()[0] in ["grep", "findstr"]:
+                # TODO: fix issue with grep throwing false-positives
+                if os.name != "nt":
+                    #command = f"{command} -i --color"
+                    command = f"{command} --color"
 
         return StreamSocket._run_cmd(command, binary)
 
@@ -151,3 +244,5 @@ class StreamSocket(object):
 
 class Post(object):
     """Post connection utilities such as file system IO handling"""
+    def __init__(self):
+        pass

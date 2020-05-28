@@ -7,28 +7,28 @@ from colorama import (Style, Fore)
 class Ansi(object):
     """Formatting class containing Ansi escape sequences"""
     @staticmethod
-    def color(color: str) -> str:
+    def color(color: str) -> bytes:
         """Get the ansii code the specified <color>"""
         if color.lower() == "red":
-            return "\x1b[91m"
+            return "\x1b[91m".encode()
         elif color.lower() == "green":
-            return "\x1b[92m"
+            return "\x1b[92m".encode()
         elif color.lower() == "yellow":
-            return "\x1b[93m"
+            return "\x1b[93m".encode()
         elif color.lower() == "cyan":
-            return "\x1b[96m"
+            return "\x1b[96m".encode()
         else:
             raise ValueError("Unrecognized value received for <color>")
 
     @staticmethod
     def reset() -> bytes:
         """Ansi sequence to reset the console formatting style"""
-        return b"\x1b[0m"
+        return "\x1b[0m".encode()
 
     @staticmethod
     def clear() -> bytes:
         """Ansi sequence to clear terminal buffer and scrollback"""
-        return b'\x1b[H\x1b[2J\x1b[3J'
+        return "\x1b[H\x1b[2J\x1b[3J".encode()
 
 
 def init_colorama() -> None:
@@ -36,9 +36,12 @@ def init_colorama() -> None:
     colorama.init(autoreset=True)
 
 
-def style_prompt(prompt: str) -> bytes:
-    """"""
-
+def style_prompt(prompt: str, opsys: str) -> bytes:
+    """Add ansi styling to user prompt, handle posix and nt separately"""
+    if opsys == "nt":
+        pass
+    else:
+        pass
 
 def status(stdout: str, level="info", stdin=None) -> None:
     """Print specified status to stdout at different status levels"""

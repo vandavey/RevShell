@@ -32,6 +32,7 @@ if __name__ == "__main__":
         exit(1)
 
     utils.init_colorama()
+    utils.init_colorama()
 
     if mode is not None:
         if mode.lower() not in ["client", "server"]:
