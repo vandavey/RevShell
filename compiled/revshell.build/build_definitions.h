@@ -1,2 +1,2 @@
-#define DLL_EXTRA_PATH "c:\\users\\david\\appdata\\local\\programs\\python\\python37"
-#define PYTHON_HOME_PATH "C:\\Users\\David\\AppData\\Local\\Programs\\Python\\Python37"
+#define DLL_EXTRA_PATH "c:\\program files\\python37"
+#define PYTHON_HOME_PATH "C:\\Program Files\\Python37"
