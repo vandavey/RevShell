@@ -3,6 +3,7 @@ import socket
 import shutil
 import platform
 import sys
+import getpass
 import struct
 import subprocess
 from typing import Union
@@ -11,101 +12,40 @@ from pathlib import Path
 from multi import utils
 
 
-class ShellHandler(object):
-    """System command shell process handler"""
-    def __init__(self, shell_exec: str):
-        if shell_exec is None:
-            shell_exec = self.get_exec()
-
-        self.Shell = subprocess.Popen(
-            args=[],
-            env=os.environ.copy(),
-            cwd=str(Path.home()),
-            stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            executable=shell_exec,
-            shell=True
-        )
-
-    def get_exec(self) -> str:
-        """Get the shell executable file path for the local system"""
-        if os.name == "nt":
-            executable = shutil.which("powershell.exe")
-            if executable is None:
-                executable = shutil.which("cmd.exe")
-        else:
-            executable = shutil.which("bash")
-            if executable is None:
-                executable = shutil.which("sh")
-
-        return executable
-
-    @staticmethod
-    def get_prompt() -> bytes:
-        """Return thee working directory (with ansi styling for POSIX)"""
-        if os.name == "nt":
-            prompt = f"Shell {os.getcwd()}> "
-        else:
-            prompt = f"{user}@{host}:{os.getcwd()}> "
-
-        return utils.style_prompt(prompt, os.name)
-
-    def spawn(self, shell_exec: str = None) -> None:
-        """Spawn new command shell process to be used for code execution"""
-        if shell_exec is None:
-            shell_exec = self.get_exec()
-
-        # Popen expects [str] for non-shell calls
-        self.Shell = subprocess.Popen(
-            args=[],
-            env=os.environ.copy(),
-            cwd=str(Path.home()),
-            stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            executable=shell_exec,
-            shell=True
-        )
-
-        if self.Verbose:
-            utils.status(f"{shell_exec}")
-
-    def _run_cmd(self, command: list) -> [bytes, bytes]:
-        """Protected helper method to execute command once input is validated.
-        self.execute should be called to properly access this method"""
-        return self.Shell.communicate(command, timeout=60)
-
-
-    def execute(self, command: str, binary: str) -> [bytes, bytes]:
-        """Execute the command using system shell subprocess,
-        returns the a list of stdout and stderr as [bytes, bytes]."""
-        if command.lower() in ["cls", "clear", "clear-screen"]:
-            return [utils.Ansi.clear(), b""]
-
-        if command.lower().split()[0] in ["ls", "dir"]:
-            if os.name != "nt":
-                command = f"{command} -A --color"
-
-        elif command.lower().split()[0] in ["grep", "findstr"]:
-            # TODO: fix issue with grep throwing false-positives
-            if os.name != "nt":
-                # command = f"{command} -i --color"
-                command = f"{command} --color"
-
-        return self._run_cmd(command.split())
-
-
-
 class StreamSocket(object):
     """Super class containing methods common to Client and Server classes"""
-    def __init__(self, ipaddr: str, port: int, verb: bool, debug: bool):
-        self.Address = ipaddr
+    def __init__(
+        self,
+        ip_address: str,
+        port: int,
+        shell_exec: str,
+        verbose: bool,
+        debug: bool,
+        timeout: int = 60,
+        start_dir: Path = None
+    ):
+        self.Address = ip_address
         self.Port = port
-        self.Verbose = verb
+        self.Shell = shell_exec
+        self.Verbose = verbose
         self.Debug = debug
-        self.Timeout = 60
-        #self.Shell = ShellHandler.get_exec()
+        self.Timeout = timeout
+        self.Environ = os.environ.copy()
+        self.Special = [
+            {"exit": ["exit", "quit", "logout"]},
+            {"ls": ["ls", "dir", "gci", "get-childitem"]},
+            {"cd": ["cd", "set-location"]},
+            {"clear": ["clear", "cls", "clear-host"]},
+            {"grep": ["grep", "findstr"]}
+        ]
+
+        if start_dir is None:
+            if utils.OPSYS == "nt":
+                self.LastWD = Path(os.getenv("USERPROFILE"))
+            else:
+                self.LastWD = Path(os.getenv("HOME"))
+        else:
+            self.LastWD = start_dir
 
     @staticmethod
     def recv_all(sock: socket.socket, length: int) -> bytearray:
@@ -124,7 +64,7 @@ class StreamSocket(object):
         """Receive data without experiencing packet fragmentation"""
         # TODO: unpack bool indicating stderr or stdout into bytes after receiving
 
-        # get the first 4 bytes (payload size indicator)
+        # grab the payload size indicator bytes
         data = self.recv_all(sock, 4)
 
         if data:
@@ -147,35 +87,74 @@ class StreamSocket(object):
         sock.sendall(msg)
 
     @staticmethod
-    def get_executable() -> str:
-        """Get the shell executable file path for the local system"""
-        if os.name == "nt":
-            executable = shutil.which("powershell.exe")
-            if executable is None:
-                executable = shutil.which("cmd.exe")
+    def get_exec(shell: str = None) -> [str, str]:
+        """Get the shell executable file path for the local system.
+        Returns the shell file path and friendly-name"""
+        if shell is not None:
+            if shutil.which(shell) is not None:
+                return [shutil.which(shell), shell]
+            else:
+                utils.status(f"Cannot locate {shell}, now using system defaults")
+
+        if utils.OPSYS == "nt":
+            if shutil.which("powershell.exe") is None:
+                return [shutil.which("cmd.exe"), "cmd.exe"]
+            else:
+                return [shutil.which("powershell.exe"), "powershell.exe"]
+
+        if shutil.which("bash") is None:
+            return [shutil.which("sh"), "sh"]
         else:
-            executable = shutil.which("bash")
-            if executable is None:
-                executable = shutil.which("sh")
+            return [shutil.which("bash"), "bash"]
 
-        return executable
-
-    @staticmethod
-    def get_prompt() -> bytes:
+    def get_prompt(self) -> bytes:
         """Return thee working directory (with ansi styling for POSIX)"""
-        if os.name == "nt":
-            prompt = f"Shell {os.getcwd()}> "
+        # TODO: finish and test utils.style_prompt
+        if utils.OPSYS == "nt":
+            return utils.style_prompt(getpass.getuser(), self.LastWD)
         else:
-            prompt = f"{user}@{host}:{os.getcwd()}> "
+            return utils.style_prompt(
+                getpass.getuser(),
+                self.LastWD,
+                socket.gethostname()
+            )
 
-        return utils.style_prompt(prompt)
+    def change_dir(self, command: str) -> [bool, str]:
+        """Update LastWD property with the new location. Return
+        the path tested and a bool indicating if working directory
+        was successfully changed"""
+        # TODO: test and validate functionality in prod
 
-    @staticmethod
-    def _run_cmd(command: str, binary: str) -> [bytes, bytes]:
+        if "\\" in command:
+            command = command.replace("\\", "/")
+
+        cmd_args = command.split()
+
+        if len(cmd_args) > 1:
+            path = Path(cmd_args[1]).resolve()
+        else:
+            path = None
+
+        if Path.exists(path):
+            self.LastWD = str(path)
+            return [True, path]
+        else:
+            return [False, path]
+
+    def check_special(self, word: str) -> Union[str, None]:
+        """Check to see if command contains a special keyword"""
+        for family in self.Special:
+            for key, value, in family.items():
+                if word.split()[0].lower() in value:
+                    return key
+
+    def _run_cmd(self, command: str, binary: str) -> [bytes, bytes]:
         """Protected helper method to execute command once input is validated.
         StreamSocket.execute should be called to properly access this method"""
         stats = subprocess.run(
-            command,
+            args=command,
+            cwd=str(self.LastWD.resolve()),
+            env=self.Environ,
             executable=binary,
             stdin=subprocess.PIPE,
             stdout=subprocess.PIPE,
@@ -185,38 +164,43 @@ class StreamSocket(object):
 
         return [stats.stdout, stats.stderr]
 
-    @staticmethod
-    def execute(command: str, binary: str) -> [bytes, bytes]:
+    def execute(self, command: str) -> [bytes, bytes]:
         """Execute the command using system shell subprocess,
         returns the a list of stdout and stderr as [bytes, bytes]."""
-        if command.lower() in ["cls", "clear", "clear-screen"]:
-            return [utils.Ansi.clear(), b""]
+        family = self.check_special(command)
 
-        if (len(command) > 1) & (command in ["ls", "dir", "grep", "findstr"]):
-            check = True
-        else:
-            check = False
+        if family is not None:
+            if family == "clear":
+                return [utils.Ansi.clear(), "".encode()]
 
-        if check:
-            if command.lower().split()[0] in ["ls", "dir"]:
-                if os.name != "nt":
+            # TODO: add handling for current directory
+            if family == "cd":
+                exists, path = self.change_dir(command)
+                if exists:
+                    self.LastWD = path
+                    return [command.encode(), "".encode()]
+                else:
+                    return ["".encode(), f"Cannot resolve path {path}".encode()]
+
+            if family == "ls":
+                if utils.OPSYS != "nt":
                     command = f"{command} -A --color"
 
-            elif command.lower().split()[0] in ["grep", "findstr"]:
+            elif family == "grep":
                 # TODO: fix issue with grep throwing false-positives
-                if os.name != "nt":
+                if utils.OPSYS != "nt":
                     #command = f"{command} -i --color"
                     command = f"{command} --color"
 
-        return StreamSocket._run_cmd(command, binary)
+        return self._run_cmd(command, self.Shell)
 
     @staticmethod
     def sys_info(encode: bool = False) -> Union[str, bytes]:
         """Retrieve system information of the local machine.
         Transforms uname_result [NamedTuple] to a string."""
-        # uname: [NamedTuple] -> scrape/clean: [str] => split: [list]
-        info = str(platform.uname())[13:][:-1].split(", ", 5)
         output = []
+        info_str = str(platform.uname())[13:][:-1]
+        info = info_str.split(", ", 5)
 
         for stat in info:
             output.append(stat.split("=")[1].replace("\'", ""))

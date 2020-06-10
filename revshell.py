@@ -5,55 +5,66 @@ from multi import utils
 from multi.nodes.server import Server
 from multi.nodes.client import Client
 
+# TODO: add netcat compatibility mode
+
 parser = argparse.ArgumentParser(
     prog="revshell",
-    description="RevShell: Python3 TCP reverse shell utility",
-    usage="revshell [-h] [-v] [-d] [-m MODE] [-p PORT] [target]"
+    description="RevShell: Python3 TCP reverse command shell application",
+    usage="revshell [-h] [-v] [-d] [-l] [-e EXEC] [-p PORT] [TARGET]"
 )
 
-parser.add_argument("target", type=str, nargs="?", help="target IPv4 address")
-parser.add_argument("-m", "--mode", type=str, help="operation mode [client|server]")
-parser.add_argument("-p", "--port", type=int, help="port to use as TCP socket")
-parser.add_argument("-v", "--verbose", action="store_true", help="verbose output")
-parser.add_argument("-d", "--debug", action="store_true", help="very verbose output")
+parser.add_argument(
+    "TARGET", type=str, nargs="?",
+    help="specify the target/listener IPv4 address"
+)
+
+parser.add_argument(
+    "-p", "--port", type=int,
+    help="specify the TCP port to use as socket"
+)
+
+parser.add_argument(
+    "-e", "--exec", type=str,
+    help="specify the command shell executable"
+)
+
+parser.add_argument(
+    "-l", "--listen", action="store_true",
+    help="listen for incoming TCP connections"
+)
+
+parser.add_argument(
+    "-v", "--verbose", action="store_true",
+    help="be verbose with console output stream"
+)
+
+parser.add_argument(
+    "-d", "--debug", action="store_true",
+    help="be verbose + output shell commands"
+)
 
 args = parser.parse_args()
 
-target: str = args.target
+target: str = args.TARGET
+port: int = args.port
+shell: str = args.exec
+listen: bool = args.listen
 verbose: bool = args.verbose
 debug: bool = args.debug
-mode: str = args.mode
-port: int = args.port
 
 if __name__ == "__main__":
-    if (target is None) & (mode is None):
-        msg = "one or both of the following arguments are required: "
-        parser.error(msg + "target, -m/--mode")
+    if (target is None) & (not listen):
+        msg = "at least one of the following must be filled: "
+        parser.error(msg + "target, -l/--listen")
         exit(1)
 
     utils.init_colorama()
-    utils.init_colorama()
-
-    if mode is not None:
-        if mode.lower() not in ["client", "server"]:
-            utils.throw("Expected <mode> to be [client|server]")
-    else:
-        mode = "client"
-
-    if verbose:
-        utils.status(f"mode => {mode.lower()}")
-
-    if (target is None) & (mode.lower() == "client"):
-        utils.throw("Value for [target] can't be None in client mode")
 
     if target is not None:
         if not utils.ipv4_parse(target):
             utils.throw("Value for [target] is not a valid IPv4 address")
     else:
         target = "0.0.0.0"
-
-    if verbose:
-        utils.status(f"target => {target}")
 
     if port is not None:
         try:
@@ -64,12 +75,24 @@ if __name__ == "__main__":
     else:
         port = 4444
 
+    if shell is not None:
+        shell, shell_name = Client.get_exec(shell)
+    else:
+        shell, shell_name = Client.get_exec()
+
     if verbose:
+        utils.status(f"address => {target}")
         utils.status(f"port => {port}")
 
-    if mode == "server":
-        handler = Server(target, port, verbose, debug)
+        if not listen:
+            utils.status("node => client")
+            utils.status(f"shell => {shell_name}")
+        else:
+            utils.status("node => server")
+
+    if listen:
+        handler = Server(target, port, shell, verbose, debug)
         handler.listen()
     else:
-        handler = Client(target, port, verbose, debug)
+        handler = Client(target, port, shell, verbose, debug)
         handler.connect()

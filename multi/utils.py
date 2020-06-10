@@ -1,14 +1,19 @@
-from typing import Union
+import os
 from ipaddress import IPv4Address
+from typing import Union
+from pathlib import Path
 
 import colorama
 from colorama import (Style, Fore)
+
+OPSYS = os.name
+
 
 class Ansi(object):
     """Formatting class containing Ansi escape sequences"""
     @staticmethod
     def color(color: str) -> bytes:
-        """Get the ansii code the specified <color>"""
+        """Return the ansii sequence of a specified color"""
         if color.lower() == "red":
             return "\x1b[91m".encode()
         elif color.lower() == "green":
@@ -17,31 +22,63 @@ class Ansi(object):
             return "\x1b[93m".encode()
         elif color.lower() == "cyan":
             return "\x1b[96m".encode()
+        elif color.lower() == "white":
+            return "\x1b[97m".encode()
         else:
             raise ValueError("Unrecognized value received for <color>")
 
     @staticmethod
     def reset() -> bytes:
-        """Ansi sequence to reset the console formatting style"""
+        """Return the ansi sequence to reset the console formatting style"""
         return "\x1b[0m".encode()
 
     @staticmethod
     def clear() -> bytes:
-        """Ansi sequence to clear terminal buffer and scrollback"""
+        """Return the ansi sequence to clear terminal buffer and scrollback"""
         return "\x1b[H\x1b[2J\x1b[3J".encode()
+
+    @staticmethod
+    def paint(text: str, color: str) -> bytes:
+        """Add ansi color sequence to string, return output as bytes"""
+        return Ansi.color(color) + text.encode()
+
+    @staticmethod
+    def build_prompt(user: str, cwd: str, hostname: str = None) -> bytes:
+        """Assemble shell prompt with ansi sequences, return as bytes.
+        Note: this method is intended to be called from within the utils module"""
+        if hostname in [b"", None]:
+            return b"".join([
+                Ansi.paint(user, "green"),
+                Ansi.paint("::", "white"),
+                Ansi.paint(cwd, "cyan"),
+                Ansi.paint(">", "white")
+            ])
+
+        return b"".join([
+            Ansi.paint(user, "green"),
+            Ansi.paint("@", "white"),
+            Ansi.paint(hostname, "green"),
+            Ansi.paint(":", "white"),
+            Ansi.paint(cwd, "cyan"),
+            Ansi.paint(">", "white")
+        ])
 
 
 def init_colorama() -> None:
-    """Initialize colorama formatting class"""
+    """Initialize colorama color formatting module"""
     colorama.init(autoreset=True)
 
 
-def style_prompt(prompt: str, opsys: str) -> bytes:
+def style_prompt(user: str, cwd: Path, hostname: str = None) -> bytes:
     """Add ansi styling to user prompt, handle posix and nt separately"""
-    if opsys == "nt":
-        pass
+    if OPSYS != "nt":
+        if hostname is not None:
+            return Ansi.build_prompt(user, str(cwd), hostname)
+        else:
+            raise ValueError("<hostname> is required if OS is not Windows")
     else:
-        pass
+        return Ansi.build_prompt(user, str(cwd))
+
 
 def status(stdout: str, level="info", stdin=None) -> None:
     """Print specified status to stdout at different status levels"""
@@ -66,7 +103,7 @@ def status(stdout: str, level="info", stdin=None) -> None:
 
 
 def throw(text: Union[str, list] = None, kill: bool = True) -> None:
-    """Print the error status to stdout and kill the program"""
+    """Print the exception status to stdout and kill the program"""
     if text is not None:
         if type(text) is list:
             tlist = [str(x) for x in text]

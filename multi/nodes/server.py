@@ -3,6 +3,7 @@ import getpass
 from .nodeutils import (
     os,
     socket,
+    Path,
     subprocess,
     struct,
     sys,
@@ -13,21 +14,38 @@ from .nodeutils import (
 
 class Server(StreamSocket):
     """TCP socket server class for the command shell"""
-    def __init__(self, lhost: str, port: int, verb: bool, debug: bool):
-        super().__init__(lhost, port, verb, debug)
+    def __init__(
+        self,
+        lhost: str,
+        port: int,
+        shell_exec: str,
+        verbose: bool,
+        debug: bool
+    ):
+        super().__init__(lhost, port, shell_exec, verbose, debug)
 
     def listen(self) -> None:
         """Begin listening for incoming TCP connection from the client shell"""
-        server_sock = socket.socket()
-        # server_sock.settimeout(60)
 
         # TODO: configure timeouts and blocking
+        addr = ()
+        client_sock = socket.socket()
+        server_sock = socket.socket()
+
+        server_sock.settimeout(180)
         server_sock.bind((self.Address, self.Port))
 
         server_sock.listen(1)  # stay open for one connection
         utils.status(f"Listening for incoming TCP connection on port {self.Port}...")
 
-        client_sock, addr = server_sock.accept()
+        try:
+            client_sock, addr = server_sock.accept()
+        except socket.timeout:
+            client_sock.close()
+            server_sock.close()
+            utils.throw("The listening socket has timeout out")
+        finally:
+            server_sock.setblocking(True)
 
         with client_sock:
             # TODO: print additional info in opening banner
@@ -40,21 +58,25 @@ class Server(StreamSocket):
             utils.status(client_info)
 
             try:
-                # TODO: change prompt to use remote os.getcwd instead of local
+                # TODO: fix prompt to show remote directory instead of local
+                # TODO: change stdout color when its an error
                 while True:
-                    if os.name == "nt":
-                        prompt = f"Shell {os.getcwd()}> "
-                    else:
-                        prompt = f"{user}@{host}:{os.getcwd()}> "
+                    command = input(self.get_prompt().decode())
 
-                    command = input(f"{prompt}")
+                    # send => command to be executed
                     self.send(client_sock, command)
+                    family = self.check_special(command)
 
-                    # TODO: change stdout color when its an error
-                    if command.lower() not in ["exit", "quit"]:
+                    if family != "exit":
+                        # receive => command output
                         output = self.receive(client_sock).decode()
 
-                        if command.lower() in ["cls", "clear", "clear-screen"]:
+                        # TODO: add logic for when successfully changed directories
+                        if (family == "cd") & (output == command):
+                            self.LastWD = Path(output.split()[1]).resolve()
+                            utils.status("", "output", command)
+
+                        elif family == "clear":
                             print(utils.Ansi.clear().decode(), end="")
                         else:
                             utils.status(output, "output", command)
