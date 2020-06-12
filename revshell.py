@@ -2,6 +2,7 @@
 import argparse
 
 from multi import utils
+from multi.utils import os
 from multi.nodes.server import Server
 from multi.nodes.client import Client
 
@@ -43,6 +44,7 @@ parser.add_argument(
     help="be verbose + output shell commands"
 )
 
+# TODO add argparse examples
 args = parser.parse_args()
 
 target: str = args.TARGET
@@ -75,24 +77,24 @@ if __name__ == "__main__":
     else:
         port = 4444
 
-    if shell is not None:
-        shell, shell_name = Client.get_exec(shell)
-    else:
-        shell, shell_name = Client.get_exec()
-
     if verbose:
         utils.status(f"address => {target}")
         utils.status(f"port => {port}")
 
         if not listen:
             utils.status("node => client")
-            utils.status(f"shell => {shell_name}")
         else:
             utils.status("node => server")
 
     if listen:
-        handler = Server(target, port, shell, verbose, debug)
-        handler.listen()
+        if shell is not None:
+            server = Server(target, port, os.name, verbose, debug, shell)
+        else:
+            server = Server(target, port, os.name, verbose, debug)
+        server.listen()
     else:
-        handler = Client(target, port, shell, verbose, debug)
-        handler.connect()
+        if shell is not None:
+            client = Client(target, port, os.name, verbose, debug, shell)
+        else:
+            client = Client(target, port, os.name, verbose, debug)
+        client.connect()

