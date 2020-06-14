@@ -50,11 +50,11 @@ static bool constants_created = false;
 
 /* Function to create module private constants. */
 static void createModuleConstants(void) {
-    const_str_digest_d0a406b6c86247efbaecfa37ee53e460 = UNSTREAM_STRING_ASCII(&constant_bin[ 6900 ], 38, 0);
-    const_str_digest_097fbd06d58ae911e71542aca34d1c72 = UNSTREAM_STRING_ASCII(&constant_bin[ 6938 ], 50, 0);
+    const_str_digest_d0a406b6c86247efbaecfa37ee53e460 = UNSTREAM_STRING_ASCII(&constant_bin[ 7028 ], 38, 0);
+    const_str_digest_097fbd06d58ae911e71542aca34d1c72 = UNSTREAM_STRING_ASCII(&constant_bin[ 7066 ], 50, 0);
     const_list_str_digest_d0a406b6c86247efbaecfa37ee53e460_list = PyList_New(1);
     PyList_SET_ITEM(const_list_str_digest_d0a406b6c86247efbaecfa37ee53e460_list, 0, const_str_digest_d0a406b6c86247efbaecfa37ee53e460); Py_INCREF(const_str_digest_d0a406b6c86247efbaecfa37ee53e460);
-    const_str_digest_74782ef1bf586a005b6e6892d14fdc52 = UNSTREAM_STRING_ASCII(&constant_bin[ 6988 ], 14, 0);
+    const_str_digest_74782ef1bf586a005b6e6892d14fdc52 = UNSTREAM_STRING_ASCII(&constant_bin[ 7116 ], 14, 0);
 
     constants_created = true;
 }

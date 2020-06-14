@@ -90,22 +90,22 @@ static void createModuleConstants(void) {
     PyTuple_SET_ITEM(const_tuple_b606439de20329d1b378141bdd1d0460_tuple, 0, const_str_plain_autoreset); Py_INCREF(const_str_plain_autoreset);
     PyTuple_SET_ITEM(const_tuple_b606439de20329d1b378141bdd1d0460_tuple, 1, const_str_plain_convert); Py_INCREF(const_str_plain_convert);
     PyTuple_SET_ITEM(const_tuple_b606439de20329d1b378141bdd1d0460_tuple, 2, const_str_plain_strip); Py_INCREF(const_str_plain_strip);
-    const_str_plain_wrap = UNSTREAM_STRING_ASCII(&constant_bin[ 1071 ], 4, 1);
+    const_str_plain_wrap = UNSTREAM_STRING_ASCII(&constant_bin[ 1100 ], 4, 1);
     PyTuple_SET_ITEM(const_tuple_b606439de20329d1b378141bdd1d0460_tuple, 3, const_str_plain_wrap); Py_INCREF(const_str_plain_wrap);
-    const_str_digest_7a87f4d32a5cc8a8796e91d23c3f6733 = UNSTREAM_STRING_ASCII(&constant_bin[ 5770 ], 66, 0);
-    const_str_plain_wrapped_stdout = UNSTREAM_STRING_ASCII(&constant_bin[ 1283 ], 14, 1);
-    const_str_plain_contextmanager = UNSTREAM_STRING_ASCII(&constant_bin[ 5836 ], 14, 1);
-    const_str_digest_ccef2723d82eb6f96393b9a051c5f85c = UNSTREAM_STRING_ASCII(&constant_bin[ 5850 ], 44, 0);
-    const_str_plain_orig_stderr = UNSTREAM_STRING_ASCII(&constant_bin[ 1104 ], 11, 1);
+    const_str_digest_7a87f4d32a5cc8a8796e91d23c3f6733 = UNSTREAM_STRING_ASCII(&constant_bin[ 5896 ], 66, 0);
+    const_str_plain_wrapped_stdout = UNSTREAM_STRING_ASCII(&constant_bin[ 1312 ], 14, 1);
+    const_str_plain_contextmanager = UNSTREAM_STRING_ASCII(&constant_bin[ 5962 ], 14, 1);
+    const_str_digest_ccef2723d82eb6f96393b9a051c5f85c = UNSTREAM_STRING_ASCII(&constant_bin[ 5976 ], 44, 0);
+    const_str_plain_orig_stderr = UNSTREAM_STRING_ASCII(&constant_bin[ 1133 ], 11, 1);
     const_tuple_str_plain_args_str_plain_kwargs_tuple = PyTuple_New(2);
     PyTuple_SET_ITEM(const_tuple_str_plain_args_str_plain_kwargs_tuple, 0, const_str_plain_args); Py_INCREF(const_str_plain_args);
     PyTuple_SET_ITEM(const_tuple_str_plain_args_str_plain_kwargs_tuple, 1, const_str_plain_kwargs); Py_INCREF(const_str_plain_kwargs);
-    const_str_plain_wrapped_stderr = UNSTREAM_STRING_ASCII(&constant_bin[ 1319 ], 14, 1);
-    const_str_plain_register = UNSTREAM_STRING_ASCII(&constant_bin[ 5894 ], 8, 1);
-    const_str_plain_orig_stdout = UNSTREAM_STRING_ASCII(&constant_bin[ 1038 ], 11, 1);
-    const_str_plain_atexit_done = UNSTREAM_STRING_ASCII(&constant_bin[ 1137 ], 11, 1);
-    const_str_plain_contextlib = UNSTREAM_STRING_ASCII(&constant_bin[ 1355 ], 10, 1);
-    const_str_plain_atexit = UNSTREAM_STRING_ASCII(&constant_bin[ 1137 ], 6, 1);
+    const_str_plain_wrapped_stderr = UNSTREAM_STRING_ASCII(&constant_bin[ 1348 ], 14, 1);
+    const_str_plain_register = UNSTREAM_STRING_ASCII(&constant_bin[ 6020 ], 8, 1);
+    const_str_plain_orig_stdout = UNSTREAM_STRING_ASCII(&constant_bin[ 1067 ], 11, 1);
+    const_str_plain_atexit_done = UNSTREAM_STRING_ASCII(&constant_bin[ 1166 ], 11, 1);
+    const_str_plain_contextlib = UNSTREAM_STRING_ASCII(&constant_bin[ 1384 ], 10, 1);
+    const_str_plain_atexit = UNSTREAM_STRING_ASCII(&constant_bin[ 1166 ], 6, 1);
     const_tuple_false_none_none_true_tuple = PyTuple_New(4);
     PyTuple_SET_ITEM(const_tuple_false_none_none_true_tuple, 0, Py_False); Py_INCREF(Py_False);
     PyTuple_SET_ITEM(const_tuple_false_none_none_true_tuple, 1, Py_None); Py_INCREF(Py_None);
@@ -117,10 +117,10 @@ static void createModuleConstants(void) {
     PyTuple_SET_ITEM(const_tuple_0b4df12de36c38c34b5cd3b0b8bfcd32_tuple, 2, const_str_plain_strip); Py_INCREF(const_str_plain_strip);
     PyTuple_SET_ITEM(const_tuple_0b4df12de36c38c34b5cd3b0b8bfcd32_tuple, 3, const_str_plain_autoreset); Py_INCREF(const_str_plain_autoreset);
     PyTuple_SET_ITEM(const_tuple_0b4df12de36c38c34b5cd3b0b8bfcd32_tuple, 4, const_str_plain_wrap); Py_INCREF(const_str_plain_wrap);
-    const_str_plain_wrapper = UNSTREAM_STRING_ASCII(&constant_bin[ 5902 ], 7, 1);
+    const_str_plain_wrapper = UNSTREAM_STRING_ASCII(&constant_bin[ 6028 ], 7, 1);
     PyTuple_SET_ITEM(const_tuple_0b4df12de36c38c34b5cd3b0b8bfcd32_tuple, 5, const_str_plain_wrapper); Py_INCREF(const_str_plain_wrapper);
-    const_str_plain_wrap_stream = UNSTREAM_STRING_ASCII(&constant_bin[ 1071 ], 11, 1);
-    const_str_digest_922f1f05229c346ca34fb7da4c918094 = UNSTREAM_STRING_ASCII(&constant_bin[ 5909 ], 28, 0);
+    const_str_plain_wrap_stream = UNSTREAM_STRING_ASCII(&constant_bin[ 1100 ], 11, 1);
+    const_str_digest_922f1f05229c346ca34fb7da4c918094 = UNSTREAM_STRING_ASCII(&constant_bin[ 6035 ], 28, 0);
 
     constants_created = true;
 }
@@ -241,7 +241,7 @@ static PyObject *impl_colorama$initialise$$$function_1_reset_all(struct Nuitka_F
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 999 ], 33, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1028 ], 33, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -278,7 +278,7 @@ static PyObject *impl_colorama$initialise$$$function_1_reset_all(struct Nuitka_F
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 999 ], 33, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1028 ], 33, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -299,7 +299,7 @@ static PyObject *impl_colorama$initialise$$$function_1_reset_all(struct Nuitka_F
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 1032 ], 33, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1061 ], 33, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -573,7 +573,7 @@ static PyObject *impl_colorama$initialise$$$function_2_init(struct Nuitka_Functi
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 679 ], 25, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 708 ], 25, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -611,7 +611,7 @@ static PyObject *impl_colorama$initialise$$$function_2_init(struct Nuitka_Functi
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 679 ], 25, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 708 ], 25, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -651,7 +651,7 @@ static PyObject *impl_colorama$initialise$$$function_2_init(struct Nuitka_Functi
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 679 ], 25, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 708 ], 25, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -711,7 +711,7 @@ static PyObject *impl_colorama$initialise$$$function_2_init(struct Nuitka_Functi
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 1065 ], 33, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1094 ], 33, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -732,7 +732,7 @@ static PyObject *impl_colorama$initialise$$$function_2_init(struct Nuitka_Functi
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 1032 ], 33, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1061 ], 33, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -786,7 +786,7 @@ static PyObject *impl_colorama$initialise$$$function_2_init(struct Nuitka_Functi
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 679 ], 25, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 708 ], 25, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -860,7 +860,7 @@ static PyObject *impl_colorama$initialise$$$function_2_init(struct Nuitka_Functi
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 679 ], 25, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 708 ], 25, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -920,7 +920,7 @@ static PyObject *impl_colorama$initialise$$$function_2_init(struct Nuitka_Functi
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 1065 ], 33, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1094 ], 33, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -941,7 +941,7 @@ static PyObject *impl_colorama$initialise$$$function_2_init(struct Nuitka_Functi
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 1098 ], 33, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1127 ], 33, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -995,7 +995,7 @@ static PyObject *impl_colorama$initialise$$$function_2_init(struct Nuitka_Functi
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 679 ], 25, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 708 ], 25, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1067,7 +1067,7 @@ static PyObject *impl_colorama$initialise$$$function_2_init(struct Nuitka_Functi
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 1131 ], 33, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1160 ], 33, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1114,7 +1114,7 @@ static PyObject *impl_colorama$initialise$$$function_2_init(struct Nuitka_Functi
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 1164 ], 28, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1193 ], 28, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1146,7 +1146,7 @@ static PyObject *impl_colorama$initialise$$$function_2_init(struct Nuitka_Functi
             Py_DECREF(tmp_called_name_3);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 1192 ], 31, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1221 ], 31, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1330,7 +1330,7 @@ static PyObject *impl_colorama$initialise$$$function_3_deinit(struct Nuitka_Func
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 1032 ], 33, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1061 ], 33, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1365,7 +1365,7 @@ static PyObject *impl_colorama$initialise$$$function_3_deinit(struct Nuitka_Func
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 1032 ], 33, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1061 ], 33, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1386,7 +1386,7 @@ static PyObject *impl_colorama$initialise$$$function_3_deinit(struct Nuitka_Func
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 679 ], 25, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 708 ], 25, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1425,7 +1425,7 @@ static PyObject *impl_colorama$initialise$$$function_3_deinit(struct Nuitka_Func
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 1098 ], 33, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1127 ], 33, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1460,7 +1460,7 @@ static PyObject *impl_colorama$initialise$$$function_3_deinit(struct Nuitka_Func
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 1098 ], 33, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1127 ], 33, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1481,7 +1481,7 @@ static PyObject *impl_colorama$initialise$$$function_3_deinit(struct Nuitka_Func
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 679 ], 25, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 708 ], 25, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1735,7 +1735,7 @@ static PyObject *colorama$initialise$$$function_4_colorama_text$$$genobj_1_color
 
             generator_heap->exception_type = PyExc_NameError;
             Py_INCREF(generator_heap->exception_type);
-            generator_heap->exception_value = UNSTREAM_STRING(&constant_bin[ 1223 ], 26, 0);
+            generator_heap->exception_value = UNSTREAM_STRING(&constant_bin[ 1252 ], 26, 0);
             generator_heap->exception_tb = NULL;
             NORMALIZE_EXCEPTION(&generator_heap->exception_type, &generator_heap->exception_value, &generator_heap->exception_tb);
             CHAIN_EXCEPTION(generator_heap->exception_value);
@@ -1861,7 +1861,7 @@ static PyObject *colorama$initialise$$$function_4_colorama_text$$$genobj_1_color
 
             generator_heap->exception_type = PyExc_NameError;
             Py_INCREF(generator_heap->exception_type);
-            generator_heap->exception_value = UNSTREAM_STRING(&constant_bin[ 1249 ], 28, 0);
+            generator_heap->exception_value = UNSTREAM_STRING(&constant_bin[ 1278 ], 28, 0);
             generator_heap->exception_tb = NULL;
             NORMALIZE_EXCEPTION(&generator_heap->exception_type, &generator_heap->exception_value, &generator_heap->exception_tb);
             CHAIN_EXCEPTION(generator_heap->exception_value);
@@ -1933,7 +1933,7 @@ static PyObject *colorama$initialise$$$function_4_colorama_text$$$genobj_1_color
 
             generator_heap->exception_type = PyExc_NameError;
             Py_INCREF(generator_heap->exception_type);
-            generator_heap->exception_value = UNSTREAM_STRING(&constant_bin[ 1249 ], 28, 0);
+            generator_heap->exception_value = UNSTREAM_STRING(&constant_bin[ 1278 ], 28, 0);
             generator_heap->exception_tb = NULL;
             NORMALIZE_EXCEPTION(&generator_heap->exception_type, &generator_heap->exception_value, &generator_heap->exception_tb);
             CHAIN_EXCEPTION(generator_heap->exception_value);
@@ -2102,7 +2102,7 @@ static PyObject *impl_colorama$initialise$$$function_5_reinit(struct Nuitka_Func
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 1277 ], 36, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1306 ], 36, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -2137,7 +2137,7 @@ static PyObject *impl_colorama$initialise$$$function_5_reinit(struct Nuitka_Func
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 1277 ], 36, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1306 ], 36, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -2158,7 +2158,7 @@ static PyObject *impl_colorama$initialise$$$function_5_reinit(struct Nuitka_Func
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 679 ], 25, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 708 ], 25, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -2197,7 +2197,7 @@ static PyObject *impl_colorama$initialise$$$function_5_reinit(struct Nuitka_Func
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 1313 ], 36, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1342 ], 36, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -2232,7 +2232,7 @@ static PyObject *impl_colorama$initialise$$$function_5_reinit(struct Nuitka_Func
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 1313 ], 36, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1342 ], 36, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -2253,7 +2253,7 @@ static PyObject *impl_colorama$initialise$$$function_5_reinit(struct Nuitka_Func
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 679 ], 25, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 708 ], 25, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -2453,7 +2453,7 @@ static PyObject *impl_colorama$initialise$$$function_6_wrap_stream(struct Nuitka
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 999 ], 33, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1028 ], 33, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -3519,7 +3519,7 @@ PyObject *modulecode_colorama$initialise(PyObject *module) {
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 1349 ], 32, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1378 ], 32, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);

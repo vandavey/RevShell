@@ -11,7 +11,7 @@ from multi.nodes.client import Client
 parser = argparse.ArgumentParser(
     prog="revshell",
     description="RevShell: Python3 TCP reverse command shell application",
-    usage="revshell [-h] [-v] [-d] [-l] [-e EXEC] [-p PORT] [TARGET]"
+    usage="revshell [-h] [-v] [-d] [-l] [-q] [-e EXEC] [-p PORT] [TARGET]"
 )
 
 parser.add_argument(
@@ -35,6 +35,11 @@ parser.add_argument(
 )
 
 parser.add_argument(
+    "-q", "--quiet", action="store_true",
+    help="reduce console output stream as much as possible"
+)
+
+parser.add_argument(
     "-v", "--verbose", action="store_true",
     help="be verbose with console output stream"
 )
@@ -51,6 +56,7 @@ target: str = args.TARGET
 port: int = args.port
 shell: str = args.exec
 listen: bool = args.listen
+quiet: bool = args.quiet
 verbose: bool = args.verbose
 debug: bool = args.debug
 
@@ -76,6 +82,9 @@ if __name__ == "__main__":
             utils.throw("Value for [port] must be [1 <= port <= 65535]")
     else:
         port = 4444
+
+    if quiet:
+        raise NotImplementedError("This feature has not been implemented yet")
 
     if verbose:
         utils.status(f"address => {target}")

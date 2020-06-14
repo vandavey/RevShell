@@ -39,7 +39,7 @@ extern PyObject *const_str_plain___spec__;
 extern PyObject *const_str_plain___file__;
 static PyObject *const_str_plain_site_packages_dirs;
 extern PyObject *const_int_0;
-static PyObject *const_str_plain_path;
+extern PyObject *const_str_plain_path;
 static PyObject *const_str_plain_pywin32_system32;
 static PyObject *const_str_plain_insert;
 extern PyObject *const_str_plain_site;
@@ -65,20 +65,19 @@ static bool constants_created = false;
 
 /* Function to create module private constants. */
 static void createModuleConstants(void) {
-    const_str_plain_site_packages_dir = UNSTREAM_STRING_ASCII(&constant_bin[ 2697 ], 17, 1);
-    const_str_plain_isdir = UNSTREAM_STRING_ASCII(&constant_bin[ 10360 ], 5, 1);
-    const_str_plain_add_dll_directory = UNSTREAM_STRING_ASCII(&constant_bin[ 10365 ], 17, 1);
-    const_str_plain_site_packages_dirs = UNSTREAM_STRING_ASCII(&constant_bin[ 2697 ], 18, 1);
-    const_str_plain_path = UNSTREAM_STRING_ASCII(&constant_bin[ 8193 ], 4, 1);
-    const_str_plain_pywin32_system32 = UNSTREAM_STRING_ASCII(&constant_bin[ 2776 ], 16, 1);
-    const_str_plain_insert = UNSTREAM_STRING_ASCII(&constant_bin[ 10382 ], 6, 1);
-    const_str_plain_pathsep = UNSTREAM_STRING_ASCII(&constant_bin[ 10388 ], 7, 1);
-    const_str_plain_level3_up_dir = UNSTREAM_STRING_ASCII(&constant_bin[ 2662 ], 13, 1);
-    const_str_plain_getsitepackages = UNSTREAM_STRING_ASCII(&constant_bin[ 10395 ], 15, 1);
-    const_str_plain_PATH = UNSTREAM_STRING_ASCII(&constant_bin[ 10410 ], 4, 1);
-    const_str_digest_9a3b0e967c43f837dc20b90a85f344ca = UNSTREAM_STRING_ASCII(&constant_bin[ 10414 ], 26, 0);
-    const_str_plain_dirname = UNSTREAM_STRING_ASCII(&constant_bin[ 10440 ], 7, 1);
-    const_str_digest_a93ba221021ad7635b98b4471fa64b6d = UNSTREAM_STRING_ASCII(&constant_bin[ 10447 ], 74, 0);
+    const_str_plain_site_packages_dir = UNSTREAM_STRING_ASCII(&constant_bin[ 2737 ], 17, 1);
+    const_str_plain_isdir = UNSTREAM_STRING_ASCII(&constant_bin[ 11829 ], 5, 1);
+    const_str_plain_add_dll_directory = UNSTREAM_STRING_ASCII(&constant_bin[ 11834 ], 17, 1);
+    const_str_plain_site_packages_dirs = UNSTREAM_STRING_ASCII(&constant_bin[ 2737 ], 18, 1);
+    const_str_plain_pywin32_system32 = UNSTREAM_STRING_ASCII(&constant_bin[ 2816 ], 16, 1);
+    const_str_plain_insert = UNSTREAM_STRING_ASCII(&constant_bin[ 11851 ], 6, 1);
+    const_str_plain_pathsep = UNSTREAM_STRING_ASCII(&constant_bin[ 11857 ], 7, 1);
+    const_str_plain_level3_up_dir = UNSTREAM_STRING_ASCII(&constant_bin[ 2702 ], 13, 1);
+    const_str_plain_getsitepackages = UNSTREAM_STRING_ASCII(&constant_bin[ 11864 ], 15, 1);
+    const_str_plain_PATH = UNSTREAM_STRING_ASCII(&constant_bin[ 11879 ], 4, 1);
+    const_str_digest_9a3b0e967c43f837dc20b90a85f344ca = UNSTREAM_STRING_ASCII(&constant_bin[ 11883 ], 26, 0);
+    const_str_plain_dirname = UNSTREAM_STRING_ASCII(&constant_bin[ 11909 ], 7, 1);
+    const_str_digest_a93ba221021ad7635b98b4471fa64b6d = UNSTREAM_STRING_ASCII(&constant_bin[ 11916 ], 74, 0);
 
     constants_created = true;
 }
@@ -783,7 +782,7 @@ PyObject *modulecode_pywin32_bootstrap(PyObject *module) {
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2600 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2640 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -851,7 +850,7 @@ PyObject *modulecode_pywin32_bootstrap(PyObject *module) {
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2630 ], 26, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2670 ], 26, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -910,7 +909,7 @@ PyObject *modulecode_pywin32_bootstrap(PyObject *module) {
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2656 ], 35, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2696 ], 35, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -966,7 +965,7 @@ PyObject *modulecode_pywin32_bootstrap(PyObject *module) {
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2691 ], 40, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2731 ], 40, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -999,7 +998,7 @@ PyObject *modulecode_pywin32_bootstrap(PyObject *module) {
             Py_DECREF(tmp_called_name_5);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2656 ], 35, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2696 ], 35, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1044,7 +1043,7 @@ PyObject *modulecode_pywin32_bootstrap(PyObject *module) {
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2691 ], 40, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2731 ], 40, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1122,7 +1121,7 @@ PyObject *modulecode_pywin32_bootstrap(PyObject *module) {
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 655 ], 24, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 365 ], 24, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1166,7 +1165,7 @@ PyObject *modulecode_pywin32_bootstrap(PyObject *module) {
             Py_DECREF(tmp_called_name_6);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2731 ], 39, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2771 ], 39, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1217,7 +1216,7 @@ PyObject *modulecode_pywin32_bootstrap(PyObject *module) {
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 655 ], 24, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 365 ], 24, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1261,7 +1260,7 @@ PyObject *modulecode_pywin32_bootstrap(PyObject *module) {
             Py_DECREF(tmp_called_name_7);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2770 ], 38, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2810 ], 38, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1320,7 +1319,7 @@ PyObject *modulecode_pywin32_bootstrap(PyObject *module) {
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 655 ], 24, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 365 ], 24, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1368,7 +1367,7 @@ PyObject *modulecode_pywin32_bootstrap(PyObject *module) {
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 655 ], 24, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 365 ], 24, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1400,7 +1399,7 @@ PyObject *modulecode_pywin32_bootstrap(PyObject *module) {
             Py_DECREF(tmp_called_name_8);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2770 ], 38, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2810 ], 38, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1455,7 +1454,7 @@ PyObject *modulecode_pywin32_bootstrap(PyObject *module) {
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2770 ], 38, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2810 ], 38, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1476,7 +1475,7 @@ PyObject *modulecode_pywin32_bootstrap(PyObject *module) {
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 655 ], 24, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 365 ], 24, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1520,7 +1519,7 @@ PyObject *modulecode_pywin32_bootstrap(PyObject *module) {
             Py_DECREF(tmp_left_name_1);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 655 ], 24, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 365 ], 24, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1578,7 +1577,7 @@ PyObject *modulecode_pywin32_bootstrap(PyObject *module) {
             Py_DECREF(tmp_ass_subvalue_1);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 655 ], 24, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 365 ], 24, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);

@@ -11,8 +11,6 @@ from pathlib import Path
 
 from multi import utils
 
-RemoteOPSYS = None
-
 
 class NodeConfig(object):
     """Super class with common properties for StreamSocket classes"""
@@ -29,15 +27,26 @@ class NodeConfig(object):
             {"ls": ["ls", "dir", "gci", "get-childitem"]},
             {"cd": ["cd", "set-location"]},
             {"clear": ["clear", "cls", "clear-host"]},
-            {"grep": ["grep", "findstr"]}
+            {"grep": ["grep", "findstr"]},
+            {"route": ["route"]},
+            {"ps": ["get-process", "ps"]},
+            {"upload": ["upload"]},
+            {"download": ["download"]}
         ]
 
 
 class StreamSocket(NodeConfig):
     """Super class containing methods common to Client and Server classes"""
-    def __init__(self, ipaddr: str, port: int, shell: str, verbose: bool, debug: bool):
+    def __init__(
+        self,
+        ipaddress: str,
+        port: int,
+        shell: str,
+        verbose: bool,
+        debug: bool
+    ):
         super().__init__()
-        self.Address = ipaddr
+        self.Address = ipaddress
         self.Port = port
         self.Shell = shell
         self.Verbose = verbose
@@ -90,7 +99,7 @@ class StreamSocket(NodeConfig):
         sock.sendall(message)
 
     @staticmethod
-    def send(sock: socket.socket, msg: str) -> None:
+    def send_msg(sock: socket.socket, msg: str) -> None:
         """Prefix/send messages with 32-bit unsigned int size indicator.
         Unsigned int is packed in network byte (big-endian) order"""
         msg = struct.pack(">I", len(msg)) + msg.encode()
@@ -146,8 +155,6 @@ class StreamSocket(NodeConfig):
         if "\\" in command:
             command.replace("\\", "/")
 
-        print(f"self.LastWD: {self.LastWD}")  # for debugging
-
         stats = subprocess.run(
             args=command,
             cwd=self.LastWD,
@@ -164,31 +171,21 @@ class StreamSocket(NodeConfig):
     def change_dir(self, command: str) -> (bool, str):
         """Update LastWD property with the new location. Return the path tested
         and a bool indicating if working directory was successfully changed"""
-        # TODO: test and validate functionality in prod
-        # TODO: fix relative Paths not working
-
         if "\\" in command:
             command = command.replace("\\", "/")
 
         cmd_args = command.split()
 
         if len(cmd_args) > 1:
-            path = str(Path(cmd_args[1]).resolve())
+            path = Path(cmd_args[1]).resolve()
         else:
             path = None
 
         if path is not None:
-            if Path(path).resolve().exists():
-                new_path = str(Path(path).resolve())
-                self.LastWD = new_path
-                #self.LastWD = str(path)
+            if path.exists():
+                os.chdir(str(path))
+                self.LastWD = str(path)
                 return [True, str(path)]
-            else:
-                new_path = Path(self.LastWD).joinpath(path).resolve()
-
-            if new_path.exists():
-                self.LastWD = new_path
-                return [True, new_path]
             else:
                 return [False, path]
         else:

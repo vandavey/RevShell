@@ -66,7 +66,7 @@ class Server(StreamSocket):
             utils.status(f"Received connection from {addr[0]} on port {addr[1]}")
 
             # send ==> established message
-            self.send(client_sock, f"Connection established with {socket.gethostname()}")
+            self.send_msg(client_sock, f"Connection established with {socket.gethostname()}")
 
             # receive <== current user/host information
             user_info = self.recv_msg(client_sock).split("::")
@@ -96,7 +96,7 @@ class Server(StreamSocket):
                     command = input(self.get_prompt().decode())
 
                     # send ==> command to be executed
-                    self.send(client_sock, command)
+                    self.send_msg(client_sock, command)
                     family = self.check_special(command)
 
                     if family != "exit":
