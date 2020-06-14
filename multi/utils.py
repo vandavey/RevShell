@@ -117,6 +117,7 @@ def stdin_status(stdin: str, level: str = "output") -> None:
 
 def status(stdout: str = "", level: str = "info", stdin: str = None) -> None:
     """Print specified status to stdout at different status levels"""
+    # TODO: fix possible logic error where output highlighting is wrong
     if level == "info":
         opts = OPTS_LIST[0]
     elif level == "output":

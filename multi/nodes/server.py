@@ -99,25 +99,23 @@ class Server(StreamSocket):
                     self.send_msg(client_sock, command)
                     family = self.check_special(command)
 
-                    if family != "exit":
-                        # receive <==  command output
-                        out_type, output = self.receive_cmd(client_sock)
-
-                        # TODO: fix relative directory issues
-                        if family == "cd":
-                            if out_type == "stdout":
-                                self.LastWD = output
-                                utils.status(level="output", stdin=command)
-                            else:
-                                utils.status(level="error", stdin=command)
-                        elif family == "clear":
-                            print(utils.Ansi.clear().decode(), end="")
-                        else:
-                            utils.status(output, level="output", stdin=command)
-                    else:
+                    if family == "exit":
                         if self.Verbose:
                             utils.status("Exiting RevShell")
                         break
+
+                    # receive <==  command output
+                    out_type, output = self.recv_cmd(client_sock)
+                    # TODO: fix highlighting issues
+
+                    if family == "clear":
+                        print(utils.Ansi.clear().decode(), end="")
+                    elif family == "cd":
+                        if out_type == "output":
+                            self.LastWD = output
+                        utils.status(level=out_type, stdin=command)
+                    else:
+                        utils.status(output, out_type, stdin=command)
             except Exception as exc:
                 # TODO: remove redundancy
                 try:

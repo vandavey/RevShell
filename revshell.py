@@ -36,7 +36,7 @@ parser.add_argument(
 
 parser.add_argument(
     "-q", "--quiet", action="store_true",
-    help="reduce console output stream as much as possible"
+    help="reduce console output as much as possible"
 )
 
 parser.add_argument(
@@ -46,7 +46,7 @@ parser.add_argument(
 
 parser.add_argument(
     "-d", "--debug", action="store_true",
-    help="be verbose + output shell commands"
+    help="be verbose + output command stdout"
 )
 
 # TODO add argparse examples

