@@ -29,7 +29,8 @@ class Client(StreamSocket):
         shell_path, name = self.get_exec(opsys, shell)
         if verb:
             utils.status(f"shell => {name}")
-        super().__init__(rhost, port, shell_path, verb, debug)
+        super().__init__(rhost, port, shell_path, debug)
+        self.Verbose = verb
 
     def execute(self, command: str) -> (bytes, bytes, bytes):
         """Execute the command using system shell subprocess,

@@ -21,8 +21,9 @@ class Server(StreamSocket):
         debug: bool,
         shell: str = None
     ):
-        shell_path, name = self.get_exec(opsys, shell)
-        super().__init__(lhost, port, shell_path, verb, debug)
+        shell_path = self.get_exec(opsys, shell)[0]
+        super().__init__(lhost, port, shell_path, debug)
+        self.Verbose = verb
 
     @staticmethod
     def _env(env_info: str) -> dict:

@@ -12,17 +12,16 @@ from pathlib import Path
 from multi import utils
 
 
-class NodeConfig(object):
-    """Super class with common properties for StreamSocket classes"""
-    def __init__(self):
+class SocketShell(object):
+    def __init__(self, shell: str, debug: bool):
+        self.Shell = shell
+        self.Debug = debug
         self.UserName = None
         self.Hostname = None
         self.LastWD = None
         self.RemoteOpSys = None
-        self.Shell = None
         self.Environment = None
-        self.Timeout = 60
-        self.Special = [
+        self.SpecialCmds = [
             {"exit": ["exit", "quit", "logout"]},
             {"ls": ["ls", "dir", "gci", "get-childitem"]},
             {"cd": ["cd", "set-location"]},
@@ -31,26 +30,134 @@ class NodeConfig(object):
             {"route": ["route"]},
             {"ps": ["get-process", "ps"]},
             {"upload": ["upload"]},
-            {"download": ["download"]}
+            {"download": ["download"]},
+            {"search": ["search"]},
+        ]
+
+    def _run_cmd(self, command: str, binary: str) -> (bytes, bytes, bytes):
+        """Protected helper method to execute command once input is validated.
+        StreamSocket.execute method should be called to properly access this method"""
+        if "\\" in command:
+            command = command.replace("\\", "/")
+
+        stats = subprocess.run(
+            args=command,
+            cwd=self.LastWD,
+            env=self.Environment,
+            executable=binary,
+            stdin=subprocess.PIPE,
+            stdout=subprocess.PIPE,
+            stderr=subprocess.PIPE,
+            shell=True
+        )
+
+        return [command.encode(), stats.stdout, stats.stderr]
+
+    def _change_dir(self, command: str) -> (bool, str):
+        """Update LastWD property with the new location. Return the path tested
+        and a bool indicating if working directory was successfully changed.
+        This method is protected and should only be called by socket.execute"""
+        # TODO: add handling for [cd $ENV] commands
+
+        if "\\" in command:
+            command = command.replace("\\", "/")
+        cmd_args = command.split()
+
+        if len(cmd_args) > 1:
+            path = Path(cmd_args[1]).resolve()
+        else:
+            path = None
+
+        if path is not None:
+            if path.exists():
+                self.LastWD = str(path)
+                os.chdir(self.LastWD)
+                return [True, self.LastWD]
+            else:
+                return [False, str(path)]
+        else:
+            return [True, self.LastWD]
+
+    @staticmethod
+    def get_exec(opsys: str, shell: str = None) -> (str, str):
+        """Get the shell executable file path for the local system.
+        Returns the file path and friendly-name of the shell."""
+        if shell is not None:
+            if shutil.which(shell) is not None:
+                return [shutil.which(shell), shell]
+            else:
+                utils.status(f"Cannot locate {shell}, now using defaults", "warn")
+
+        if opsys == "nt":
+            if shutil.which("powershell.exe") is None:
+                return [shutil.which("cmd.exe"), "cmd.exe"]
+            else:
+                return [shutil.which("powershell.exe"), "powershell.exe"]
+
+        if shutil.which("bash") is None:
+            return [shutil.which("sh"), "sh"]
+        else:
+            return [shutil.which("bash"), "bash"]
+
+    def get_prompt(self) -> bytes:
+        """Return the shell prompt after applying ansi styling"""
+        if self.RemoteOpSys == "nt":
+            return utils.style_prompt(
+                self.UserName,
+                self.LastWD,
+                self.RemoteOpSys
+            )
+        else:
+            return utils.style_prompt(
+                self.UserName,
+                self.LastWD,
+                self.RemoteOpSys,
+                self.Hostname
+            )
+
+    def check_special(self, word: str) -> Union[str, None]:
+        """Check to see if command contains a special keyword"""
+        for family in self.SpecialCmds:
+            for key, value, in family.items():
+                if word.split()[0].lower() in value:
+                    return key
+
+    def get_sysinfo(self) -> (str, str):
+        """Retrieve system information of the local machine, as well
+        as user/host information. Return a tuple with two strings."""
+        uname = platform.uname()
+
+        return [
+            "::".join([
+                getpass.getuser(),
+                socket.gethostname(),
+                self.LastWD,
+                utils.OPSYS,
+                self.Shell,
+                str(os.environ.copy())[1: -1]
+            ]),
+            " ".join([
+                uname.system,
+                uname.node,
+                uname.release,
+                uname.version,
+                uname.machine
+            ])
         ]
 
 
-class StreamSocket(NodeConfig):
+class StreamSocket(SocketShell):
     """Super class containing methods common to Client and Server classes"""
     def __init__(
         self,
         ipaddress: str,
         port: int,
         shell: str,
-        verbose: bool,
         debug: bool
     ):
-        super().__init__()
+        super().__init__(shell, debug)
         self.Address = ipaddress
         self.Port = port
-        self.Shell = shell
-        self.Verbose = verbose
-        self.Debug = debug
 
     @staticmethod
     def _recv_all(sock: socket.socket, length: int) -> bytearray:
@@ -106,117 +213,6 @@ class StreamSocket(NodeConfig):
         sock.sendall(msg)
 
     @staticmethod
-    def get_exec(opsys: str, shell: str = None) -> (str, str):
-        """Get the shell executable file path for the local system.
-        Returns the file path and friendly-name of the shell."""
-        if shell is not None:
-            if shutil.which(shell) is not None:
-                return [shutil.which(shell), shell]
-            else:
-                utils.status(f"Cannot locate {shell}, now using defaults", "warn")
-
-        if opsys == "nt":
-            if shutil.which("powershell.exe") is None:
-                return [shutil.which("cmd.exe"), "cmd.exe"]
-            else:
-                return [shutil.which("powershell.exe"), "powershell.exe"]
-
-        if shutil.which("bash") is None:
-            return [shutil.which("sh"), "sh"]
-        else:
-            return [shutil.which("bash"), "bash"]
-
-    def get_prompt(self) -> bytes:
-        """Return the shell prompt after applying ansi styling"""
-        if self.RemoteOpSys == "nt":
-            return utils.style_prompt(
-                self.UserName,
-                self.LastWD,
-                self.RemoteOpSys
-            )
-        else:
-            return utils.style_prompt(
-                self.UserName,
-                self.LastWD,
-                self.RemoteOpSys,
-                self.Hostname
-            )
-
-    def check_special(self, word: str) -> Union[str, None]:
-        """Check to see if command contains a special keyword"""
-        for family in self.Special:
-            for key, value, in family.items():
-                if word.split()[0].lower() in value:
-                    return key
-
-    def _run_cmd(self, command: str, binary: str) -> (bytes, bytes, bytes):
-        """Protected helper method to execute command once input is validated.
-        StreamSocket.execute method should be called to properly access this method"""
-        if "\\" in command:
-            command = command.replace("\\", "/")
-
-        stats = subprocess.run(
-            args=command,
-            cwd=self.LastWD,
-            env=self.Environment,
-            executable=binary,
-            stdin=subprocess.PIPE,
-            stdout=subprocess.PIPE,
-            stderr=subprocess.PIPE,
-            shell=True
-        )
-
-        return [command.encode(), stats.stdout, stats.stderr]
-
-    def _change_dir(self, command: str) -> (bool, str):
-        """Update LastWD property with the new location. Return the path tested
-        and a bool indicating if working directory was successfully changed.
-        This method is protected and should only be called by socket.execute"""
-        # TODO: add handling for [cd $ENV] commands
-
-        if "\\" in command:
-            command = command.replace("\\", "/")
-        cmd_args = command.split()
-
-        if len(cmd_args) > 1:
-            path = Path(cmd_args[1]).resolve()
-        else:
-            path = None
-
-        if path is not None:
-            if path.exists():
-                self.LastWD = str(path)
-                os.chdir(self.LastWD)
-                return [True, self.LastWD]
-            else:
-                return [False, str(path)]
-        else:
-            return [True, self.LastWD]
-
-    def get_sysinfo(self) -> (str, str):
-        """Retrieve system information of the local machine, as well
-        as user/host information. Return a tuple with two strings."""
-        uname = platform.uname()
-
-        return [
-            "::".join([
-                getpass.getuser(),
-                socket.gethostname(),
-                self.LastWD,
-                utils.OPSYS,
-                self.Shell,
-                str(os.environ.copy())[1: -1]
-            ]),
-            " ".join([
-                uname.system,
-                uname.node,
-                uname.release,
-                uname.version,
-                uname.machine
-            ])
-        ]
-
-    @staticmethod
     def except_handler(exc: Exception) -> None:
         """Handle common socket connection exceptions"""
         sock_excepts = [
@@ -235,4 +231,13 @@ class StreamSocket(NodeConfig):
 class Post(object):
     """Post connection utilities such as file system IO handling"""
     def __init__(self):
+        pass
+
+    def upload(self):
+        pass
+
+    def download(self):
+        pass
+
+    def search(self):
         pass
