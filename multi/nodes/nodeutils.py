@@ -1,18 +1,20 @@
 import os
 import socket
 import shutil
+import time
 import platform
 import sys
 import getpass
 import struct
 import subprocess
-from typing import Union
 from pathlib import Path
+from typing import Union
 
 from multi import utils
 
 
 class SocketShell(object):
+    """Command shell fields and methods for remote command shells"""
     def __init__(self, shell: str, debug: bool):
         self.Shell = shell
         self.Debug = debug
@@ -34,7 +36,7 @@ class SocketShell(object):
             {"search": ["search"]},
         ]
 
-    def _run_cmd(self, command: str, binary: str) -> (bytes, bytes, bytes):
+    def _run_cmd(self, command: str, binary: str) -> tuple:
         """Protected helper method to execute command once input is validated.
         StreamSocket.execute method should be called to properly access this method"""
         if "\\" in command:
@@ -51,9 +53,9 @@ class SocketShell(object):
             shell=True
         )
 
-        return [command.encode(), stats.stdout, stats.stderr]
+        return stats.stdout, stats.stderr
 
-    def _change_dir(self, command: str) -> (bool, str):
+    def _change_dir(self, command: str) -> tuple:
         """Update LastWD property with the new location. Return the path tested
         and a bool indicating if working directory was successfully changed.
         This method is protected and should only be called by socket.execute"""
@@ -72,34 +74,34 @@ class SocketShell(object):
             if path.exists():
                 self.LastWD = str(path)
                 os.chdir(self.LastWD)
-                return [True, self.LastWD]
+                return True, self.LastWD
             else:
-                return [False, str(path)]
+                return False, str(path)
         else:
-            return [True, self.LastWD]
+            return True, self.LastWD
 
     @staticmethod
-    def get_exec(opsys: str, shell: str = None) -> (str, str):
+    def get_exec(opsys: str, shell: str = None) -> tuple:
         """Get the shell executable file path for the local system.
         Returns the file path and friendly-name of the shell."""
         if shell is not None:
             if shutil.which(shell) is not None:
-                return [shutil.which(shell), shell]
+                return shutil.which(shell), shell
             else:
                 utils.status(f"Cannot locate {shell}, now using defaults", "warn")
 
         if opsys == "nt":
             if shutil.which("powershell.exe") is None:
-                return [shutil.which("cmd.exe"), "cmd.exe"]
+                return shutil.which("cmd.exe"), "cmd.exe"
             else:
-                return [shutil.which("powershell.exe"), "powershell.exe"]
+                return shutil.which("powershell.exe"), "powershell.exe"
 
         if shutil.which("bash") is None:
-            return [shutil.which("sh"), "sh"]
+            return shutil.which("sh"), "sh"
         else:
-            return [shutil.which("bash"), "bash"]
+            return shutil.which("bash"), "bash"
 
-    def get_prompt(self) -> bytes:
+    def get_prompt(self) -> str:
         """Return the shell prompt after applying ansi styling"""
         if self.RemoteOpSys == "nt":
             return utils.style_prompt(
@@ -122,19 +124,19 @@ class SocketShell(object):
                 if word.split()[0].lower() in value:
                     return key
 
-    def get_sysinfo(self) -> (str, str):
+    def get_sysinfo(self) -> tuple:
         """Retrieve system information of the local machine, as well
         as user/host information. Return a tuple with two strings."""
         uname = platform.uname()
-
-        return [
+        return (
             "::".join([
                 getpass.getuser(),
                 socket.gethostname(),
                 self.LastWD,
                 utils.OPSYS,
                 self.Shell,
-                str(os.environ.copy())[1: -1]
+                time.asctime(),
+                str(os.environ.copy())[1: -1],
             ]),
             " ".join([
                 uname.system,
@@ -143,7 +145,16 @@ class SocketShell(object):
                 uname.version,
                 uname.machine
             ])
-        ]
+        )
+
+    def upload(self, target: str, path: str) -> None:
+        """Upload files from the local system to the remote system"""
+
+    def download(self, path: str) -> bytes:
+        """Download files from the remote system to the local system"""
+
+    def search(self, pattern: str, target_type: str) -> list:
+        """Search the file system for a specific pattern and target type"""
 
 
 class StreamSocket(SocketShell):
@@ -181,7 +192,7 @@ class StreamSocket(SocketShell):
         else:
             return ""
 
-    def recv_cmd(self, sock: socket.socket) -> (str, str):
+    def recv_cmd(self, sock: socket.socket) -> tuple:
         """Receive data without experiencing packet fragmentation. This method
         is intended to be used by Server to receive client command output"""
         raw_len = self._recv_all(sock, 4)  # get size indicator
@@ -226,18 +237,3 @@ class StreamSocket(SocketShell):
             utils.throw([exc.args[1]])
         else:
             raise exc
-
-
-class Post(object):
-    """Post connection utilities such as file system IO handling"""
-    def __init__(self):
-        pass
-
-    def upload(self):
-        pass
-
-    def download(self):
-        pass
-
-    def search(self):
-        pass

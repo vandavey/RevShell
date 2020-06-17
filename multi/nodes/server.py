@@ -17,13 +17,13 @@ class Server(StreamSocket):
         lhost: str,
         port: int,
         opsys: str,
-        verb: bool,
+        verbose: bool,
         debug: bool,
         shell: str = None
     ):
         shell_path = self.get_exec(opsys, shell)[0]
         super().__init__(lhost, port, shell_path, debug)
-        self.Verbose = verb
+        self.Verbose = verbose
 
     @staticmethod
     def _env(env_info: str) -> dict:
@@ -67,7 +67,10 @@ class Server(StreamSocket):
             utils.status(f"Received connection from {addr[0]} on port {addr[1]}")
 
             # send ==> established message
-            self.send_msg(client_sock, f"Connection established with {socket.gethostname()}")
+            self.send_msg(
+                client_sock,
+                f"Connection established with {socket.gethostname()}"
+            )
 
             # receive <== current user/host information
             user_info = self.recv_msg(client_sock).split("::")
@@ -77,24 +80,27 @@ class Server(StreamSocket):
             self.LastWD = str(user_info[2])
             self.RemoteOpSys = str(user_info[3])
             self.Shell = str(user_info[4])
-            self.Environment = self._env(user_info[5])
+            local_time = str(user_info[5])
+            self.Environment = self._env(user_info[6])
 
             if self.RemoteOpSys == "nt":
                 shell_name = self.Shell.split("\\")[-1]
             else:
                 shell_name = self.Shell.split("/")[-1]
 
-            utils.status(f"Logged into host '{self.Hostname}' as user '{self.UserName}'")
-            utils.status(f"Using {shell_name} as the system command shell")
-
             # receive <== system information
             sys_info = self.recv_msg(client_sock)
-            utils.status(sys_info)
+
+            print(f"\n{local_time}")
+            print(f"{sys_info}")
+            print("-" * 25)
+            print(f"Hostname: {self.Hostname}")
+            print(f"Username: {self.UserName}")
+            print(f"Shell: {shell_name}\n")
 
             try:
-                # TODO: change status highlighting logic to match Client class
                 while True:
-                    command = input(self.get_prompt().decode())
+                    command = input(self.get_prompt())
 
                     # send ==> command to be executed
                     self.send_msg(client_sock, command)
@@ -107,7 +113,6 @@ class Server(StreamSocket):
 
                     # receive <==  command output
                     out_type, output = self.recv_cmd(client_sock)
-                    # TODO: fix highlighting issues
 
                     if family == "clear":
                         print(utils.Ansi.clear().decode(), end="")
@@ -118,7 +123,7 @@ class Server(StreamSocket):
                     else:
                         utils.status(output, out_type, stdin=command)
             except Exception as exc:
-                # TODO: remove redundancy
+                # TODO: remove possible redundancy
                 try:
                     client_sock.shutdown(socket.SHUT_WR)
                 except OSError:

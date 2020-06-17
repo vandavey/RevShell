@@ -12,25 +12,25 @@ OPSYS = os.name
 class Ansi(object):
     """Formatting class containing Ansi escape sequences"""
     @staticmethod
-    def color(color: str) -> bytes:
+    def color(color: str) -> str:
         """Return the ansii sequence of a specified color"""
         if color.lower() == "red":
-            return "\x1b[91m".encode()
+            return "\x1b[91m"
         elif color.lower() == "green":
-            return "\x1b[92m".encode()
+            return "\x1b[92m"
         elif color.lower() == "yellow":
-            return "\x1b[93m".encode()
+            return "\x1b[93m"
         elif color.lower() == "cyan":
-            return "\x1b[96m".encode()
+            return "\x1b[96m"
         elif color.lower() == "white":
-            return "\x1b[97m".encode()
+            return "\x1b[97m"
         else:
             raise ValueError("Unrecognized value received for <color>")
 
     @staticmethod
-    def reset() -> bytes:
+    def reset() -> str:
         """Return the ansi sequence to reset the console formatting style"""
-        return "\x1b[0m".encode()
+        return "\x1b[0m"
 
     @staticmethod
     def clear() -> bytes:
@@ -38,16 +38,16 @@ class Ansi(object):
         return "\x1b[H\x1b[2J\x1b[3J".encode()
 
     @staticmethod
-    def paint(text: str, color: str) -> bytes:
-        """Add ansi color sequence to string, return output as bytes"""
-        return Ansi.color(color) + text.encode()
+    def paint(text: str, color: str) -> str:
+        """Add ansi color sequence to string, return output as string"""
+        return Ansi.color(color) + text
 
     @staticmethod
-    def build_prompt(user: str, cwd: str, hostname: str = None) -> bytes:
+    def build_prompt(user: str, cwd: str, hostname: str = None) -> str:
         """Assemble shell prompt with ansi sequences, return as bytes.
         Note: this method is intended to be called from within the utils module"""
-        if hostname not in [b"", None]:
-            return b"".join([
+        if hostname not in ["", None]:
+            return "".join([
                 Ansi.paint(user, "green"),
                 Ansi.paint("@", "white"),
                 Ansi.paint(hostname, "green"),
@@ -56,7 +56,7 @@ class Ansi(object):
                 Ansi.paint("> ", "white")
             ])
         else:
-            return b"".join([
+            return "".join([
                 Ansi.paint(user, "green"),
                 Ansi.paint("::", "white"),
                 Ansi.paint(cwd, "cyan"),
@@ -67,19 +67,19 @@ class Ansi(object):
 OPTS_LIST = [
     {
         "symbol": "[*]",
-        "color": Ansi.color("cyan").decode()
+        "color": Ansi.color("cyan")
     },
     {
         "symbol": "[+]",
-        "color": Ansi.color("green").decode()
+        "color": Ansi.color("green")
     },
     {
         "symbol": "[!]",
-        "color": Ansi.color("yellow").decode()
+        "color": Ansi.color("yellow")
     },
     {
         "symbol": "[x]",
-        "color": Ansi.color("red").decode()
+        "color": Ansi.color("red")
     }
 ]
 
@@ -89,7 +89,7 @@ def init_colorama() -> None:
     colorama.init(autoreset=True)
 
 
-def style_prompt(user: str, cwd: str, opsys: str, host: str = None) -> bytes:
+def style_prompt(user: str, cwd: str, opsys: str, host: str = None) -> str:
     """Add ansi styling to user prompt, handle posix and nt separately"""
     if opsys != "nt":
         if host is not None:
@@ -133,7 +133,6 @@ def status(stdout: str = "", level: str = "info", stdin: str = None) -> None:
 
     if stdin:
         print(f"[{stdin}] " + opts["color"] + "=>")
-
     print(stdout)
 
 
@@ -154,7 +153,7 @@ def throw(text: Union[str, list] = None, kill: bool = True) -> None:
         exit(1)
 
 
-def ipv4_parse(ipaddr: str) -> bool:
+def valid_ipv4(ipaddr: str) -> bool:
     """Try to parse value as IPv4 address, return True if successful"""
     try:
         IPv4Address(ipaddr)
