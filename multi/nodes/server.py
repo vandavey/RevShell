@@ -40,6 +40,16 @@ class Server(StreamSocket):
 
         return environ
 
+    def shutdown(self, socks: tuple) -> None:
+        """Cleanup and close each socket in <socks> tuple"""
+        for sock in socks:
+            try:
+                sock.shutdown(socket.SHUT_WR)
+            except OSError:
+                pass
+            finally:
+                sock.close()
+
     def listen(self) -> None:
         """Begin listening for incoming TCP connection from the client shell"""
         # TODO: configure timeouts and blocking
@@ -91,16 +101,18 @@ class Server(StreamSocket):
             # receive <== system information
             sys_info = self.recv_msg(client_sock)
 
-            print(f"\n{local_time}")
+            print(f"\r\n{local_time}")
             print(f"{sys_info}")
             print("-" * 25)
             print(f"Hostname: {self.Hostname}")
             print(f"Username: {self.UserName}")
-            print(f"Shell: {shell_name}\n")
+            print(f"Shell: {shell_name}\r\n")
 
             try:
                 while True:
-                    command = input(self.get_prompt())
+                    # TODO: use text wrap when output is larger than console
+                    print(self.get_prompt(), end="")
+                    command = input()
 
                     # send ==> command to be executed
                     self.send_msg(client_sock, command)
@@ -115,7 +127,8 @@ class Server(StreamSocket):
                     out_type, output = self.recv_cmd(client_sock)
 
                     if family == "clear":
-                        print(utils.Ansi.clear().decode(), end="")
+                        # TODO: scroll back not completely clearing
+                        print(utils.Ansi.clear(), end="")
                     elif family == "cd":
                         if out_type == "output":
                             self.LastWD = output
@@ -123,19 +136,7 @@ class Server(StreamSocket):
                     else:
                         utils.status(output, out_type, stdin=command)
             except Exception as exc:
-                # TODO: remove possible redundancy
-                try:
-                    client_sock.shutdown(socket.SHUT_WR)
-                except OSError:
-                    pass
-                finally:
-                    server_sock.close()
+                self.shutdown((client_sock, server_sock))
                 self.except_handler(exc)
             finally:
-                try:
-                    client_sock.shutdown(socket.SHUT_WR)
-                    server_sock.shutdown(socket.SHUT_WR)
-                except OSError:
-                    pass
-                finally:
-                    server_sock.close()
+                self.shutdown((client_sock, server_sock))

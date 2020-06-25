@@ -33,9 +33,9 @@ class Ansi(object):
         return "\x1b[0m"
 
     @staticmethod
-    def clear() -> bytes:
+    def clear() -> str:
         """Return the ansi sequence to clear terminal buffer and scrollback"""
-        return "\x1b[H\x1b[2J\x1b[3J".encode()
+        return "\x1b[H\x1b[2J\x1b[3J"
 
     @staticmethod
     def paint(text: str, color: str) -> str:
@@ -46,30 +46,30 @@ class Ansi(object):
     def build_prompt(user: str, cwd: str, hostname: str = None) -> str:
         """Assemble shell prompt with ansi sequences, return as bytes.
         Note: this method is intended to be called from within the utils module"""
-        if hostname not in ["", None]:
-            return "".join([
+        if hostname not in (None, ""):
+            return "".join((
                 Ansi.paint(user, "green"),
                 Ansi.paint("@", "white"),
                 Ansi.paint(hostname, "green"),
                 Ansi.paint(":", "white"),
                 Ansi.paint(cwd, "cyan"),
                 Ansi.paint("> ", "white")
-            ])
+            ))
         else:
-            return "".join([
+            return "".join((
                 Ansi.paint(user, "green"),
                 Ansi.paint("::", "white"),
                 Ansi.paint(cwd, "cyan"),
                 Ansi.paint("> ", "white")
-            ])
+            ))
 
 
-OPTS_LIST = [
+OPTIONS = (
     {"symbol": "[*]", "color": Ansi.color("cyan")},
     {"symbol": "[+]", "color": Ansi.color("green")},
     {"symbol": "[!]", "color": Ansi.color("yellow")},
     {"symbol": "[x]", "color": Ansi.color("red")}
-]
+)
 
 
 def init_colorama() -> None:
@@ -92,9 +92,9 @@ def stdin_status(stdin: str, level: str = "output") -> None:
     """Print specified stdin string to the console. This function is
     intended to be used by Client class for stdin handling"""
     if level == "output":
-        opts = OPTS_LIST[1]
+        opts = OPTIONS[1]
     elif level == "error":
-        opts = OPTS_LIST[3]
+        opts = OPTIONS[3]
     else:
         raise ValueError("Expected <level> to be [output|error]")
 
@@ -106,13 +106,13 @@ def stdin_status(stdin: str, level: str = "output") -> None:
 def status(stdout: str = "", level: str = "info", stdin: str = None) -> None:
     """Print specified status to stdout at different status levels"""
     if level == "info":
-        opts = OPTS_LIST[0]
+        opts = OPTIONS[0]
     elif level == "output":
-        opts = OPTS_LIST[1]
+        opts = OPTIONS[1]
     elif level == "alert":
-        opts = OPTS_LIST[2]
+        opts = OPTIONS[2]
     elif level == "error":
-        opts = OPTS_LIST[3]
+        opts = OPTIONS[3]
     else:
         raise ValueError("Expected <level> to be [info|alert|output|error]")
 
@@ -123,17 +123,11 @@ def status(stdout: str = "", level: str = "info", stdin: str = None) -> None:
     print(stdout)
 
 
-def throw(text: Union[str, list] = None, kill: bool = True) -> None:
+def throw(text: str = None, kill: bool = True) -> None:
     """Print the exception status to stdout and kill the program"""
     if text is not None:
-        if type(text) is list:
-            tlist = [str(x) for x in text]
-        else:
-            tlist = [str(text)]
-
-        for string in tlist:
-            print(Fore.LIGHTRED_EX + "[x]", end=" ")
-            print(Style.RESET_ALL + string)
+        print(Fore.LIGHTRED_EX + "[x]", end=" ")
+        print(Style.RESET_ALL + text)
 
     if kill:
         status("Exiting RevShell.", level="info")
@@ -159,7 +153,7 @@ def append(outpath: str, payload) -> None:
     if type(payload) is list:
         for line in payload:
             with open(outpath, "a+") as file:
-                file.write(f"{line}\n")
+                file.write(f"{line}\r\n")
     else:
         with open(outpath, "a+") as file:
-            file.write(f"{payload}\n")
+            file.write(f"{payload}\r\n")

