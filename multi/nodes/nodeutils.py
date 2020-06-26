@@ -118,6 +118,9 @@ class SocketShell(object):
 
     def check_special(self, word: str) -> Union[str, None]:
         """Check to see if command contains a special keyword"""
+        if word == "":
+            return
+
         for family in self.SpecialCmds:
             for key, value, in family.items():
                 if word.split()[0].lower() in value:
@@ -279,7 +282,7 @@ class StreamSocket(SocketShell):
         """Prefix/send messages with 32-bit unsigned int size prefix. This
         method is intended to be used by Client to send command output"""
         if out_type in ("output", "error"):
-            msg = "::".join((out_type, msg))
+            msg = f"{out_type}::{msg}"
         else:
             raise ValueError("Expected <out_type> to be in [output|error]")
 

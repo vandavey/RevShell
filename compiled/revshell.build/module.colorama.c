@@ -1,5 +1,5 @@
 /* Generated code for Python module 'colorama'
- * created by Nuitka version 0.6.8.3
+ * created by Nuitka version 0.6.8.4
  *
  * This code is in part copyright 2020 Kay Hayen.
  *
@@ -41,7 +41,7 @@ extern PyObject *const_str_plain___file__;
 static PyObject *const_str_digest_c842125dc6d86a5c816083e32d40b737;
 static PyObject *const_str_plain_initialise;
 static PyObject *const_str_digest_bab6f252b2ccf10ba982bbe2404489b2;
-static PyObject *const_str_plain___version__;
+extern PyObject *const_str_plain___version__;
 extern PyObject *const_str_plain_ansitowin32;
 extern PyObject *const_str_plain_ansi;
 static PyObject *const_list_str_digest_27dd4d9839480c577d006107e459db6f_list;
@@ -73,19 +73,18 @@ static void createModuleConstants(void) {
     PyTuple_SET_ITEM(const_tuple_59b9584e376478b0265443039aa0d934_tuple, 1, const_str_plain_Back); Py_INCREF(const_str_plain_Back);
     PyTuple_SET_ITEM(const_tuple_59b9584e376478b0265443039aa0d934_tuple, 2, const_str_plain_Style); Py_INCREF(const_str_plain_Style);
     PyTuple_SET_ITEM(const_tuple_59b9584e376478b0265443039aa0d934_tuple, 3, const_str_plain_Cursor); Py_INCREF(const_str_plain_Cursor);
-    const_str_digest_c842125dc6d86a5c816083e32d40b737 = UNSTREAM_STRING_ASCII(&constant_bin[ 3592 ], 64, 0);
-    const_str_plain_initialise = UNSTREAM_STRING_ASCII(&constant_bin[ 3656 ], 10, 1);
-    const_str_digest_bab6f252b2ccf10ba982bbe2404489b2 = UNSTREAM_STRING_ASCII(&constant_bin[ 3666 ], 5, 0);
-    const_str_plain___version__ = UNSTREAM_STRING_ASCII(&constant_bin[ 3671 ], 11, 1);
+    const_str_digest_c842125dc6d86a5c816083e32d40b737 = UNSTREAM_STRING_ASCII(&constant_bin[ 15295 ], 64, 0);
+    const_str_plain_initialise = UNSTREAM_STRING_ASCII(&constant_bin[ 15359 ], 10, 1);
+    const_str_digest_bab6f252b2ccf10ba982bbe2404489b2 = UNSTREAM_STRING_ASCII(&constant_bin[ 15369 ], 5, 0);
     const_list_str_digest_27dd4d9839480c577d006107e459db6f_list = PyList_New(1);
-    const_str_digest_27dd4d9839480c577d006107e459db6f = UNSTREAM_STRING_ASCII(&constant_bin[ 3592 ], 52, 0);
+    const_str_digest_27dd4d9839480c577d006107e459db6f = UNSTREAM_STRING_ASCII(&constant_bin[ 15295 ], 52, 0);
     PyList_SET_ITEM(const_list_str_digest_27dd4d9839480c577d006107e459db6f_list, 0, const_str_digest_27dd4d9839480c577d006107e459db6f); Py_INCREF(const_str_digest_27dd4d9839480c577d006107e459db6f);
     const_tuple_907aa1bd00112484c9b8a4fb41097488_tuple = PyTuple_New(4);
     PyTuple_SET_ITEM(const_tuple_907aa1bd00112484c9b8a4fb41097488_tuple, 0, const_str_plain_init); Py_INCREF(const_str_plain_init);
     PyTuple_SET_ITEM(const_tuple_907aa1bd00112484c9b8a4fb41097488_tuple, 1, const_str_plain_deinit); Py_INCREF(const_str_plain_deinit);
     PyTuple_SET_ITEM(const_tuple_907aa1bd00112484c9b8a4fb41097488_tuple, 2, const_str_plain_reinit); Py_INCREF(const_str_plain_reinit);
     PyTuple_SET_ITEM(const_tuple_907aa1bd00112484c9b8a4fb41097488_tuple, 3, const_str_plain_colorama_text); Py_INCREF(const_str_plain_colorama_text);
-    const_str_digest_fa366ae74b56ab7335540615b9a98ad5 = UNSTREAM_STRING_ASCII(&constant_bin[ 3682 ], 17, 0);
+    const_str_digest_fa366ae74b56ab7335540615b9a98ad5 = UNSTREAM_STRING_ASCII(&constant_bin[ 15374 ], 17, 0);
 
     constants_created = true;
 }

@@ -1,5 +1,5 @@
 /* Generated code for Python module 'colorama.winterm'
- * created by Nuitka version 0.6.8.3
+ * created by Nuitka version 0.6.8.4
  *
  * This code is in part copyright 2020 Kay Hayen.
  *
@@ -41,7 +41,7 @@ extern PyObject *const_str_plain_position;
 extern PyObject *const_str_plain___name__;
 extern PyObject *const_str_plain_FillConsoleOutputAttribute;
 extern PyObject *const_tuple_str_plain___class___tuple;
-static PyObject *const_tuple_false_tuple;
+extern PyObject *const_tuple_false_tuple;
 extern PyObject *const_str_angle_metaclass;
 extern PyObject *const_str_plain_GREEN;
 static PyObject *const_str_plain__style;
@@ -56,8 +56,8 @@ extern PyObject *const_str_plain_WinTerm;
 static PyObject *const_str_digest_35ce4fa7ddaaf6ccfe72ad702c9bcef2;
 extern PyObject *const_str_plain_mode;
 extern PyObject *const_str_plain_STDOUT;
-static PyObject *const_int_pos_128;
-static PyObject *const_int_pos_6;
+extern PyObject *const_int_pos_128;
+extern PyObject *const_int_pos_6;
 extern PyObject *const_int_pos_5;
 static PyObject *const_str_plain__back;
 extern PyObject *const_str_plain_MAGENTA;
@@ -67,7 +67,7 @@ static PyObject *const_str_plain_get_position;
 static PyObject *const_tuple_int_0_int_0_tuple;
 extern PyObject *const_str_plain_Y;
 static PyObject *const_str_plain__default;
-static PyObject *const_int_pos_16;
+extern PyObject *const_int_pos_16;
 extern PyObject *const_str_plain___doc__;
 static PyObject *const_tuple_8594c9539f9600c9db9808ac121a6305_tuple;
 static PyObject *const_str_digest_ad4f6a790d11053043825f2c8af2047d;
@@ -90,12 +90,12 @@ static PyObject *const_str_digest_7938d6f42592fe42f519599a3801c1ca;
 extern PyObject *const_str_plain_value;
 extern PyObject *const_tuple_str_plain_self_tuple;
 extern PyObject *const_str_plain_style;
-static PyObject *const_int_pos_8;
+extern PyObject *const_int_pos_8;
 static PyObject *const_str_digest_7374af1a4abfa9c075a3249046783f73;
 extern PyObject *const_tuple_empty;
 static PyObject *const_str_plain_light;
 extern PyObject *const_str_space;
-static PyObject *const_tuple_str_plain_self_str_plain_value_tuple;
+extern PyObject *const_tuple_str_plain_self_str_plain_value_tuple;
 extern PyObject *const_str_plain_title;
 extern PyObject *const_str_plain_STDERR;
 extern PyObject *const_str_plain_handle;
@@ -187,45 +187,40 @@ static void createModuleConstants(void) {
     const_tuple_int_0_false_tuple = PyTuple_New(2);
     PyTuple_SET_ITEM(const_tuple_int_0_false_tuple, 0, const_int_0); Py_INCREF(const_int_0);
     PyTuple_SET_ITEM(const_tuple_int_0_false_tuple, 1, Py_False); Py_INCREF(Py_False);
-    const_str_plain__default_fore = UNSTREAM_STRING_ASCII(&constant_bin[ 6530 ], 13, 1);
-    const_tuple_false_tuple = PyTuple_New(1);
-    PyTuple_SET_ITEM(const_tuple_false_tuple, 0, Py_False); Py_INCREF(Py_False);
-    const_str_plain__style = UNSTREAM_STRING_ASCII(&constant_bin[ 6543 ], 6, 1);
-    const_str_digest_b9c0c47c02d55d4e98e22ad10b7d4780 = UNSTREAM_STRING_ASCII(&constant_bin[ 6549 ], 27, 0);
+    const_str_plain__default_fore = UNSTREAM_STRING_ASCII(&constant_bin[ 18174 ], 13, 1);
+    const_str_plain__style = UNSTREAM_STRING_ASCII(&constant_bin[ 18187 ], 6, 1);
+    const_str_digest_b9c0c47c02d55d4e98e22ad10b7d4780 = UNSTREAM_STRING_ASCII(&constant_bin[ 18193 ], 27, 0);
     const_tuple_none_false_false_tuple = PyTuple_New(3);
     PyTuple_SET_ITEM(const_tuple_none_false_false_tuple, 0, Py_None); Py_INCREF(Py_None);
     PyTuple_SET_ITEM(const_tuple_none_false_false_tuple, 1, Py_False); Py_INCREF(Py_False);
     PyTuple_SET_ITEM(const_tuple_none_false_false_tuple, 2, Py_False); Py_INCREF(Py_False);
-    const_str_plain_set_attrs = UNSTREAM_STRING_ASCII(&constant_bin[ 6576 ], 9, 1);
+    const_str_plain_set_attrs = UNSTREAM_STRING_ASCII(&constant_bin[ 18220 ], 9, 1);
     const_tuple_str_plain_self_str_plain_title_tuple = PyTuple_New(2);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_title_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_title_tuple, 1, const_str_plain_title); Py_INCREF(const_str_plain_title);
     const_tuple_str_plain_self_str_plain_on_stderr_tuple = PyTuple_New(2);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_on_stderr_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_on_stderr_tuple, 1, const_str_plain_on_stderr); Py_INCREF(const_str_plain_on_stderr);
-    const_str_digest_35ce4fa7ddaaf6ccfe72ad702c9bcef2 = UNSTREAM_STRING_ASCII(&constant_bin[ 6585 ], 17, 0);
-    const_int_pos_128 = PyLong_FromUnsignedLong(128ul);
-    const_int_pos_6 = PyLong_FromUnsignedLong(6ul);
-    const_str_plain__back = UNSTREAM_STRING_ASCII(&constant_bin[ 6602 ], 5, 1);
-    const_str_digest_b7c88a7accc02ae5b38f109a391558bc = UNSTREAM_STRING_ASCII(&constant_bin[ 6607 ], 13, 0);
-    const_str_plain__light = UNSTREAM_STRING_ASCII(&constant_bin[ 6620 ], 6, 1);
-    const_str_plain_get_position = UNSTREAM_STRING_ASCII(&constant_bin[ 6626 ], 12, 1);
+    const_str_digest_35ce4fa7ddaaf6ccfe72ad702c9bcef2 = UNSTREAM_STRING_ASCII(&constant_bin[ 18229 ], 17, 0);
+    const_str_plain__back = UNSTREAM_STRING_ASCII(&constant_bin[ 5724 ], 5, 1);
+    const_str_digest_b7c88a7accc02ae5b38f109a391558bc = UNSTREAM_STRING_ASCII(&constant_bin[ 18246 ], 13, 0);
+    const_str_plain__light = UNSTREAM_STRING_ASCII(&constant_bin[ 18259 ], 6, 1);
+    const_str_plain_get_position = UNSTREAM_STRING_ASCII(&constant_bin[ 18265 ], 12, 1);
     const_tuple_int_0_int_0_tuple = PyTuple_New(2);
     PyTuple_SET_ITEM(const_tuple_int_0_int_0_tuple, 0, const_int_0); Py_INCREF(const_int_0);
     PyTuple_SET_ITEM(const_tuple_int_0_int_0_tuple, 1, const_int_0); Py_INCREF(const_int_0);
-    const_str_plain__default = UNSTREAM_STRING_ASCII(&constant_bin[ 6530 ], 8, 1);
-    const_int_pos_16 = PyLong_FromUnsignedLong(16ul);
+    const_str_plain__default = UNSTREAM_STRING_ASCII(&constant_bin[ 7839 ], 8, 1);
     const_tuple_8594c9539f9600c9db9808ac121a6305_tuple = PyTuple_New(7);
     PyTuple_SET_ITEM(const_tuple_8594c9539f9600c9db9808ac121a6305_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
     PyTuple_SET_ITEM(const_tuple_8594c9539f9600c9db9808ac121a6305_tuple, 1, const_str_plain_mode); Py_INCREF(const_str_plain_mode);
     PyTuple_SET_ITEM(const_tuple_8594c9539f9600c9db9808ac121a6305_tuple, 2, const_str_plain_on_stderr); Py_INCREF(const_str_plain_on_stderr);
     PyTuple_SET_ITEM(const_tuple_8594c9539f9600c9db9808ac121a6305_tuple, 3, const_str_plain_handle); Py_INCREF(const_str_plain_handle);
     PyTuple_SET_ITEM(const_tuple_8594c9539f9600c9db9808ac121a6305_tuple, 4, const_str_plain_csbi); Py_INCREF(const_str_plain_csbi);
-    const_str_plain_from_coord = UNSTREAM_STRING_ASCII(&constant_bin[ 6638 ], 10, 1);
+    const_str_plain_from_coord = UNSTREAM_STRING_ASCII(&constant_bin[ 18277 ], 10, 1);
     PyTuple_SET_ITEM(const_tuple_8594c9539f9600c9db9808ac121a6305_tuple, 5, const_str_plain_from_coord); Py_INCREF(const_str_plain_from_coord);
-    const_str_plain_cells_to_erase = UNSTREAM_STRING_ASCII(&constant_bin[ 6648 ], 14, 1);
+    const_str_plain_cells_to_erase = UNSTREAM_STRING_ASCII(&constant_bin[ 18287 ], 14, 1);
     PyTuple_SET_ITEM(const_tuple_8594c9539f9600c9db9808ac121a6305_tuple, 6, const_str_plain_cells_to_erase); Py_INCREF(const_str_plain_cells_to_erase);
-    const_str_digest_ad4f6a790d11053043825f2c8af2047d = UNSTREAM_STRING_ASCII(&constant_bin[ 6662 ], 12, 0);
+    const_str_digest_ad4f6a790d11053043825f2c8af2047d = UNSTREAM_STRING_ASCII(&constant_bin[ 18301 ], 12, 0);
     const_tuple_str_plain_self_str_plain_handle_str_plain_position_tuple = PyTuple_New(3);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_handle_str_plain_position_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_handle_str_plain_position_tuple, 1, const_str_plain_handle); Py_INCREF(const_str_plain_handle);
@@ -238,40 +233,36 @@ static void createModuleConstants(void) {
     const_tuple_923f75de8877db45d2269e63b0c5cff5_tuple = PyTuple_New(4);
     PyTuple_SET_ITEM(const_tuple_923f75de8877db45d2269e63b0c5cff5_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
     PyTuple_SET_ITEM(const_tuple_923f75de8877db45d2269e63b0c5cff5_tuple, 1, const_str_plain_fore); Py_INCREF(const_str_plain_fore);
-    const_str_plain_light = UNSTREAM_STRING_ASCII(&constant_bin[ 6621 ], 5, 1);
+    const_str_plain_light = UNSTREAM_STRING_ASCII(&constant_bin[ 18260 ], 5, 1);
     PyTuple_SET_ITEM(const_tuple_923f75de8877db45d2269e63b0c5cff5_tuple, 2, const_str_plain_light); Py_INCREF(const_str_plain_light);
     PyTuple_SET_ITEM(const_tuple_923f75de8877db45d2269e63b0c5cff5_tuple, 3, const_str_plain_on_stderr); Py_INCREF(const_str_plain_on_stderr);
-    const_str_plain_cells_in_screen = UNSTREAM_STRING_ASCII(&constant_bin[ 6674 ], 15, 1);
+    const_str_plain_cells_in_screen = UNSTREAM_STRING_ASCII(&constant_bin[ 18313 ], 15, 1);
     const_tuple_none_false_tuple = PyTuple_New(2);
     PyTuple_SET_ITEM(const_tuple_none_false_tuple, 0, Py_None); Py_INCREF(Py_None);
     PyTuple_SET_ITEM(const_tuple_none_false_tuple, 1, Py_False); Py_INCREF(Py_False);
-    const_str_plain_set_console = UNSTREAM_STRING_ASCII(&constant_bin[ 6689 ], 11, 1);
-    const_str_digest_89774151d5fb2c484b787a8d6a6e4d4f = UNSTREAM_STRING_ASCII(&constant_bin[ 6700 ], 20, 0);
-    const_str_digest_5d78ba5373b35901801f295dd1467bbc = UNSTREAM_STRING_ASCII(&constant_bin[ 6720 ], 19, 0);
-    const_str_digest_7938d6f42592fe42f519599a3801c1ca = UNSTREAM_STRING_ASCII(&constant_bin[ 6739 ], 25, 0);
-    const_int_pos_8 = PyLong_FromUnsignedLong(8ul);
-    const_str_digest_7374af1a4abfa9c075a3249046783f73 = UNSTREAM_STRING_ASCII(&constant_bin[ 6764 ], 21, 0);
-    const_tuple_str_plain_self_str_plain_value_tuple = PyTuple_New(2);
-    PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_value_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
-    PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_value_tuple, 1, const_str_plain_value); Py_INCREF(const_str_plain_value);
-    const_str_digest_a922cad213df7a085d9ee255e4d85e2a = UNSTREAM_STRING_ASCII(&constant_bin[ 6785 ], 16, 0);
-    const_str_digest_2b75a0df1a144748ce17f268cf210201 = UNSTREAM_STRING_ASCII(&constant_bin[ 6801 ], 17, 0);
+    const_str_plain_set_console = UNSTREAM_STRING_ASCII(&constant_bin[ 18328 ], 11, 1);
+    const_str_digest_89774151d5fb2c484b787a8d6a6e4d4f = UNSTREAM_STRING_ASCII(&constant_bin[ 18339 ], 20, 0);
+    const_str_digest_5d78ba5373b35901801f295dd1467bbc = UNSTREAM_STRING_ASCII(&constant_bin[ 18359 ], 19, 0);
+    const_str_digest_7938d6f42592fe42f519599a3801c1ca = UNSTREAM_STRING_ASCII(&constant_bin[ 18378 ], 25, 0);
+    const_str_digest_7374af1a4abfa9c075a3249046783f73 = UNSTREAM_STRING_ASCII(&constant_bin[ 18403 ], 21, 0);
+    const_str_digest_a922cad213df7a085d9ee255e4d85e2a = UNSTREAM_STRING_ASCII(&constant_bin[ 18424 ], 16, 0);
+    const_str_digest_2b75a0df1a144748ce17f268cf210201 = UNSTREAM_STRING_ASCII(&constant_bin[ 18440 ], 17, 0);
     const_tuple_6999d7a7e74391c6cd2d7b1505c7f044_tuple = PyTuple_New(4);
     PyTuple_SET_ITEM(const_tuple_6999d7a7e74391c6cd2d7b1505c7f044_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
     PyTuple_SET_ITEM(const_tuple_6999d7a7e74391c6cd2d7b1505c7f044_tuple, 1, const_str_plain_back); Py_INCREF(const_str_plain_back);
     PyTuple_SET_ITEM(const_tuple_6999d7a7e74391c6cd2d7b1505c7f044_tuple, 2, const_str_plain_light); Py_INCREF(const_str_plain_light);
     PyTuple_SET_ITEM(const_tuple_6999d7a7e74391c6cd2d7b1505c7f044_tuple, 3, const_str_plain_on_stderr); Py_INCREF(const_str_plain_on_stderr);
-    const_str_digest_b6ad165056dfd897a46550a564d19d8e = UNSTREAM_STRING_ASCII(&constant_bin[ 6818 ], 63, 0);
-    const_str_digest_96f00cb6ee09826143c535ae7410be9b = UNSTREAM_STRING_ASCII(&constant_bin[ 6881 ], 12, 0);
+    const_str_digest_b6ad165056dfd897a46550a564d19d8e = UNSTREAM_STRING_ASCII(&constant_bin[ 18457 ], 63, 0);
+    const_str_digest_96f00cb6ee09826143c535ae7410be9b = UNSTREAM_STRING_ASCII(&constant_bin[ 18520 ], 12, 0);
     const_tuple_str_plain_self_str_plain_style_str_plain_on_stderr_tuple = PyTuple_New(3);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_style_str_plain_on_stderr_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_style_str_plain_on_stderr_tuple, 1, const_str_plain_style); Py_INCREF(const_str_plain_style);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_style_str_plain_on_stderr_tuple, 2, const_str_plain_on_stderr); Py_INCREF(const_str_plain_on_stderr);
-    const_str_digest_952a53fa5b9bcfc4bb657534167b82b6 = UNSTREAM_STRING_ASCII(&constant_bin[ 6747 ], 16, 0);
-    const_str_plain__fore = UNSTREAM_STRING_ASCII(&constant_bin[ 6538 ], 5, 1);
-    const_str_digest_ddfbda34563516c1d32392929ea391d6 = UNSTREAM_STRING_ASCII(&constant_bin[ 6893 ], 17, 0);
-    const_str_plain_BRIGHT_BACKGROUND = UNSTREAM_STRING_ASCII(&constant_bin[ 6910 ], 17, 1);
-    const_str_digest_3f2b2975833665a6b133f2f19f8c244d = UNSTREAM_STRING_ASCII(&constant_bin[ 6927 ], 20, 0);
+    const_str_digest_952a53fa5b9bcfc4bb657534167b82b6 = UNSTREAM_STRING_ASCII(&constant_bin[ 18386 ], 16, 0);
+    const_str_plain__fore = UNSTREAM_STRING_ASCII(&constant_bin[ 18182 ], 5, 1);
+    const_str_digest_ddfbda34563516c1d32392929ea391d6 = UNSTREAM_STRING_ASCII(&constant_bin[ 18532 ], 17, 0);
+    const_str_plain_BRIGHT_BACKGROUND = UNSTREAM_STRING_ASCII(&constant_bin[ 18549 ], 17, 1);
+    const_str_digest_3f2b2975833665a6b133f2f19f8c244d = UNSTREAM_STRING_ASCII(&constant_bin[ 18566 ], 20, 0);
     const_tuple_7e8f849913dc0d474d93dd6a4f42d732_tuple = PyTuple_New(9);
     PyTuple_SET_ITEM(const_tuple_7e8f849913dc0d474d93dd6a4f42d732_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
     PyTuple_SET_ITEM(const_tuple_7e8f849913dc0d474d93dd6a4f42d732_tuple, 1, const_str_plain_mode); Py_INCREF(const_str_plain_mode);
@@ -279,7 +270,7 @@ static void createModuleConstants(void) {
     PyTuple_SET_ITEM(const_tuple_7e8f849913dc0d474d93dd6a4f42d732_tuple, 3, const_str_plain_handle); Py_INCREF(const_str_plain_handle);
     PyTuple_SET_ITEM(const_tuple_7e8f849913dc0d474d93dd6a4f42d732_tuple, 4, const_str_plain_csbi); Py_INCREF(const_str_plain_csbi);
     PyTuple_SET_ITEM(const_tuple_7e8f849913dc0d474d93dd6a4f42d732_tuple, 5, const_str_plain_cells_in_screen); Py_INCREF(const_str_plain_cells_in_screen);
-    const_str_plain_cells_before_cursor = UNSTREAM_STRING_ASCII(&constant_bin[ 6947 ], 19, 1);
+    const_str_plain_cells_before_cursor = UNSTREAM_STRING_ASCII(&constant_bin[ 18586 ], 19, 1);
     PyTuple_SET_ITEM(const_tuple_7e8f849913dc0d474d93dd6a4f42d732_tuple, 6, const_str_plain_cells_before_cursor); Py_INCREF(const_str_plain_cells_before_cursor);
     PyTuple_SET_ITEM(const_tuple_7e8f849913dc0d474d93dd6a4f42d732_tuple, 7, const_str_plain_from_coord); Py_INCREF(const_str_plain_from_coord);
     PyTuple_SET_ITEM(const_tuple_7e8f849913dc0d474d93dd6a4f42d732_tuple, 8, const_str_plain_cells_to_erase); Py_INCREF(const_str_plain_cells_to_erase);
@@ -291,18 +282,18 @@ static void createModuleConstants(void) {
     PyTuple_SET_ITEM(const_tuple_d821b4d40f2474b13717877adde37cad_tuple, 4, const_str_plain_handle); Py_INCREF(const_str_plain_handle);
     PyTuple_SET_ITEM(const_tuple_d821b4d40f2474b13717877adde37cad_tuple, 5, const_str_plain_position); Py_INCREF(const_str_plain_position);
     PyTuple_SET_ITEM(const_tuple_d821b4d40f2474b13717877adde37cad_tuple, 6, const_str_plain_adjusted_position); Py_INCREF(const_str_plain_adjusted_position);
-    const_str_digest_7b6826a71368f36c49d339f82fb5e02b = UNSTREAM_STRING_ASCII(&constant_bin[ 6966 ], 18, 0);
+    const_str_digest_7b6826a71368f36c49d339f82fb5e02b = UNSTREAM_STRING_ASCII(&constant_bin[ 18605 ], 18, 0);
     const_tuple_64789c12eb973b6f6031e54eb9503b57_tuple = PyTuple_New(4);
     PyTuple_SET_ITEM(const_tuple_64789c12eb973b6f6031e54eb9503b57_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
     PyTuple_SET_ITEM(const_tuple_64789c12eb973b6f6031e54eb9503b57_tuple, 1, const_str_plain_position); Py_INCREF(const_str_plain_position);
     PyTuple_SET_ITEM(const_tuple_64789c12eb973b6f6031e54eb9503b57_tuple, 2, const_str_plain_on_stderr); Py_INCREF(const_str_plain_on_stderr);
     PyTuple_SET_ITEM(const_tuple_64789c12eb973b6f6031e54eb9503b57_tuple, 3, const_str_plain_handle); Py_INCREF(const_str_plain_handle);
-    const_str_digest_29b095f26e0ca29e60f02da954228223 = UNSTREAM_STRING_ASCII(&constant_bin[ 6984 ], 17, 0);
-    const_str_plain_get_attrs = UNSTREAM_STRING_ASCII(&constant_bin[ 6992 ], 9, 1);
+    const_str_digest_29b095f26e0ca29e60f02da954228223 = UNSTREAM_STRING_ASCII(&constant_bin[ 18623 ], 17, 0);
+    const_str_plain_get_attrs = UNSTREAM_STRING_ASCII(&constant_bin[ 18631 ], 9, 1);
     const_tuple_str_plain_win32_tuple = PyTuple_New(1);
     PyTuple_SET_ITEM(const_tuple_str_plain_win32_tuple, 0, const_str_plain_win32); Py_INCREF(const_str_plain_win32);
-    const_str_plain__default_back = UNSTREAM_STRING_ASCII(&constant_bin[ 7001 ], 13, 1);
-    const_str_plain__default_style = UNSTREAM_STRING_ASCII(&constant_bin[ 7014 ], 14, 1);
+    const_str_plain__default_back = UNSTREAM_STRING_ASCII(&constant_bin[ 18640 ], 13, 1);
+    const_str_plain__default_style = UNSTREAM_STRING_ASCII(&constant_bin[ 18653 ], 14, 1);
 
     constants_created = true;
 }
@@ -360,7 +351,7 @@ static void createModuleCodeObjects(void) {
 }
 
 // The module function declarations.
-NUITKA_CROSS_MODULE PyObject *impl___internal__$$$function_1__mro_entries_conversion(PyObject **python_pars);
+NUITKA_CROSS_MODULE PyObject *impl___internal__$$$function_3__mro_entries_conversion(PyObject **python_pars);
 
 
 static PyObject *MAKE_FUNCTION_colorama$winterm$$$function_10_set_cursor_position(PyObject *defaults);
@@ -473,7 +464,7 @@ static PyObject *impl_colorama$winterm$$$function_1___init__(struct Nuitka_Funct
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -505,7 +496,7 @@ static PyObject *impl_colorama$winterm$$$function_1___init__(struct Nuitka_Funct
             Py_DECREF(tmp_called_name_1);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1209,7 +1200,7 @@ static PyObject *impl_colorama$winterm$$$function_3_set_attrs(struct Nuitka_Func
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 830 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 973 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1241,7 +1232,7 @@ static PyObject *impl_colorama$winterm$$$function_3_set_attrs(struct Nuitka_Func
             Py_DECREF(tmp_left_name_5);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 830 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 973 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1823,7 +1814,7 @@ static PyObject *impl_colorama$winterm$$$function_5_fore(struct Nuitka_FunctionO
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 830 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 973 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1950,7 +1941,7 @@ static PyObject *impl_colorama$winterm$$$function_5_fore(struct Nuitka_FunctionO
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 830 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 973 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -2396,7 +2387,7 @@ static PyObject *impl_colorama$winterm$$$function_6_back(struct Nuitka_FunctionO
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 830 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 973 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -2523,7 +2514,7 @@ static PyObject *impl_colorama$winterm$$$function_6_back(struct Nuitka_FunctionO
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 830 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 973 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -3162,7 +3153,7 @@ static PyObject *impl_colorama$winterm$$$function_8_set_console(struct Nuitka_Fu
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -3224,7 +3215,7 @@ static PyObject *impl_colorama$winterm$$$function_8_set_console(struct Nuitka_Fu
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -3271,7 +3262,7 @@ static PyObject *impl_colorama$winterm$$$function_8_set_console(struct Nuitka_Fu
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -3505,7 +3496,7 @@ static PyObject *impl_colorama$winterm$$$function_9_get_position(struct Nuitka_F
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -3931,7 +3922,7 @@ static PyObject *impl_colorama$winterm$$$function_10_set_cursor_position(struct 
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -3993,7 +3984,7 @@ static PyObject *impl_colorama$winterm$$$function_10_set_cursor_position(struct 
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4040,7 +4031,7 @@ static PyObject *impl_colorama$winterm$$$function_10_set_cursor_position(struct 
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4262,7 +4253,7 @@ static PyObject *impl_colorama$winterm$$$function_11_cursor_adjust(struct Nuitka
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4324,7 +4315,7 @@ static PyObject *impl_colorama$winterm$$$function_11_cursor_adjust(struct Nuitka
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4469,7 +4460,7 @@ static PyObject *impl_colorama$winterm$$$function_11_cursor_adjust(struct Nuitka
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4731,7 +4722,7 @@ static PyObject *impl_colorama$winterm$$$function_12_erase_screen(struct Nuitka_
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4793,7 +4784,7 @@ static PyObject *impl_colorama$winterm$$$function_12_erase_screen(struct Nuitka_
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4839,7 +4830,7 @@ static PyObject *impl_colorama$winterm$$$function_12_erase_screen(struct Nuitka_
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5198,7 +5189,7 @@ static PyObject *impl_colorama$winterm$$$function_12_erase_screen(struct Nuitka_
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5289,7 +5280,7 @@ static PyObject *impl_colorama$winterm$$$function_12_erase_screen(struct Nuitka_
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5351,7 +5342,7 @@ static PyObject *impl_colorama$winterm$$$function_12_erase_screen(struct Nuitka_
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5445,7 +5436,7 @@ static PyObject *impl_colorama$winterm$$$function_12_erase_screen(struct Nuitka_
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5591,7 +5582,7 @@ static PyObject *impl_colorama$winterm$$$function_12_erase_screen(struct Nuitka_
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5862,7 +5853,7 @@ static PyObject *impl_colorama$winterm$$$function_13_erase_line(struct Nuitka_Fu
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5924,7 +5915,7 @@ static PyObject *impl_colorama$winterm$$$function_13_erase_line(struct Nuitka_Fu
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5970,7 +5961,7 @@ static PyObject *impl_colorama$winterm$$$function_13_erase_line(struct Nuitka_Fu
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6196,7 +6187,7 @@ static PyObject *impl_colorama$winterm$$$function_13_erase_line(struct Nuitka_Fu
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6358,7 +6349,7 @@ static PyObject *impl_colorama$winterm$$$function_13_erase_line(struct Nuitka_Fu
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6486,7 +6477,7 @@ static PyObject *impl_colorama$winterm$$$function_13_erase_line(struct Nuitka_Fu
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6580,7 +6571,7 @@ static PyObject *impl_colorama$winterm$$$function_13_erase_line(struct Nuitka_Fu
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6883,7 +6874,7 @@ static PyObject *impl_colorama$winterm$$$function_14_set_title(struct Nuitka_Fun
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 2111 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 2254 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7935,7 +7926,7 @@ PyObject *modulecode_colorama$winterm(PyObject *module) {
 
         {
             PyObject *dir_call_args[] = {tmp_dircall_arg1_1};
-            tmp_assign_source_5 = impl___internal__$$$function_1__mro_entries_conversion(dir_call_args);
+            tmp_assign_source_5 = impl___internal__$$$function_3__mro_entries_conversion(dir_call_args);
         }
         if (tmp_assign_source_5 == NULL) {
             assert(ERROR_OCCURRED());
@@ -8695,7 +8686,7 @@ PyObject *modulecode_colorama$winterm(PyObject *module) {
 
         {
             PyObject *dir_call_args[] = {tmp_dircall_arg1_2};
-            tmp_assign_source_12 = impl___internal__$$$function_1__mro_entries_conversion(dir_call_args);
+            tmp_assign_source_12 = impl___internal__$$$function_3__mro_entries_conversion(dir_call_args);
         }
         if (tmp_assign_source_12 == NULL) {
             assert(ERROR_OCCURRED());
@@ -9395,7 +9386,7 @@ PyObject *modulecode_colorama$winterm(PyObject *module) {
 
         {
             PyObject *dir_call_args[] = {tmp_dircall_arg1_3};
-            tmp_assign_source_19 = impl___internal__$$$function_1__mro_entries_conversion(dir_call_args);
+            tmp_assign_source_19 = impl___internal__$$$function_3__mro_entries_conversion(dir_call_args);
         }
         if (tmp_assign_source_19 == NULL) {
             assert(ERROR_OCCURRED());

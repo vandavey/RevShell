@@ -1,5 +1,5 @@
 /* Generated code for Python module 'colorama.ansitowin32'
- * created by Nuitka version 0.6.8.3
+ * created by Nuitka version 0.6.8.4
  *
  * This code is in part copyright 2020 Kay Hayen.
  *
@@ -44,7 +44,7 @@ static PyObject *const_str_plain_ABCD;
 extern PyObject *const_tuple_str_plain___class___tuple;
 extern PyObject *const_str_angle_metaclass;
 extern PyObject *const_str_plain_GREEN;
-static PyObject *const_slice_int_pos_1_none_none;
+extern PyObject *const_slice_int_pos_1_none_none;
 extern PyObject *const_str_plain_object;
 extern PyObject *const_str_plain_D;
 extern PyObject *const_str_plain___file__;
@@ -52,7 +52,7 @@ static PyObject *const_tuple_str_digest_12f00e9c5ea1145863283678c119e25d_tuple;
 static PyObject *const_str_digest_34a67dadeab4c4d03f1d54dad88c97b1;
 extern PyObject *const_str_plain_args;
 extern PyObject *const_str_plain___exit__;
-static PyObject *const_tuple_str_plain_self_str_plain_args_str_plain_kwargs_tuple;
+extern PyObject *const_tuple_str_plain_self_str_plain_args_str_plain_kwargs_tuple;
 static PyObject *const_str_plain_call_win32;
 extern PyObject *const_str_plain_WinTerm;
 extern PyObject *const_str_plain_RESET_ALL;
@@ -76,7 +76,7 @@ extern PyObject *const_str_plain_MAGENTA;
 extern PyObject *const_str_plain_command;
 static PyObject *const_str_plain_func;
 static PyObject *const_str_plain___stdout__;
-static PyObject *const_str_plain_flush;
+extern PyObject *const_str_plain_flush;
 static PyObject *const_tuple_str_digest_b9c4baf879ebd882d40843df3a4dead7_str_plain_p_tuple;
 extern PyObject *const_str_plain_winapi_test;
 static PyObject *const_str_digest_7aaf004607c7f29a352ffea6f27e877f;
@@ -87,7 +87,7 @@ static PyObject *const_str_plain_Hf;
 static PyObject *const_str_plain_wrapped;
 extern PyObject *const_tuple_int_pos_1_tuple;
 extern PyObject *const_str_plain___doc__;
-static PyObject *const_str_plain_re;
+extern PyObject *const_str_plain_re;
 static PyObject *const_tuple_5b534ed71e28174e5a83c7d90b7e2caa_tuple;
 extern PyObject *const_str_plain___debug__;
 static PyObject *const_str_plain_JKm;
@@ -118,7 +118,7 @@ static PyObject *const_tuple_8f81b70d2be11e6473ba94714a88c33f_tuple;
 static PyObject *const_str_digest_7896e17c08b161dbfc0846fd3f3b6b00;
 extern PyObject *const_tuple_empty;
 static PyObject *const_str_digest_0ba5e85965a3daf6ffa2bae2718fb27f;
-static PyObject *const_str_plain___getattr__;
+extern PyObject *const_str_plain___getattr__;
 static PyObject *const_str_plain_convert_osc;
 extern PyObject *const_str_plain_stderr;
 static PyObject *const_str_digest_f5af88de3b2f0f8929cc483ea37fac79;
@@ -138,7 +138,7 @@ extern PyObject *const_str_plain_LIGHTCYAN_EX;
 static PyObject *const_tuple_29030d9ee4a795c543fbb4180730a92e_tuple;
 extern PyObject *const_str_plain_LIGHTYELLOW_EX;
 extern PyObject *const_str_plain_split;
-static PyObject *const_str_plain_match;
+extern PyObject *const_str_plain_match;
 extern PyObject *const_tuple_int_0_tuple;
 static PyObject *const_str_digest_b55785af5af936c70fc8a8934fb97656;
 extern PyObject *const_str_plain_nt;
@@ -233,7 +233,7 @@ extern PyObject *const_int_pos_2;
 extern PyObject *const_str_plain_BLUE;
 static PyObject *const_str_plain_cursor;
 static PyObject *const_str_plain_conversion_supported;
-static PyObject *const_str_plain_property;
+extern PyObject *const_str_plain_property;
 extern PyObject *const_str_plain_fore;
 extern PyObject *const_str_plain_win32;
 extern PyObject *const_str_plain_back;
@@ -254,104 +254,95 @@ static void createModuleConstants(void) {
     const_tuple_str_plain_self_str_plain_text_tuple = PyTuple_New(2);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_text_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_text_tuple, 1, const_str_plain_text); Py_INCREF(const_str_plain_text);
-    const_str_digest_cdc2d4e06b5a4d752be98f7e28e8ea55 = UNSTREAM_STRING_ASCII(&constant_bin[ 4073 ], 20, 0);
-    const_str_digest_8b74e46bfedfd735c1c235776b43d037 = UNSTREAM_STRING_ASCII(&constant_bin[ 4093 ], 20, 0);
-    const_str_plain_get_win32_calls = UNSTREAM_STRING_ASCII(&constant_bin[ 4113 ], 15, 1);
-    const_str_plain_ABCD = UNSTREAM_STRING_ASCII(&constant_bin[ 4128 ], 4, 1);
-    const_slice_int_pos_1_none_none = PySlice_New(const_int_pos_1, Py_None, Py_None);
+    const_str_digest_cdc2d4e06b5a4d752be98f7e28e8ea55 = UNSTREAM_STRING_ASCII(&constant_bin[ 15753 ], 20, 0);
+    const_str_digest_8b74e46bfedfd735c1c235776b43d037 = UNSTREAM_STRING_ASCII(&constant_bin[ 15773 ], 20, 0);
+    const_str_plain_get_win32_calls = UNSTREAM_STRING_ASCII(&constant_bin[ 15793 ], 15, 1);
+    const_str_plain_ABCD = UNSTREAM_STRING_ASCII(&constant_bin[ 15808 ], 4, 1);
     const_tuple_str_digest_12f00e9c5ea1145863283678c119e25d_tuple = PyTuple_New(1);
-    const_str_digest_12f00e9c5ea1145863283678c119e25d = UNSTREAM_STRING_ASCII(&constant_bin[ 4132 ], 28, 0);
+    const_str_digest_12f00e9c5ea1145863283678c119e25d = UNSTREAM_STRING_ASCII(&constant_bin[ 15812 ], 28, 0);
     PyTuple_SET_ITEM(const_tuple_str_digest_12f00e9c5ea1145863283678c119e25d_tuple, 0, const_str_digest_12f00e9c5ea1145863283678c119e25d); Py_INCREF(const_str_digest_12f00e9c5ea1145863283678c119e25d);
-    const_str_digest_34a67dadeab4c4d03f1d54dad88c97b1 = UNSTREAM_STRING_ASCII(&constant_bin[ 4160 ], 26, 0);
-    const_tuple_str_plain_self_str_plain_args_str_plain_kwargs_tuple = PyTuple_New(3);
-    PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_args_str_plain_kwargs_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
-    PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_args_str_plain_kwargs_tuple, 1, const_str_plain_args); Py_INCREF(const_str_plain_args);
-    PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_args_str_plain_kwargs_tuple, 2, const_str_plain_kwargs); Py_INCREF(const_str_plain_kwargs);
-    const_str_plain_call_win32 = UNSTREAM_STRING_ASCII(&constant_bin[ 4186 ], 10, 1);
-    const_str_plain_convert_ansi = UNSTREAM_STRING_ASCII(&constant_bin[ 4196 ], 12, 1);
-    const_str_digest_928c809ee71e28d36f2148a6bed057ab = UNSTREAM_STRING_ASCII(&constant_bin[ 4208 ], 17, 0);
+    const_str_digest_34a67dadeab4c4d03f1d54dad88c97b1 = UNSTREAM_STRING_ASCII(&constant_bin[ 15840 ], 26, 0);
+    const_str_plain_call_win32 = UNSTREAM_STRING_ASCII(&constant_bin[ 15866 ], 10, 1);
+    const_str_plain_convert_ansi = UNSTREAM_STRING_ASCII(&constant_bin[ 15876 ], 12, 1);
+    const_str_digest_928c809ee71e28d36f2148a6bed057ab = UNSTREAM_STRING_ASCII(&constant_bin[ 15888 ], 17, 0);
     const_tuple_str_plain_self_str_plain_stream_tuple = PyTuple_New(2);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_stream_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_stream_tuple, 1, const_str_plain_stream); Py_INCREF(const_str_plain_stream);
-    const_str_plain_param = UNSTREAM_STRING_ASCII(&constant_bin[ 4180 ], 5, 1);
-    const_str_plain_write_plain_text = UNSTREAM_STRING_ASCII(&constant_bin[ 4225 ], 16, 1);
-    const_str_plain__StreamWrapper__wrapped = UNSTREAM_STRING_ASCII(&constant_bin[ 4241 ], 23, 1);
-    const_str_digest_1a5ad2f5181b31351fc00ac34c24ddab = UNSTREAM_STRING_ASCII(&constant_bin[ 4264 ], 27, 0);
+    const_str_plain_param = UNSTREAM_STRING_ASCII(&constant_bin[ 15860 ], 5, 1);
+    const_str_plain_write_plain_text = UNSTREAM_STRING_ASCII(&constant_bin[ 15905 ], 16, 1);
+    const_str_plain__StreamWrapper__wrapped = UNSTREAM_STRING_ASCII(&constant_bin[ 15921 ], 23, 1);
+    const_str_digest_1a5ad2f5181b31351fc00ac34c24ddab = UNSTREAM_STRING_ASCII(&constant_bin[ 15944 ], 27, 0);
     const_tuple_str_chr_59_tuple = PyTuple_New(1);
     PyTuple_SET_ITEM(const_tuple_str_chr_59_tuple, 0, const_str_chr_59); Py_INCREF(const_str_chr_59);
-    const_str_plain_func = UNSTREAM_STRING_ASCII(&constant_bin[ 4291 ], 4, 1);
-    const_str_plain___stdout__ = UNSTREAM_STRING_ASCII(&constant_bin[ 4295 ], 10, 1);
-    const_str_plain_flush = UNSTREAM_STRING_ASCII(&constant_bin[ 4305 ], 5, 1);
+    const_str_plain_func = UNSTREAM_STRING_ASCII(&constant_bin[ 15971 ], 4, 1);
+    const_str_plain___stdout__ = UNSTREAM_STRING_ASCII(&constant_bin[ 15975 ], 10, 1);
     const_tuple_str_digest_b9c4baf879ebd882d40843df3a4dead7_str_plain_p_tuple = PyTuple_New(2);
     PyTuple_SET_ITEM(const_tuple_str_digest_b9c4baf879ebd882d40843df3a4dead7_str_plain_p_tuple, 0, const_str_digest_b9c4baf879ebd882d40843df3a4dead7); Py_INCREF(const_str_digest_b9c4baf879ebd882d40843df3a4dead7);
-    const_str_plain_p = UNSTREAM_STRING_ASCII(&constant_bin[ 9 ], 1, 1);
+    const_str_plain_p = UNSTREAM_STRING_ASCII(&constant_bin[ 78 ], 1, 1);
     PyTuple_SET_ITEM(const_tuple_str_digest_b9c4baf879ebd882d40843df3a4dead7_str_plain_p_tuple, 1, const_str_plain_p); Py_INCREF(const_str_plain_p);
-    const_str_digest_7aaf004607c7f29a352ffea6f27e877f = UNSTREAM_STRING_ASCII(&constant_bin[ 4310 ], 22, 0);
-    const_str_digest_6d8abad3a3b124a7281f9dc9e1e34a11 = UNSTREAM_STRING_ASCII(&constant_bin[ 4332 ], 45, 0);
-    const_str_plain_Hf = UNSTREAM_STRING_ASCII(&constant_bin[ 4377 ], 2, 1);
-    const_str_plain_wrapped = UNSTREAM_STRING_ASCII(&constant_bin[ 1312 ], 7, 1);
-    const_str_plain_re = UNSTREAM_STRING_ASCII(&constant_bin[ 597 ], 2, 1);
+    const_str_digest_7aaf004607c7f29a352ffea6f27e877f = UNSTREAM_STRING_ASCII(&constant_bin[ 15985 ], 22, 0);
+    const_str_digest_6d8abad3a3b124a7281f9dc9e1e34a11 = UNSTREAM_STRING_ASCII(&constant_bin[ 16007 ], 45, 0);
+    const_str_plain_Hf = UNSTREAM_STRING_ASCII(&constant_bin[ 16052 ], 2, 1);
+    const_str_plain_wrapped = UNSTREAM_STRING_ASCII(&constant_bin[ 1455 ], 7, 1);
     const_tuple_5b534ed71e28174e5a83c7d90b7e2caa_tuple = PyTuple_New(6);
     PyTuple_SET_ITEM(const_tuple_5b534ed71e28174e5a83c7d90b7e2caa_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
     PyTuple_SET_ITEM(const_tuple_5b534ed71e28174e5a83c7d90b7e2caa_tuple, 1, const_str_plain_text); Py_INCREF(const_str_plain_text);
-    const_str_plain_cursor = UNSTREAM_STRING_ASCII(&constant_bin[ 4379 ], 6, 1);
+    const_str_plain_cursor = UNSTREAM_STRING_ASCII(&constant_bin[ 16054 ], 6, 1);
     PyTuple_SET_ITEM(const_tuple_5b534ed71e28174e5a83c7d90b7e2caa_tuple, 2, const_str_plain_cursor); Py_INCREF(const_str_plain_cursor);
-    const_str_plain_match = UNSTREAM_STRING_ASCII(&constant_bin[ 4385 ], 5, 1);
     PyTuple_SET_ITEM(const_tuple_5b534ed71e28174e5a83c7d90b7e2caa_tuple, 3, const_str_plain_match); Py_INCREF(const_str_plain_match);
     PyTuple_SET_ITEM(const_tuple_5b534ed71e28174e5a83c7d90b7e2caa_tuple, 4, const_str_plain_start); Py_INCREF(const_str_plain_start);
     PyTuple_SET_ITEM(const_tuple_5b534ed71e28174e5a83c7d90b7e2caa_tuple, 5, const_str_plain_end); Py_INCREF(const_str_plain_end);
-    const_str_plain_JKm = UNSTREAM_STRING_ASCII(&constant_bin[ 4390 ], 3, 1);
-    const_str_plain_paramstring = UNSTREAM_STRING_ASCII(&constant_bin[ 4393 ], 11, 1);
-    const_str_plain_closed = UNSTREAM_STRING_ASCII(&constant_bin[ 4087 ], 6, 1);
-    const_str_digest_6d0fbfe004a9e0e2efa00db9dbcb8aae = UNSTREAM_STRING_ASCII(&constant_bin[ 4404 ], 67, 0);
-    const_str_digest_392147c20a5a9d9a44bc925e35734e74 = UNSTREAM_STRING_ASCII(&constant_bin[ 4471 ], 29, 0);
-    const_str_plain_win32_calls = UNSTREAM_STRING_ASCII(&constant_bin[ 4117 ], 11, 1);
+    const_str_plain_JKm = UNSTREAM_STRING_ASCII(&constant_bin[ 16060 ], 3, 1);
+    const_str_plain_paramstring = UNSTREAM_STRING_ASCII(&constant_bin[ 16063 ], 11, 1);
+    const_str_plain_closed = UNSTREAM_STRING_ASCII(&constant_bin[ 15767 ], 6, 1);
+    const_str_digest_6d0fbfe004a9e0e2efa00db9dbcb8aae = UNSTREAM_STRING_ASCII(&constant_bin[ 16074 ], 67, 0);
+    const_str_digest_392147c20a5a9d9a44bc925e35734e74 = UNSTREAM_STRING_ASCII(&constant_bin[ 16141 ], 29, 0);
+    const_str_plain_win32_calls = UNSTREAM_STRING_ASCII(&constant_bin[ 15797 ], 11, 1);
     const_tuple_str_digest_fbcd3ce8b63fb326a2a412670188a257_tuple = PyTuple_New(1);
-    const_str_digest_fbcd3ce8b63fb326a2a412670188a257 = UNSTREAM_STRING_ASCII(&constant_bin[ 4500 ], 21, 0);
+    const_str_digest_fbcd3ce8b63fb326a2a412670188a257 = UNSTREAM_STRING_ASCII(&constant_bin[ 16170 ], 21, 0);
     PyTuple_SET_ITEM(const_tuple_str_digest_fbcd3ce8b63fb326a2a412670188a257_tuple, 0, const_str_digest_fbcd3ce8b63fb326a2a412670188a257); Py_INCREF(const_str_digest_fbcd3ce8b63fb326a2a412670188a257);
-    const_str_digest_784eb1249df427ee50966aa173c6aac6 = UNSTREAM_STRING_ASCII(&constant_bin[ 4521 ], 20, 0);
-    const_str_plain_ANSI_CSI_RE = UNSTREAM_STRING_ASCII(&constant_bin[ 4541 ], 11, 1);
-    const_str_plain_02 = UNSTREAM_STRING_ASCII(&constant_bin[ 4552 ], 2, 0);
+    const_str_digest_784eb1249df427ee50966aa173c6aac6 = UNSTREAM_STRING_ASCII(&constant_bin[ 16191 ], 20, 0);
+    const_str_plain_ANSI_CSI_RE = UNSTREAM_STRING_ASCII(&constant_bin[ 16211 ], 11, 1);
+    const_str_plain_02 = UNSTREAM_STRING_ASCII(&constant_bin[ 16222 ], 2, 0);
     const_tuple_8f81b70d2be11e6473ba94714a88c33f_tuple = PyTuple_New(4);
     PyTuple_SET_ITEM(const_tuple_8f81b70d2be11e6473ba94714a88c33f_tuple, 0, const_str_plain_AnsiFore); Py_INCREF(const_str_plain_AnsiFore);
     PyTuple_SET_ITEM(const_tuple_8f81b70d2be11e6473ba94714a88c33f_tuple, 1, const_str_plain_AnsiBack); Py_INCREF(const_str_plain_AnsiBack);
     PyTuple_SET_ITEM(const_tuple_8f81b70d2be11e6473ba94714a88c33f_tuple, 2, const_str_plain_AnsiStyle); Py_INCREF(const_str_plain_AnsiStyle);
     PyTuple_SET_ITEM(const_tuple_8f81b70d2be11e6473ba94714a88c33f_tuple, 3, const_str_plain_Style); Py_INCREF(const_str_plain_Style);
-    const_str_digest_7896e17c08b161dbfc0846fd3f3b6b00 = UNSTREAM_STRING_ASCII(&constant_bin[ 4554 ], 19, 0);
-    const_str_digest_0ba5e85965a3daf6ffa2bae2718fb27f = UNSTREAM_STRING_ASCII(&constant_bin[ 4573 ], 20, 0);
-    const_str_plain___getattr__ = UNSTREAM_STRING_ASCII(&constant_bin[ 4593 ], 11, 1);
-    const_str_plain_convert_osc = UNSTREAM_STRING_ASCII(&constant_bin[ 4604 ], 11, 1);
-    const_str_digest_f5af88de3b2f0f8929cc483ea37fac79 = UNSTREAM_STRING_ASCII(&constant_bin[ 4615 ], 362, 0);
-    const_str_plain_span = UNSTREAM_STRING_ASCII(&constant_bin[ 4977 ], 4, 1);
-    const_str_digest_721ff92af3a729ac94bdd578ea49a542 = UNSTREAM_STRING_ASCII(&constant_bin[ 4981 ], 23, 0);
-    const_str_plain_stream_isatty = UNSTREAM_STRING_ASCII(&constant_bin[ 5004 ], 13, 1);
-    const_str_plain_on_windows = UNSTREAM_STRING_ASCII(&constant_bin[ 5017 ], 10, 1);
-    const_str_plain__StreamWrapper__convertor = UNSTREAM_STRING_ASCII(&constant_bin[ 5027 ], 25, 1);
-    const_str_plain_func_args = UNSTREAM_STRING_ASCII(&constant_bin[ 5052 ], 9, 1);
+    const_str_digest_7896e17c08b161dbfc0846fd3f3b6b00 = UNSTREAM_STRING_ASCII(&constant_bin[ 16224 ], 19, 0);
+    const_str_digest_0ba5e85965a3daf6ffa2bae2718fb27f = UNSTREAM_STRING_ASCII(&constant_bin[ 16243 ], 20, 0);
+    const_str_plain_convert_osc = UNSTREAM_STRING_ASCII(&constant_bin[ 16263 ], 11, 1);
+    const_str_digest_f5af88de3b2f0f8929cc483ea37fac79 = UNSTREAM_STRING_ASCII(&constant_bin[ 16274 ], 362, 0);
+    const_str_plain_span = UNSTREAM_STRING_ASCII(&constant_bin[ 16636 ], 4, 1);
+    const_str_digest_721ff92af3a729ac94bdd578ea49a542 = UNSTREAM_STRING_ASCII(&constant_bin[ 16640 ], 23, 0);
+    const_str_plain_stream_isatty = UNSTREAM_STRING_ASCII(&constant_bin[ 16663 ], 13, 1);
+    const_str_plain_on_windows = UNSTREAM_STRING_ASCII(&constant_bin[ 16676 ], 10, 1);
+    const_str_plain__StreamWrapper__convertor = UNSTREAM_STRING_ASCII(&constant_bin[ 16686 ], 25, 1);
+    const_str_plain_func_args = UNSTREAM_STRING_ASCII(&constant_bin[ 16711 ], 9, 1);
     const_tuple_29030d9ee4a795c543fbb4180730a92e_tuple = PyTuple_New(4);
     PyTuple_SET_ITEM(const_tuple_29030d9ee4a795c543fbb4180730a92e_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
     PyTuple_SET_ITEM(const_tuple_29030d9ee4a795c543fbb4180730a92e_tuple, 1, const_str_plain_paramstring); Py_INCREF(const_str_plain_paramstring);
     PyTuple_SET_ITEM(const_tuple_29030d9ee4a795c543fbb4180730a92e_tuple, 2, const_str_plain_command); Py_INCREF(const_str_plain_command);
-    const_str_plain_params = UNSTREAM_STRING_ASCII(&constant_bin[ 4180 ], 6, 1);
+    const_str_plain_params = UNSTREAM_STRING_ASCII(&constant_bin[ 15860 ], 6, 1);
     PyTuple_SET_ITEM(const_tuple_29030d9ee4a795c543fbb4180730a92e_tuple, 3, const_str_plain_params); Py_INCREF(const_str_plain_params);
-    const_str_digest_b55785af5af936c70fc8a8934fb97656 = UNSTREAM_STRING_ASCII(&constant_bin[ 5061 ], 170, 0);
-    const_str_plain_finditer = UNSTREAM_STRING_ASCII(&constant_bin[ 5231 ], 8, 1);
-    const_str_digest_66a4513a750acaa6ee49c5cda19fde96 = UNSTREAM_STRING_ASCII(&constant_bin[ 5239 ], 22, 0);
-    const_str_digest_bf3478830e517c9cf8c7c37bdb5fda5d = UNSTREAM_STRING_ASCII(&constant_bin[ 5261 ], 24, 0);
-    const_str_digest_d0fbf93e4794204f0bd3840b8cf75768 = UNSTREAM_STRING_ASCII(&constant_bin[ 5285 ], 29, 0);
+    const_str_digest_b55785af5af936c70fc8a8934fb97656 = UNSTREAM_STRING_ASCII(&constant_bin[ 16720 ], 170, 0);
+    const_str_plain_finditer = UNSTREAM_STRING_ASCII(&constant_bin[ 16890 ], 8, 1);
+    const_str_digest_66a4513a750acaa6ee49c5cda19fde96 = UNSTREAM_STRING_ASCII(&constant_bin[ 16898 ], 22, 0);
+    const_str_digest_bf3478830e517c9cf8c7c37bdb5fda5d = UNSTREAM_STRING_ASCII(&constant_bin[ 16920 ], 24, 0);
+    const_str_digest_d0fbf93e4794204f0bd3840b8cf75768 = UNSTREAM_STRING_ASCII(&constant_bin[ 16944 ], 29, 0);
     const_tuple_str_plain_self_str_plain_name_tuple = PyTuple_New(2);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_name_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_name_tuple, 1, const_str_plain_name); Py_INCREF(const_str_plain_name);
-    const_str_digest_fef18de45debf62cfc3d599573cbfc03 = UNSTREAM_STRING_ASCII(&constant_bin[ 5314 ], 23, 0);
-    const_str_digest_d0187f6bb3b1368675fb4a5c0a71f6a7 = UNSTREAM_STRING_ASCII(&constant_bin[ 5337 ], 28, 0);
-    const_str_plain_converter = UNSTREAM_STRING_ASCII(&constant_bin[ 5365 ], 9, 1);
-    const_str_digest_33d0019995e5085fa6592d50035e8a67 = UNSTREAM_STRING_ASCII(&constant_bin[ 5374 ], 180, 0);
-    const_str_plain_winterm = UNSTREAM_STRING_ASCII(&constant_bin[ 807 ], 7, 1);
-    const_str_digest_b554bbb6f75b8ef4430bba0e93759fc9 = UNSTREAM_STRING_ASCII(&constant_bin[ 5554 ], 25, 0);
+    const_str_digest_fef18de45debf62cfc3d599573cbfc03 = UNSTREAM_STRING_ASCII(&constant_bin[ 16973 ], 23, 0);
+    const_str_digest_d0187f6bb3b1368675fb4a5c0a71f6a7 = UNSTREAM_STRING_ASCII(&constant_bin[ 16996 ], 28, 0);
+    const_str_plain_converter = UNSTREAM_STRING_ASCII(&constant_bin[ 17024 ], 9, 1);
+    const_str_digest_33d0019995e5085fa6592d50035e8a67 = UNSTREAM_STRING_ASCII(&constant_bin[ 17033 ], 180, 0);
+    const_str_plain_winterm = UNSTREAM_STRING_ASCII(&constant_bin[ 950 ], 7, 1);
+    const_str_digest_b554bbb6f75b8ef4430bba0e93759fc9 = UNSTREAM_STRING_ASCII(&constant_bin[ 17213 ], 25, 0);
     const_tuple_str_plain_windll_str_plain_winapi_test_tuple = PyTuple_New(2);
     PyTuple_SET_ITEM(const_tuple_str_plain_windll_str_plain_winapi_test_tuple, 0, const_str_plain_windll); Py_INCREF(const_str_plain_windll);
     PyTuple_SET_ITEM(const_tuple_str_plain_windll_str_plain_winapi_test_tuple, 1, const_str_plain_winapi_test); Py_INCREF(const_str_plain_winapi_test);
-    const_str_plain_write_and_convert = UNSTREAM_STRING_ASCII(&constant_bin[ 4483 ], 17, 1);
+    const_str_plain_write_and_convert = UNSTREAM_STRING_ASCII(&constant_bin[ 16153 ], 17, 1);
     const_tuple_1504142ac50c53203f0d2c502b6a6376_tuple = PyTuple_New(7);
     PyTuple_SET_ITEM(const_tuple_1504142ac50c53203f0d2c502b6a6376_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
     PyTuple_SET_ITEM(const_tuple_1504142ac50c53203f0d2c502b6a6376_tuple, 1, const_str_plain_wrapped); Py_INCREF(const_str_plain_wrapped);
@@ -359,7 +350,7 @@ static void createModuleConstants(void) {
     PyTuple_SET_ITEM(const_tuple_1504142ac50c53203f0d2c502b6a6376_tuple, 3, const_str_plain_strip); Py_INCREF(const_str_plain_strip);
     PyTuple_SET_ITEM(const_tuple_1504142ac50c53203f0d2c502b6a6376_tuple, 4, const_str_plain_autoreset); Py_INCREF(const_str_plain_autoreset);
     PyTuple_SET_ITEM(const_tuple_1504142ac50c53203f0d2c502b6a6376_tuple, 5, const_str_plain_on_windows); Py_INCREF(const_str_plain_on_windows);
-    const_str_plain_conversion_supported = UNSTREAM_STRING_ASCII(&constant_bin[ 5579 ], 20, 1);
+    const_str_plain_conversion_supported = UNSTREAM_STRING_ASCII(&constant_bin[ 17238 ], 20, 1);
     PyTuple_SET_ITEM(const_tuple_1504142ac50c53203f0d2c502b6a6376_tuple, 6, const_str_plain_conversion_supported); Py_INCREF(const_str_plain_conversion_supported);
     const_tuple_str_plain_self_str_plain_text_str_plain_start_str_plain_end_tuple = PyTuple_New(4);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_text_str_plain_start_str_plain_end_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
@@ -370,16 +361,16 @@ static void createModuleConstants(void) {
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_stream_str_plain_stream_isatty_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_stream_str_plain_stream_isatty_tuple, 1, const_str_plain_stream); Py_INCREF(const_str_plain_stream);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_stream_str_plain_stream_isatty_tuple, 2, const_str_plain_stream_isatty); Py_INCREF(const_str_plain_stream_isatty);
-    const_str_plain_StreamWrapper = UNSTREAM_STRING_ASCII(&constant_bin[ 739 ], 13, 1);
+    const_str_plain_StreamWrapper = UNSTREAM_STRING_ASCII(&constant_bin[ 882 ], 13, 1);
     const_tuple_bb77970ac6a0b5e611d50732d417cdfb_tuple = PyTuple_New(4);
     PyTuple_SET_ITEM(const_tuple_bb77970ac6a0b5e611d50732d417cdfb_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
     PyTuple_SET_ITEM(const_tuple_bb77970ac6a0b5e611d50732d417cdfb_tuple, 1, const_str_plain_command); Py_INCREF(const_str_plain_command);
     PyTuple_SET_ITEM(const_tuple_bb77970ac6a0b5e611d50732d417cdfb_tuple, 2, const_str_plain_paramstring); Py_INCREF(const_str_plain_paramstring);
     PyTuple_SET_ITEM(const_tuple_bb77970ac6a0b5e611d50732d417cdfb_tuple, 3, const_str_plain_params); Py_INCREF(const_str_plain_params);
-    const_str_digest_890d683a23990d5f4204f0081b005a5d = UNSTREAM_STRING_ASCII(&constant_bin[ 5599 ], 190, 0);
-    const_str_plain_PYCHARM_HOSTED = UNSTREAM_STRING_ASCII(&constant_bin[ 5789 ], 14, 1);
-    const_str_plain___stderr__ = UNSTREAM_STRING_ASCII(&constant_bin[ 5803 ], 10, 1);
-    const_str_plain_extract_params = UNSTREAM_STRING_ASCII(&constant_bin[ 4172 ], 14, 1);
+    const_str_digest_890d683a23990d5f4204f0081b005a5d = UNSTREAM_STRING_ASCII(&constant_bin[ 17258 ], 190, 0);
+    const_str_plain_PYCHARM_HOSTED = UNSTREAM_STRING_ASCII(&constant_bin[ 17448 ], 14, 1);
+    const_str_plain___stderr__ = UNSTREAM_STRING_ASCII(&constant_bin[ 17462 ], 10, 1);
+    const_str_plain_extract_params = UNSTREAM_STRING_ASCII(&constant_bin[ 15852 ], 14, 1);
     const_tuple_a8fd651be59e49467b579fd304c1983a_tuple = PyTuple_New(11);
     PyTuple_SET_ITEM(const_tuple_a8fd651be59e49467b579fd304c1983a_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
     PyTuple_SET_ITEM(const_tuple_a8fd651be59e49467b579fd304c1983a_tuple, 1, const_str_plain_command); Py_INCREF(const_str_plain_command);
@@ -392,7 +383,7 @@ static void createModuleConstants(void) {
     PyTuple_SET_ITEM(const_tuple_a8fd651be59e49467b579fd304c1983a_tuple, 8, const_str_plain_n); Py_INCREF(const_str_plain_n);
     PyTuple_SET_ITEM(const_tuple_a8fd651be59e49467b579fd304c1983a_tuple, 9, const_str_plain_x); Py_INCREF(const_str_plain_x);
     PyTuple_SET_ITEM(const_tuple_a8fd651be59e49467b579fd304c1983a_tuple, 10, const_str_plain_y); Py_INCREF(const_str_plain_y);
-    const_str_digest_23c27944ab8d207f712ce0dfec9f7e71 = UNSTREAM_STRING_ASCII(&constant_bin[ 5813 ], 21, 0);
+    const_str_digest_23c27944ab8d207f712ce0dfec9f7e71 = UNSTREAM_STRING_ASCII(&constant_bin[ 17472 ], 21, 0);
     const_tuple_54098978423f2f9d9e24124423386916_tuple = PyTuple_New(8);
     PyTuple_SET_ITEM(const_tuple_54098978423f2f9d9e24124423386916_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
     PyTuple_SET_ITEM(const_tuple_54098978423f2f9d9e24124423386916_tuple, 1, const_str_plain_text); Py_INCREF(const_str_plain_text);
@@ -402,20 +393,19 @@ static void createModuleConstants(void) {
     PyTuple_SET_ITEM(const_tuple_54098978423f2f9d9e24124423386916_tuple, 5, const_str_plain_paramstring); Py_INCREF(const_str_plain_paramstring);
     PyTuple_SET_ITEM(const_tuple_54098978423f2f9d9e24124423386916_tuple, 6, const_str_plain_command); Py_INCREF(const_str_plain_command);
     PyTuple_SET_ITEM(const_tuple_54098978423f2f9d9e24124423386916_tuple, 7, const_str_plain_params); Py_INCREF(const_str_plain_params);
-    const_str_plain_groups = UNSTREAM_STRING_ASCII(&constant_bin[ 5834 ], 6, 1);
-    const_str_digest_3f9da09471a69900792144edf751368f = UNSTREAM_STRING_ASCII(&constant_bin[ 5840 ], 22, 0);
+    const_str_plain_groups = UNSTREAM_STRING_ASCII(&constant_bin[ 17493 ], 6, 1);
+    const_str_digest_3f9da09471a69900792144edf751368f = UNSTREAM_STRING_ASCII(&constant_bin[ 17499 ], 22, 0);
     const_tuple_str_plain_self_str_plain_wrapped_str_plain_converter_tuple = PyTuple_New(3);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_wrapped_str_plain_converter_tuple, 0, const_str_plain_self); Py_INCREF(const_str_plain_self);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_wrapped_str_plain_converter_tuple, 1, const_str_plain_wrapped); Py_INCREF(const_str_plain_wrapped);
     PyTuple_SET_ITEM(const_tuple_str_plain_self_str_plain_wrapped_str_plain_converter_tuple, 2, const_str_plain_converter); Py_INCREF(const_str_plain_converter);
-    const_str_plain_isatty = UNSTREAM_STRING_ASCII(&constant_bin[ 4535 ], 6, 1);
+    const_str_plain_isatty = UNSTREAM_STRING_ASCII(&constant_bin[ 16205 ], 6, 1);
     const_tuple_none_none_false_tuple = PyTuple_New(3);
     PyTuple_SET_ITEM(const_tuple_none_none_false_tuple, 0, Py_None); Py_INCREF(Py_None);
     PyTuple_SET_ITEM(const_tuple_none_none_false_tuple, 1, Py_None); Py_INCREF(Py_None);
     PyTuple_SET_ITEM(const_tuple_none_none_false_tuple, 2, Py_False); Py_INCREF(Py_False);
-    const_str_plain_ANSI_OSC_RE = UNSTREAM_STRING_ASCII(&constant_bin[ 5862 ], 11, 1);
-    const_str_digest_8402885c26cd327c9ea84e47155c3b69 = UNSTREAM_STRING_ASCII(&constant_bin[ 5873 ], 23, 0);
-    const_str_plain_property = UNSTREAM_STRING_ASCII(&constant_bin[ 980 ], 8, 1);
+    const_str_plain_ANSI_OSC_RE = UNSTREAM_STRING_ASCII(&constant_bin[ 17521 ], 11, 1);
+    const_str_digest_8402885c26cd327c9ea84e47155c3b69 = UNSTREAM_STRING_ASCII(&constant_bin[ 17532 ], 23, 0);
 
     constants_created = true;
 }
@@ -489,13 +479,13 @@ static PyObject *colorama$ansitowin32$$$function_16_extract_params$$$genexpr_1_g
 static PyObject *colorama$ansitowin32$$$function_16_extract_params$$$genexpr_2_genexpr_maker(void);
 
 
-NUITKA_CROSS_MODULE PyObject *impl___internal__$$$function_1__mro_entries_conversion(PyObject **python_pars);
+NUITKA_CROSS_MODULE PyObject *impl___internal__$$$function_3__mro_entries_conversion(PyObject **python_pars);
 
 
-NUITKA_CROSS_MODULE PyObject *impl___internal__$$$function_2_complex_call_helper_star_list_star_dict(PyObject **python_pars);
+NUITKA_CROSS_MODULE PyObject *impl___internal__$$$function_4_complex_call_helper_star_list_star_dict(PyObject **python_pars);
 
 
-NUITKA_CROSS_MODULE PyObject *impl___internal__$$$function_4_complex_call_helper_star_list(PyObject **python_pars);
+NUITKA_CROSS_MODULE PyObject *impl___internal__$$$function_1_complex_call_helper_star_list(PyObject **python_pars);
 
 
 static PyObject *MAKE_FUNCTION_colorama$ansitowin32$$$function_10_get_win32_calls();
@@ -981,7 +971,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_3___enter__(struct Nuitka_
 
         {
             PyObject *dir_call_args[] = {tmp_dircall_arg1_1, tmp_dircall_arg2_1, tmp_dircall_arg3_1};
-            tmp_return_value = impl___internal__$$$function_2_complex_call_helper_star_list_star_dict(dir_call_args);
+            tmp_return_value = impl___internal__$$$function_4_complex_call_helper_star_list_star_dict(dir_call_args);
         }
         if (tmp_return_value == NULL) {
             assert(ERROR_OCCURRED());
@@ -1176,7 +1166,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_4___exit__(struct Nuitka_F
 
         {
             PyObject *dir_call_args[] = {tmp_dircall_arg1_1, tmp_dircall_arg2_1, tmp_dircall_arg3_1};
-            tmp_return_value = impl___internal__$$$function_2_complex_call_helper_star_list_star_dict(dir_call_args);
+            tmp_return_value = impl___internal__$$$function_4_complex_call_helper_star_list_star_dict(dir_call_args);
         }
         if (tmp_return_value == NULL) {
             assert(ERROR_OCCURRED());
@@ -1553,7 +1543,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_6_isatty(struct Nuitka_Fun
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 365 ], 24, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 508 ], 24, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1636,7 +1626,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_6_isatty(struct Nuitka_Fun
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 708 ], 25, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 851 ], 25, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -1679,7 +1669,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_6_isatty(struct Nuitka_Fun
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 708 ], 25, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 851 ], 25, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -2414,7 +2404,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_8___init__(struct Nuitka_F
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 733 ], 35, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 876 ], 35, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -2476,7 +2466,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_8___init__(struct Nuitka_F
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 365 ], 24, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 508 ], 24, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -2550,7 +2540,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_8___init__(struct Nuitka_F
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 768 ], 33, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 911 ], 33, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -2995,7 +2985,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_8___init__(struct Nuitka_F
             Py_DECREF(tmp_compexpr_left_4);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 708 ], 25, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 851 ], 25, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -3502,7 +3492,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -3883,7 +3873,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 645 ], 31, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 788 ], 31, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -3915,7 +3905,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_1);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -3963,7 +3953,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 645 ], 31, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 788 ], 31, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -3996,7 +3986,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_2);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4033,7 +4023,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_2);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 830 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 973 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4081,7 +4071,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 645 ], 31, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 788 ], 31, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4114,7 +4104,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_3);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4151,7 +4141,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_3);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 830 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 973 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4199,7 +4189,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 645 ], 31, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 788 ], 31, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4232,7 +4222,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_4);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4269,7 +4259,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_4);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 830 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 973 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4317,7 +4307,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 585 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 728 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4350,7 +4340,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_5);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4387,7 +4377,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_5);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4435,7 +4425,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 585 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 728 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4468,7 +4458,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_6);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4505,7 +4495,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_6);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4553,7 +4543,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 585 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 728 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4586,7 +4576,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_7);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4623,7 +4613,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_7);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4671,7 +4661,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 585 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 728 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4704,7 +4694,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_8);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4741,7 +4731,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_8);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4789,7 +4779,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 585 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 728 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4822,7 +4812,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_9);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4859,7 +4849,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_9);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4907,7 +4897,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 585 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 728 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4940,7 +4930,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_10);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -4977,7 +4967,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_10);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5025,7 +5015,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 585 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 728 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5058,7 +5048,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_11);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5095,7 +5085,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_11);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5143,7 +5133,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 585 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 728 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5176,7 +5166,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_12);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5213,7 +5203,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_12);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5261,7 +5251,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 585 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 728 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5294,7 +5284,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_13);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5342,7 +5332,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 585 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 728 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5375,7 +5365,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_14);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5412,7 +5402,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_14);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5463,7 +5453,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 585 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 728 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5496,7 +5486,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_15);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5533,7 +5523,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_15);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5584,7 +5574,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 585 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 728 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5617,7 +5607,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_16);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5654,7 +5644,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_16);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5705,7 +5695,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 585 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 728 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5738,7 +5728,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_17);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5775,7 +5765,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_17);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5826,7 +5816,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 585 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 728 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5859,7 +5849,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_18);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5896,7 +5886,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_18);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5947,7 +5937,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 585 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 728 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -5980,7 +5970,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_19);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6017,7 +6007,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_19);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6068,7 +6058,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 585 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 728 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6101,7 +6091,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_20);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6138,7 +6128,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_20);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6189,7 +6179,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 585 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 728 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6222,7 +6212,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_21);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6259,7 +6249,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_21);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6310,7 +6300,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 615 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 758 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6343,7 +6333,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_22);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6380,7 +6370,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_22);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6428,7 +6418,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 615 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 758 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6461,7 +6451,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_23);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6498,7 +6488,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_23);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6546,7 +6536,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 615 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 758 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6579,7 +6569,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_24);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6616,7 +6606,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_24);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6664,7 +6654,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 615 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 758 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6697,7 +6687,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_25);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6734,7 +6724,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_25);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6782,7 +6772,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 615 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 758 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6815,7 +6805,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_26);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6852,7 +6842,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_26);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6900,7 +6890,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 615 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 758 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6933,7 +6923,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_27);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -6970,7 +6960,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_27);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7018,7 +7008,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 615 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 758 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7051,7 +7041,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_28);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7088,7 +7078,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_28);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7136,7 +7126,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 615 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 758 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7169,7 +7159,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_29);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7206,7 +7196,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_29);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7254,7 +7244,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 615 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 758 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7287,7 +7277,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_30);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7335,7 +7325,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 615 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 758 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7368,7 +7358,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_31);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7405,7 +7395,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_31);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7456,7 +7446,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 615 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 758 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7489,7 +7479,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_32);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7526,7 +7516,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_32);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7577,7 +7567,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 615 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 758 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7610,7 +7600,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_33);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7647,7 +7637,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_33);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7698,7 +7688,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 615 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 758 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7731,7 +7721,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_34);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7768,7 +7758,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_34);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7819,7 +7809,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 615 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 758 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7852,7 +7842,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_35);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7889,7 +7879,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_35);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7940,7 +7930,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 615 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 758 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -7973,7 +7963,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_36);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -8010,7 +8000,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_36);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -8061,7 +8051,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 615 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 758 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -8094,7 +8084,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_37);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -8131,7 +8121,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_37);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -8182,7 +8172,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_return_value);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 615 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 758 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -8215,7 +8205,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_key_38);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -8252,7 +8242,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_10_get_win32_calls(struct 
             Py_DECREF(tmp_dict_value_38);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 860 ], 30, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1003 ], 30, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -8994,7 +8984,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_12_reset_all(struct Nuitka
             Py_DECREF(tmp_called_name_1);
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 890 ], 27, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1033 ], 27, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -9603,7 +9593,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_13_write_and_convert(struc
 
         {
             PyObject *dir_call_args[] = {tmp_dircall_arg1_1, tmp_dircall_arg2_1};
-            tmp_call_result_2 = impl___internal__$$$function_4_complex_call_helper_star_list(dir_call_args);
+            tmp_call_result_2 = impl___internal__$$$function_1_complex_call_helper_star_list(dir_call_args);
         }
         if (tmp_call_result_2 == NULL) {
             assert(ERROR_OCCURRED());
@@ -12040,7 +12030,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_17_call_win32(struct Nuitk
 
         {
             PyObject *dir_call_args[] = {tmp_dircall_arg1_1, tmp_dircall_arg2_1, tmp_dircall_arg3_1};
-            tmp_call_result_1 = impl___internal__$$$function_2_complex_call_helper_star_list_star_dict(dir_call_args);
+            tmp_call_result_1 = impl___internal__$$$function_4_complex_call_helper_star_list_star_dict(dir_call_args);
         }
         if (tmp_call_result_1 == NULL) {
             assert(ERROR_OCCURRED());
@@ -12153,7 +12143,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_17_call_win32(struct Nuitk
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -12278,7 +12268,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_17_call_win32(struct Nuitk
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -12401,7 +12391,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_17_call_win32(struct Nuitk
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -12816,7 +12806,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_17_call_win32(struct Nuitk
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -13857,7 +13847,7 @@ static PyObject *impl_colorama$ansitowin32$$$function_18_convert_osc(struct Nuit
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 801 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 944 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -15593,7 +15583,7 @@ PyObject *modulecode_colorama$ansitowin32(PyObject *module) {
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 917 ], 28, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1060 ], 28, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -15627,7 +15617,7 @@ PyObject *modulecode_colorama$ansitowin32(PyObject *module) {
 
             exception_type = PyExc_NameError;
             Py_INCREF(exception_type);
-            exception_value = UNSTREAM_STRING(&constant_bin[ 945 ], 29, 0);
+            exception_value = UNSTREAM_STRING(&constant_bin[ 1088 ], 29, 0);
             exception_tb = NULL;
             NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
             CHAIN_EXCEPTION(exception_value);
@@ -15662,7 +15652,7 @@ PyObject *modulecode_colorama$ansitowin32(PyObject *module) {
 
         {
             PyObject *dir_call_args[] = {tmp_dircall_arg1_1};
-            tmp_assign_source_21 = impl___internal__$$$function_1__mro_entries_conversion(dir_call_args);
+            tmp_assign_source_21 = impl___internal__$$$function_3__mro_entries_conversion(dir_call_args);
         }
         if (tmp_assign_source_21 == NULL) {
             assert(ERROR_OCCURRED());
@@ -16209,7 +16199,7 @@ PyObject *modulecode_colorama$ansitowin32(PyObject *module) {
 
                 exception_type = PyExc_NameError;
                 Py_INCREF(exception_type);
-                exception_value = UNSTREAM_STRING(&constant_bin[ 974 ], 30, 0);
+                exception_value = UNSTREAM_STRING(&constant_bin[ 1117 ], 30, 0);
                 exception_tb = NULL;
                 NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
                 CHAIN_EXCEPTION(exception_value);
@@ -16537,7 +16527,7 @@ PyObject *modulecode_colorama$ansitowin32(PyObject *module) {
 
         {
             PyObject *dir_call_args[] = {tmp_dircall_arg1_2};
-            tmp_assign_source_28 = impl___internal__$$$function_1__mro_entries_conversion(dir_call_args);
+            tmp_assign_source_28 = impl___internal__$$$function_3__mro_entries_conversion(dir_call_args);
         }
         if (tmp_assign_source_28 == NULL) {
             assert(ERROR_OCCURRED());
@@ -16974,7 +16964,7 @@ PyObject *modulecode_colorama$ansitowin32(PyObject *module) {
 
                         exception_type = PyExc_NameError;
                         Py_INCREF(exception_type);
-                        exception_value = UNSTREAM_STRING(&constant_bin[ 1004 ], 24, 0);
+                        exception_value = UNSTREAM_STRING(&constant_bin[ 1147 ], 24, 0);
                         exception_tb = NULL;
                         NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
                         CHAIN_EXCEPTION(exception_value);
@@ -17033,7 +17023,7 @@ PyObject *modulecode_colorama$ansitowin32(PyObject *module) {
 
                         exception_type = PyExc_NameError;
                         Py_INCREF(exception_type);
-                        exception_value = UNSTREAM_STRING(&constant_bin[ 1004 ], 24, 0);
+                        exception_value = UNSTREAM_STRING(&constant_bin[ 1147 ], 24, 0);
                         exception_tb = NULL;
                         NORMALIZE_EXCEPTION(&exception_type, &exception_value, &exception_tb);
                         CHAIN_EXCEPTION(exception_value);
